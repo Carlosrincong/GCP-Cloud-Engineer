@@ -1,0 +1,9 @@
+Habilitar o deshabilitar APIs
+
+$ gcloud services enable pubsub.googleapis.com
+$ gcloud services disable pubsub.googleapis.com
+
+Crear una API key para servicios que lo requieran:
+
+gcloud beta services api-keys create --display-name=DISPLAY_NAME
+ 
