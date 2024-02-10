@@ -7,3 +7,5 @@ Crear una API key para servicios que lo requieran:
 
 gcloud beta services api-keys create --display-name=DISPLAY_NAME
  
+La key API puede tener restriccioes de IP, Http, App (iOS, Android) y a nivel de API a usar.
+
