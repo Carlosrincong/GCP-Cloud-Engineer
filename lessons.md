@@ -6,4 +6,10 @@ Los roles básicos establecen permisos a nivel de proyecto y, a menos que se esp
 
 1
 
-establishing a resource hierarchy (organization-folders-projects), implementing organizational policies, managing projects and quotas, managing users and groups, and applying access management. Setting up billing and monitoring the use of your cloud resources are also things to consider. Finally, choosing how you interact with Google Cloud is an important decision as well.
+Establishing a resource hierarchy (organization-folders-projects), implementing organizational policies, managing projects and quotas, managing users and groups*, and applying access management (who, can do what, on wich resourse). Setting up billing and monitoring the use of your cloud resources are also things to consider. Finally, choosing how you interact with Google Cloud is an important decision as well.
+
+*Managing permission and roles at a group level is easier than keeping track of permissions for individual users. This also can be done with Google Workspace instead IAM of GCP. 
+
+Google Cloud's operations suite, which used to be called stack driver, provides metrics and logging services for all your services, resources and projects in your cloud environment. To monitor metrics for multiple projects, you set up project scoping and monitored projects. Where scoping project can monitor to monitored projects. 
+
+It is necesary create a billing account linked with the project. 
