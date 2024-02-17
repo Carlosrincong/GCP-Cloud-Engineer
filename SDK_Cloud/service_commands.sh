@@ -1,7 +1,6 @@
 # Google Cloud CLI (version local de Cloud Shell)
 
-gcloud init # para inicializar el CLI 
-
+gcloud init # para inicializar el CLI. En cloud shell no es necesario.
 ## ES posible que requiera iniciar sesion. 
 
 gcloud config set project VALUE # Sets the default project
