@@ -27,7 +27,7 @@ A billing account can handle billing for more than one project. A project can on
 
 Question 1 tested your ability to assign users to IAM roles. 
 - You should not assign roles to an individual user. Users should be added to groups and groups assigned roles to simplify permissions management.
-- Roles are combinations of individual permissions. You should assign roles, not individual permissions, to users.}
+- Roles are combinations of individual permissions. You should assign roles, not individual permissions, to users.
 - Best practice is to manage role assignment by groups, not by individual users.
 - A policy is a binding that is created when you associate a user with a role. Policies are not "assigned" to a user.
 
