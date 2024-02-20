@@ -21,8 +21,8 @@ gcloud compute instances add-tags gcelab2 --tags http-server,https-server # Tag 
 
 # Update firewall rules
 gcloud compute firewall-rules create default-allow-http \
---direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80 \
---source-ranges=0.0.0.0/0 --target-tags=http-server
+    --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80 \
+    --source-ranges=0.0.0.0/0 --target-tags=http-server
 
 # Verify connection with filtered VM
 curl http://$(gcloud compute instances list --filter=name:gcelab2 --format='value(EXTERNAL_IP)')
