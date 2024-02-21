@@ -24,10 +24,33 @@ curl -m 70 -X POST URI \
     -H "Content-Type: application/json" \
     -d '{}'
 
+# View the logs of function
+gcloud functions logs read function-name
+
 # Delete the function
 gcloud functions delete python-http-function --gen2 --region REGION 
 
 
-##### NODEJS & CLOUD STORAGE
+##### NODEJS
 
+mkdir gcf_hello_world
+cd gcf_hello_world
+nano index.js # Edit the text file with code to function
 
+# Create a storge as stage to the function
+gsutil mb -p project-id gs://bucket-name
+
+# Deplor the function
+gcloud functions deploy function-name \
+  --stage-bucket gs://bucket-name \
+  --trigger-topic hello_world \
+  --runtime nodejs20
+
+# Get status of function
+gcloud functions describe function-name
+
+# Testing
+DATA=$(printf 'Hello World!'|base64) && gcloud functions call function-name --data '{"data":"'$DATA'"}'
+
+# View the logs of function
+gcloud functions logs read function-name
