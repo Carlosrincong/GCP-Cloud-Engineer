@@ -63,7 +63,7 @@ gcloud compute target-pools create www-pool \
 gcloud compute target-pools add-instances www-pool \
     --instances www1,www2,www3
 
-# Create forwarding rules 
+# Create forwarding rules. Forwarding rules specifies how to route the traffic to a loand balancer.
 gcloud compute forwarding-rules create www-rule \
     --region  Region \
     --ports 80 \
