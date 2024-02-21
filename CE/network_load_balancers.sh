@@ -1,3 +1,5 @@
+# NETWORK LOAD BALANCER
+
 # Set up 3 VM:
 
 # instance name: www1
@@ -48,7 +50,7 @@ gcloud compute firewall-rules create www-firewall-network-lb \
 gcloud compute instances list
 curl http://[IP_ADDRESS]
 
-# Create external IP address named 'network-lb-ip-1'
+# Create static external IP address named 'network-lb-ip-1'. setting the IP where the traffic is redirect by load balancer
 gcloud compute addresses create network-lb-ip-1 \
   --region Region
 
@@ -63,9 +65,15 @@ gcloud compute target-pools create www-pool \
 gcloud compute target-pools add-instances www-pool \
     --instances www1,www2,www3
 
-# Create forwarding rules. Forwarding rules specifies how to route the traffic to a loand balancer.
+# Create forwarding rules. 
+# Forwarding rules specifies how to route the traffic that matches a destination external IP addres to a forwarding target (load balancer, VPN, VM).
 gcloud compute forwarding-rules create www-rule \
     --region  Region \
     --ports 80 \
     --address network-lb-ip-1 \
     --target-pool www-pool
+
+# View the external IP address of forwarding rule
+gcloud compute forwarding-rules describe www-rule --region Region
+# Assign the external IP to local variable:
+IPADDRESS=$(gcloud compute forwarding-rules describe www-rule --region Region --format="json" | jq -r .IPAddress)
