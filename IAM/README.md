@@ -35,3 +35,7 @@ De este modo se le debe asignar manualmente los permisos a estas cuentas de serv
 - Rota las claves de la cuenta de servicio para reducir el riesgo de seguridad causado por claves filtradas.
 
 https://cloud.google.com/iam/docs/migrate-from-service-account-keys?hl=es-419
+
+# To know
+- Custom roles can only be applied to either the project level or organization level.
+- A service account is also a resource. This means that Alice can have the editor role on a service account, and Bob can have the viewer role.

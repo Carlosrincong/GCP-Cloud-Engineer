@@ -34,5 +34,6 @@ Question 1 tested your ability to assign users to IAM roles.
 
 
 Question 2 explored using organization resource hierarchies in Google Cloud
-Question 3 tested your knowledge of the relationship between resources and projects to track resource usage, billing, or permissions. Question 4 examined concepts of permission hierarchy
+Question 3 tested your knowledge of the relationship between resources and projects to track resource usage, billing, or permissions. 
+Question 4 examined concepts of permission hierarchy
 Questions 5 and 6 tested your knowledge of roles in Google Cloud.
