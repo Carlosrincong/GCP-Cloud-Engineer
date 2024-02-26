@@ -19,6 +19,9 @@ gcloud compute reset-windows-password instance-name --zone ZONE --user USERNAME 
 
 gcloud compute instances add-tags gcelab2 --tags http-server,https-server # Tag a VM
 
+# test of connectivity
+ping -c 3 IP # Where IP is the internal IP
+
 # Update firewall rules
 gcloud compute firewall-rules create default-allow-http \
     --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80 \
