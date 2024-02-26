@@ -4,7 +4,7 @@ To attach a persistent disk to a virtual machine instance, both resources must b
 If you want to assign a static IP address to an instance, the instance must be in the same region as the static IP.
 It is best practice to run the Cloud Logging agent on all your VM instances.
 you cannot create a VM instance without a VPC network
-Preemptible VMs to improve performance
+Preemptible VMs to reduce cost
 
 # Firewall rules 
 Firewall rules allow you to control which packets are allowed to travel to which destinations
