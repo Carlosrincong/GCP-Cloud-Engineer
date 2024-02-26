@@ -12,6 +12,16 @@ VPCs provide a global distributed firewall, which can be controlled. Firewall ru
 VPC Peering, a relationship between two VPCs can be established to exchange traffic.
 Shared VPC
 
+## Connecting networks to Cloud VPC
+- Use Cloud VPN to create a “tunnel” connection. And use feature Cloud Router to make the connection dynamic. This allows us to exchange info between networks and Google VPC using Border Gateway Protocol. highly depend on internet
+- Using Direct Peering, Peering means putting a router in the same public data center as a Google point of presence and using it to exchange traffic between networks.
+- Carrier Peering
+- Dedicated interconnected allows for one or more direct, private connections to Google.
+- Partner interconnect provides connectivity between an on-premises network and a VPC network through a supported service provide. This is useful if a data center is in a physical location that can't reach a Dedicated Interconnect, or if the data needs don’t warrant an entire 10 GigaBytes per second connection.
+- Cross-Cloud Interconnect helps you establish high-bandwidth dedicated connectivity between Google Cloud and another cloud service provider.
+
+
+
 # Load balancing
 The job of a load balancer is to distribute user traffic across multiple instances of an application.
 You can put Cloud Load Balancing in front of all of your traffic.
