@@ -7,3 +7,5 @@ Each document contains a set of key-value pairs.
 Query performance is proportional to the size of the result set
 Firestore uses data synchronization to update data on any connected device.
 You’re charged for each document read, write, and delete. Queries and for the amount of storage your data consumes, are also charged. Charges only begin once the free daily quota has been exceeded.
+Firestore is best for storing, syncing, and querying data for mobile and web apps.
+If you need massive scaling and predictability together with real time query results and offline query support.
