@@ -42,7 +42,9 @@ https://cloud.google.com/iam/docs/migrate-from-service-account-keys?hl=es-419
 - When a user with a G Suite or Cloud Identity Account creates a GCP project an organization resource is automatically provisioned for them
 - You cannot use IAM to create or manage your users or groups. Instead, you can use Cloud Identity or Workspace to create and manage users.
 - Recommender identifies excess permissions using policy insights.
-- With deny policies, you can define deny rules that prevent certain principals from using certain permissions, regardless of the roles they're granted.
+- With deny policies, you can define deny rules that prevent certain principals from using certain permissions, regardless of the roles they're granted.  When a principal is denied a permission, they can't do anything that requires that permission, regardless of the IAM roles they've been granted.
+- Using Google Cloud Directory Sync, your administrators can log in and manage Google Cloud resources using the same usernames and passwords they already use.  This tool synchronizes users and groups from your existing Active Directory or LDAP system with the users and groups in your Cloud Identity domain.
+- SSO (single sing-on authentication)
 - Workspace or Cloud Identity super admin is responsible of:
     1. assign organization admin role
     2. Recovery issues
