@@ -40,6 +40,9 @@ https://cloud.google.com/iam/docs/migrate-from-service-account-keys?hl=es-419
 - Custom roles can only be applied to either the project level or organization level.
 - A service account is also a resource. This means that Alice can have the editor role on a service account, and Bob can have the viewer role.
 - When a user with a G Suite or Cloud Identity Account creates a GCP project an organization resource is automatically provisioned for them
+- You cannot use IAM to create or manage your users or groups. Instead, you can use Cloud Identity or Workspace to create and manage users.
+- Recommender identifies excess permissions using policy insights.
+- With deny policies, you can define deny rules that prevent certain principals from using certain permissions, regardless of the roles they're granted.
 - Workspace or Cloud Identity super admin is responsible of:
     1. assign organization admin role
     2. Recovery issues
