@@ -39,3 +39,13 @@ https://cloud.google.com/iam/docs/migrate-from-service-account-keys?hl=es-419
 # To know
 - Custom roles can only be applied to either the project level or organization level.
 - A service account is also a resource. This means that Alice can have the editor role on a service account, and Bob can have the viewer role.
+- When a user with a G Suite or Cloud Identity Account creates a GCP project an organization resource is automatically provisioned for them
+- Workspace or Cloud Identity super admin is responsible of:
+    1. assign organization admin role
+    2. Recovery issues
+    3. Life cicle of Organization resource and its users
+
+- Organization admin is responsible of:
+    1. Define policies
+    2. Define structure of hierarchy
+    3. Delegate responsabilities of networking, billing and hierarchy with roles
