@@ -54,3 +54,17 @@ https://cloud.google.com/iam/docs/migrate-from-service-account-keys?hl=es-419
     1. Define policies
     2. Define structure of hierarchy
     3. Delegate responsabilities of networking, billing and hierarchy with roles
+
+
+### Service Accounts
+There are three types of service accounts: user-created or custom, built-in, and Google APIs service accounts.
+By default, all projects come with the built-in Compute Engine default service account and it is automatically granted the Editor role on the project. All projects come with a Google Cloud APIs service account
+
+Access scopes are actually the legacy method of specifying permissions for your VM. (By using The default service account)
+For user-created service accounts, use IAM roles instead to specify permissions for your VM.
+
+Yo can use a service account to grant access to services. And use it as a service to decide who can use it using ServiceAccountUser. 
+
+There are two types of service account keys. Google-managed service accounts: Google automatically manages the keys for service accounts. User-managed service accounts: if you want to be able to use service accounts outside of Google Cloud, or want a different rotation period.
+
+Consider the other alternatives to service acocount kesy, such as short-lived service account credentials (tokens), or service account impersonation.
