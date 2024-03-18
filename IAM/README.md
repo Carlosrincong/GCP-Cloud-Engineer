@@ -11,7 +11,11 @@ Es la preferida para usar proveedor de identidad externo (IdP). No requiere la s
 Workload identity en GKE, Cuenta de servicio y Clave de cuenta de servicio. 
 
 ## Best practices:
-
+- Granting roles to groups instead of individuals.
+- Audit policies using Cloud audit logs and audit memberships of groups using policies
+- Be very careful when granting the service accounts user role because it provides access to all the resources of the service account has access to
+- As for keys, establish key rotation policies and methods and audit keys with the serviceAccount.keys.list method.
+- Use Cloud Identity Aware Proxy or Cloud IAP, lets you establish a central authorization layer for applications accessed by HTTPS. Applications and resources protected by Cloud IAP can only be accessed through the proxy by users and groups with the correct Cloud IAM role
 - Emplearla cuando se requiere que una aplicacion funcione sin interaccion de un usuario.
 - Que dicha cuenta solo tenga permisos para el alcance de lo que la aplicacion requiere para funcionar. 
 - Emplearla para autenticar identidades con la aplicacion o ante Google Cloud. 
