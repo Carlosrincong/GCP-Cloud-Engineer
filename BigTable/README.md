@@ -11,3 +11,5 @@ great choice:
 - Data is a time-series or has natural semantic ordering.
 - Big data running asynchronous batch or synchronous real-time processing on the data running machine learning algorithms on the data.
 - Bigtable is best for analytical data with heavy read and write events, like AdTech, financial, or IoT data.
+- wide-column database
+- ‘fast lookup’ non-relational database for datasets too large to store in memory
