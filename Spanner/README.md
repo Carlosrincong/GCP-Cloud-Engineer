@@ -5,3 +5,6 @@ Cloud Spanner is a fully managed relational database service that scales horizon
 SQL relational database management system with joins and secondary indexes
 Built-in high availability and Strong global consistency
 High numbers of input and output operations per second.
+Combine the benefits of relational database structure with non relational horizontal scale
+Transaccional consistency
+Automatic synchronous replication for high availability
