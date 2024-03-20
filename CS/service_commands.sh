@@ -57,6 +57,16 @@ cat acl3.txt # View file
 # Create a key using python
 python3 -c 'import base64; import os; print(base64.encodebytes(os.urandom(32)))'
 
+# Edit .boto file
+nano .boto
+# look up and uncomment "encryption_key=" and set key created
+#---------------------
+encryption_key=key
+#------------------
+# To rotate a keys is necessary to decrypt using the same key in the line: decryption_key=key
+# Then generate a new key and assing it as encryption_key=key
+# Its import to do it step by step by comment and uncomment as needed
+
 ###################
 # Lifecycle policy
 ##################
@@ -100,7 +110,8 @@ gcloud storage cp -v setup.html gs://$bucket_name
 gcloud storage ls -a gs://$bucket_name/setup.html
 
 # Download a version:
-export $version_name=#55546456484
+export $version_name=entire_link/file_name#55546456484
 echo $version_name
 
 gcloud storage cp $VERSION_NAME version_recovered.txt
+

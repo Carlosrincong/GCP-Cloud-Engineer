@@ -131,3 +131,6 @@ gcloud iam service-accounts keys disable KEY_ID \
 gcloud iam service-accounts keys enable KEY_ID \
     --iam-account=SA_NAME@nombre-proyecto.iam.gserviceaccount.com\
     --project=nombre-proyecto
+
+# Use key service account, with credentials.json file:
+gcloud auth activate-service-account --key-file credentials.json
