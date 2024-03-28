@@ -22,3 +22,4 @@ Each IP range for all subnets in a VPC network must be a unique valid CIDR block
 Best Practices:
 1. Avoid creating large subnets: overly large subnets are more likely to cause CIDR range collisions when using Multiple Network Interfaces
 2. Do not scale your subnet beyond what you actually need.
+3. Expand a subnet in GCP without any workload shutdown or downtime
