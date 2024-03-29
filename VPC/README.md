@@ -16,8 +16,10 @@ VPC is a comprehensive set of Google managed networking objects:
     2.  External IP address (optional): You can assign an external IP address if your device or machine is externally facing (connections from hosts outside of the project). That external IP address can be assigned from a pool, making it ephemeral, or it can be assigned from a reserved external IP address, making it static. VMs doesn´t know external IP address. It´s mapped to the internal IP address.
 - DNS: Each instance has a metadata server that also acts as a DNS resolver for that instance. the DNS name always points to a specific instance, no matter what the internal IP address is. Domain name servers can be hosted on Google Cloud, using Cloud DNS. 
 Cloud DNS translates requests for domain names like google.com into IP addresses, also lets you create and update millions of DNS records
-- Routes
-- Firewall rules
+- Routes: every network has routes that let instances in a network send traffic directly to each other, even across subnets. In addition, every network has a default route that directs packets to destinations that are outside the network.
+
+    Routes match packets by destination IP addresses if also matching a firewall rule.
+- Firewall rules: The default network has pre-configured firewall rules that allow all instances in the network to talk with each other.
 - Alias IP ranges: Alias IP Ranges let you assign a range of internal IP addresses as an alias to a virtual machine's network interface. This is useful if you have multiple services running on a VM, and you want to assign a different IP address to each service without having to define a separate network interface. You just draw the alias IP range from the local subnet's primary or secondary CIDR ranges.
 - VM instances from a networking perspective
 
