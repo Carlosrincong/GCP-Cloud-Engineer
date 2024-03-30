@@ -15,7 +15,7 @@ VPC is a comprehensive set of Google managed networking objects:
     1.  Internal IP address: which is going to be assigned from a subnet via DHCP internally. When you create a VM in Google Cloud, its symbolic name is registered with an internal DNS service that translates the name to an internal IP address.
     2.  External IP address (optional): You can assign an external IP address if your device or machine is externally facing (connections from hosts outside of the project). That external IP address can be assigned from a pool, making it ephemeral, or it can be assigned from a reserved external IP address, making it static. VMs doesn´t know external IP address. It´s mapped to the internal IP address.
 - DNS: Each instance has a metadata server that also acts as a DNS resolver for that instance. the DNS name always points to a specific instance, no matter what the internal IP address is. Domain name servers can be hosted on Google Cloud, using Cloud DNS. 
-Cloud DNS translates requests for domain names like google.com into IP addresses, also lets you create and update millions of DNS records
+Cloud DNS translates requests for domain names like google.com into IP addresses, also lets you create and update millions of DNS records. In conclusion, VPC networks have an internal DNS service that allows you to address instances by that DNS names, instead of their internal IP addresses.
 - Routes: every network has routes that let instances in a network send traffic directly to each other, even across subnets. In addition, every network has a default route that directs packets to destinations that are outside the network. Routes is what enables VMs on the same network to communicate.
 
     Routes match packets by destination IP addresses if also matching a firewall rule. A route is created when a subnet is created.
@@ -27,20 +27,21 @@ Cloud DNS translates requests for domain names like google.com into IP addresses
     2.  Source/Destination: Source of connections or Destination of connections
     3.  Protocol and port:  where any rule can be restricted to apply to specific protocols only or specific combinations of protocols and ports only.
     4.  Action: allow or deny packets
-    5.  Priority: which governs the order in which rules are evaluated.
-    6.  Rule assignament: By default, all rules are assigned to all instances, but you can assign certain rules to certain instances only.
+    5.  Priority: which governs the order in which rules are evaluated. The higher number, the higher the priority.
+    6.  Rule assignament: By default, all rules are assigned to all instances, but you can assign certain rules to certain instances only by using target tags.
 
 - Alias IP ranges: Alias IP Ranges let you assign a range of internal IP addresses as an alias to a virtual machine's network interface. This is useful if you have multiple services running on a VM, and you want to assign a different IP address to each service without having to define a separate network interface. You just draw the alias IP range from the local subnet's primary or secondary CIDR ranges.
 - VM instances from a networking perspective
 
 ## Features
 
-A single VPN can securely connect your on-premises network to your Google Cloud network through a VPN gateway
-VMs within the same network can communicate using their internal IP addresses, this means that a single firewall rule can be applied to both VMs. In different network must to comunicate with their external IP addresses. 
-The subnet is simply an IP address range, and you can use IP addresses within that range. Every subnet has four reserved IP addresses in its primary IP range
-Each IP range for all subnets in a VPC network must be a unique valid CIDR block.
-The hostname is the same as the instance name.
-FQDN (fully qualified domain name) is: [hostname][zone].c.[projectId].internal
+- A single VPN can securely connect your on-premises network to your Google Cloud network through a VPN gateway
+- VMs within the same network can communicate using their internal IP addresses, this means that a single firewall rule can be applied to both VMs. In different network must to comunicate with their external IP addresses. 
+- The subnet is simply an IP address range, and you can use IP addresses within that range. Every subnet has four reserved IP addresses in its primary IP range
+- Each IP range for all subnets in a VPC network must be a unique valid CIDR block.
+- The hostname is the same as the instance name.
+- FQDN (fully qualified domain name) is: [hostname][zone].c.[projectId].internal
+- When you create an automatic subnet this comes with predeterminaded CIDR range. These IP address ranges wich you can expand later but not define it in auto subnet.
 
 ## Pricing
 
