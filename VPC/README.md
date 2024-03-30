@@ -33,7 +33,7 @@ Cloud DNS translates requests for domain names like google.com into IP addresses
 - Alias IP ranges: Alias IP Ranges let you assign a range of internal IP addresses as an alias to a virtual machine's network interface. This is useful if you have multiple services running on a VM, and you want to assign a different IP address to each service without having to define a separate network interface. You just draw the alias IP range from the local subnet's primary or secondary CIDR ranges.
 - VM instances from a networking perspective
 
-
+## Features
 
 A single VPN can securely connect your on-premises network to your Google Cloud network through a VPN gateway
 VMs within the same network can communicate using their internal IP addresses, this means that a single firewall rule can be applied to both VMs. In different network must to comunicate with their external IP addresses. 
@@ -42,8 +42,26 @@ Each IP range for all subnets in a VPC network must be a unique valid CIDR block
 The hostname is the same as the instance name.
 FQDN (fully qualified domain name) is: [hostname][zone].c.[projectId].internal
 
+## Pricing
 
-Best Practices:
+### Traffic
+- Egress or traffic coming into GCP's network is not charged, unless there is a resource, such as a load balancer that is processing egress traffic
+- Responses to request account as egress and are charged.
+- Egress traffic to the same zone, is not charged as long as that egress is through the internal IP address of an instance.
+- Egress traffic to Google products like YouTube, maps, drive, or traffic to a different GCP service within the same region, is not charged for.
+- There is a charge for egress ($0.01 per GB):
+    1.  Between zones in the same region
+    2.  Within a zone, if the traffic is through the external IP address of an instance
+    3.  Between regions
+
+### External IP address (central1)
+
+- Static IP address unused: $0.010
+- Static and ephemeral IP address in use on Standard VM: $0.004
+- Static and ephemeral IP address in use on Preemptible VM: $0.002
+- No charges for static or ephemeral IP addres attached to firewall rules
+
+## Best Practices
 1. Avoid creating large subnets: overly large subnets are more likely to cause CIDR range collisions when using Multiple Network Interfaces
 2. Do not scale your subnet beyond what you actually need.
 3. Expand a subnet in GCP without any workload shutdown or downtime
