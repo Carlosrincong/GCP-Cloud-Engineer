@@ -10,7 +10,7 @@ VPC is a comprehensive set of Google managed networking objects:
 
     The network stores a lookup table that matches external IP addresses with the internal IP addresses of the relevant instances
 
-- Subnetworks allow you to divide or segregate your environment. Concepts: CIDR block, Masks, DHCP.  
+- Subnetworks allow you to divide or segregate your environment. The network is really nothing else than just a combination of subnets. Concepts: CIDR block, Masks, DHCP.  
 - IP addresses for internal and external use along with granular IP address range selections. That means, each virtual machine can have two IP addresses assigned:
     1.  Internal IP address: which is going to be assigned from a subnet via DHCP internally. When you create a VM in Google Cloud, its symbolic name is registered with an internal DNS service that translates the name to an internal IP address.
     2.  External IP address (optional): You can assign an external IP address if your device or machine is externally facing (connections from hosts outside of the project). That external IP address can be assigned from a pool, making it ephemeral, or it can be assigned from a reserved external IP address, making it static. VMs doesn´t know external IP address. It´s mapped to the internal IP address.
