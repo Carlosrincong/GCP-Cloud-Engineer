@@ -16,10 +16,20 @@ VPC is a comprehensive set of Google managed networking objects:
     2.  External IP address (optional): You can assign an external IP address if your device or machine is externally facing (connections from hosts outside of the project). That external IP address can be assigned from a pool, making it ephemeral, or it can be assigned from a reserved external IP address, making it static. VMs doesn´t know external IP address. It´s mapped to the internal IP address.
 - DNS: Each instance has a metadata server that also acts as a DNS resolver for that instance. the DNS name always points to a specific instance, no matter what the internal IP address is. Domain name servers can be hosted on Google Cloud, using Cloud DNS. 
 Cloud DNS translates requests for domain names like google.com into IP addresses, also lets you create and update millions of DNS records
-- Routes: every network has routes that let instances in a network send traffic directly to each other, even across subnets. In addition, every network has a default route that directs packets to destinations that are outside the network.
+- Routes: every network has routes that let instances in a network send traffic directly to each other, even across subnets. In addition, every network has a default route that directs packets to destinations that are outside the network. Routes is what enables VMs on the same network to communicate.
 
-    Routes match packets by destination IP addresses if also matching a firewall rule.
-- Firewall rules: The default network has pre-configured firewall rules that allow all instances in the network to talk with each other.
+    Routes match packets by destination IP addresses if also matching a firewall rule. A route is created when a subnet is created.
+    The virtual network router selects the next hop for a packet by consulting the routing table for that instance.
+- Firewall rules: firewall rules protect you virtual machine instances from unapproved connections, both inbound and outbound, known as ingress and egress. The default network has pre-configured firewall rules that allow all instances in the network to talk with each other. Firewall rules are stateful, that means allow bidirectional communication once a session is established. 
+
+    A firewall rule is composed of:
+    1.  Direction: inbound connections (ingress rules) or outbound connections (egress rules). For egress rules may be specified using IP CIDR ranges
+    2.  Source/Destination: Source of connections or Destination of connections
+    3.  Protocol and port:  where any rule can be restricted to apply to specific protocols only or specific combinations of protocols and ports only.
+    4.  Action: allow or deny packets
+    5.  Priority: which governs the order in which rules are evaluated.
+    6.  Rule assignament: By default, all rules are assigned to all instances, but you can assign certain rules to certain instances only.
+
 - Alias IP ranges: Alias IP Ranges let you assign a range of internal IP addresses as an alias to a virtual machine's network interface. This is useful if you have multiple services running on a VM, and you want to assign a different IP address to each service without having to define a separate network interface. You just draw the alias IP range from the local subnet's primary or secondary CIDR ranges.
 - VM instances from a networking perspective
 
