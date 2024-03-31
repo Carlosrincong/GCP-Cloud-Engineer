@@ -31,6 +31,7 @@ Cloud DNS translates requests for domain names like google.com into IP addresses
     6.  Rule assignament: By default, all rules are assigned to all instances, but you can assign certain rules to certain instances only by using target tags.
 
 - Alias IP ranges: Alias IP Ranges let you assign a range of internal IP addresses as an alias to a virtual machine's network interface. This is useful if you have multiple services running on a VM, and you want to assign a different IP address to each service without having to define a separate network interface. You just draw the alias IP range from the local subnet's primary or secondary CIDR ranges.
+- Gateway: translate data packet from a source protocol to destination protocol on network. 
 - VM instances from a networking perspective
 
 ## Features
@@ -43,16 +44,29 @@ Cloud DNS translates requests for domain names like google.com into IP addresses
 - FQDN (fully qualified domain name) is: [hostname][zone].c.[projectId].internal
 - When you create an automatic subnet this comes with predeterminaded CIDR range. These IP address ranges wich you can expand later but not define it in auto subnet.
 - You cannot create VM instances without a VPC network.
+- VM instances without external IP addresses are isolated from external networks. When instances don't have external IP addresses, they can only be reached by other instances on the network, VPN gateway or Cloud IAP (through SSH and RDP without a bastion host)
+- Google Cloud Router dynamically exchanges routes between your VPC and on-premise networks by using Border gateway protocol (BGP). This can be created in region on network. 
 
-## Related services
+## Related network services for private instances
 
 ### Cloud NAT
-- Provides controlled and efficient internet access to private instances (without public IP addresses). Access the internet for updates, patching, configuration management, and more, which is referred to as outbound NAT. 
+- The Cloud NAT gateway only implements outbound net, not inbound net
 - Network address translation service.
-- Cloud NAT does not Implement inbound NAT
+- Provides controlled and efficient internet access to private instances (without public IP addresses). Access the internet for updates, patching, configuration management, and more, which is referred to as outbound NAT. Access the internet using a Shared public IP address.
+- Cloud NAT does not implement inbound NAT
 - Hosts outside your VPC network cannot directly access any of the private instances behind the cloud NAT gateway
 - This helps you keep your VPC networks isolated and secure.
+- You can set in region level on network.
+
+### Private Google Access
 - You should enable private Google access to allow VM instances that only have internal IP addresses to reach the external IP addresses of Google APIs and services. Private Google access has no effect on instances that have external IP addresses
+- Private Google Access can be enabled/disabled at the subnet level.
+
+### Cloud IAP (Identity-Aware Proxy)
+
+- IAP allows you to set a central authorization layer for applications reached by HTTP request. That is, an access control at application level, instead of an access control at network level with firewall rules. 
+- You can access a private VM (without external IP address and therefore with SSH disabled) via IAP using SSH, by other instances on the network or VPN gateway
+- You can use at instance level
 
 ## Pricing
 
