@@ -1,5 +1,5 @@
 
-# VIRTUAL PRIVATE CLOUD 
+# VIRTUAL PRIVATE CLOUD (VPC)
 
 VPC is a comprehensive set of Google managed networking objects:
 - Networks: networks do not have IP ranges and come in three different flavors; default, auto mode, and custom mode. 
@@ -42,6 +42,17 @@ Cloud DNS translates requests for domain names like google.com into IP addresses
 - The hostname is the same as the instance name.
 - FQDN (fully qualified domain name) is: [hostname][zone].c.[projectId].internal
 - When you create an automatic subnet this comes with predeterminaded CIDR range. These IP address ranges wich you can expand later but not define it in auto subnet.
+- You cannot create VM instances without a VPC network.
+
+## Related services
+
+### Cloud NAT
+- Provides controlled and efficient internet access to private instances (without public IP addresses). Access the internet for updates, patching, configuration management, and more, which is referred to as outbound NAT. 
+- Network address translation service.
+- Cloud NAT does not Implement inbound NAT
+- Hosts outside your VPC network cannot directly access any of the private instances behind the cloud NAT gateway
+- This helps you keep your VPC networks isolated and secure.
+- You should enable private Google access to allow VM instances that only have internal IP addresses to reach the external IP addresses of Google APIs and services. Private Google access has no effect on instances that have external IP addresses
 
 ## Pricing
 
@@ -67,3 +78,5 @@ Cloud DNS translates requests for domain names like google.com into IP addresses
 2. Do not scale your subnet beyond what you actually need.
 3. Expand a subnet in GCP without any workload shutdown or downtime
 4. Google strongly recommends using zonal DNS because it offers higher reliability guarantees by isolating failures in the DNS registration to individual zones.
+5. by allocating VMs on a single subnet to separate zones, you get improved availability without additional security complexity.
+6. As a general security best practice, I recommend only assigning internal IP addresses to your VM instances whenever possible.

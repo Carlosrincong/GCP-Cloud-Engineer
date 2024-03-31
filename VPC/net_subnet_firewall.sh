@@ -24,7 +24,7 @@ gcloud compute networks list
 # Get list of subnets
 gcloud compute networks subnets list --sort-by=NETWORK
 
-# Create firewall rules}
+# Create firewall rules
 export FIREWALL_RULE_NAME = 'privatenet-allow-icmp-ssh-rdp'
 echo FIREWALL_RULE_NAME
 gcloud compute firewall-rules create $FIREWALL_RULE_NAME --direction=INGRESS --priority=1000 \
