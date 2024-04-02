@@ -18,7 +18,12 @@ Windows: the creator can use RDP and can generate a username and password to oth
 
 ## VM Lifecycle
 
-![VM_lifecycle](https://cloud.google.com/static/compute/images/instance-life-cycle.svg)
+![VM_lifecycle](/img/VM_lifecycle.png)
+
+- Provisioning: when you define all the properties of an instance and click Create, the instance enters the provisioning state. the resources are being reserved for the instance, but the instance itself isn’t running yet.
+- Staging: where resources have been acquired and the instance is prepared for launch. Compute Engine is adding IP addresses, booting up the system image, and booting up the system.
+- Running: it will go through pre-configured startup scripts and enable SSH or RDP access.
+
 
 ## Features
 - Machine rightsizing: recomendations for optimum machine size, after of 24 hrs of earlier VM create or resize.
