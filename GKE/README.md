@@ -61,3 +61,6 @@ kubectl describe deployments.
 A service is an abstraction which defines a logical set of pods and a policy by which to access them
 A service group is a set of pods and provides a stable endpoint or fixed IP address for them.
 kubectl get services to get the external IP of the service 
+
+# Disadventage
+Google Kubernetes Engine, which consists of containerized workloads, may not be as easily transferable as what you’re used to from on-premises.
