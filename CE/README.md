@@ -12,7 +12,13 @@ Theorical max of 200 gigabits per second for an instance with 176 vCPU (C3)
 HDD, standard spinning hard disk drives. HDDs will give you a higher amount of capacity for your dollar. HDD can be sized up to 257 TB for each instance.
 SSD, flash memory solid-state drives. SSDs are designed to give you a higher number of IOPS per dollar. SSD can be sized up to 257 TB for each instance
 Local SSD, have higher throughput and lower latency than SSD persistent disks, because they are attached to the physical hardware. The data that you store on local SSDs persists only until you stop or delete the instance. Local SSD is used as a swap disk
+- OS
+Linux: the creator has SSH capability and can grant SSH capability to other users. Requeries firewall rules to allow tpc:22
+Windows: the creator can use RDP and can generate a username and password to other users. Requeries firewall rules to allow tpc:3389
 
+## VM Lifecycle
+
+![VM_lifecycle](https://cloud.google.com/static/compute/images/instance-life-cycle.svg)
 
 ## Features
 - Machine rightsizing: recomendations for optimum machine size, after of 24 hrs of earlier VM create or resize.
