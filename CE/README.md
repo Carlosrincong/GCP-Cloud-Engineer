@@ -22,8 +22,15 @@ Windows: the creator can use RDP and can generate a username and password to oth
 
 - Provisioning: when you define all the properties of an instance and click Create, the instance enters the provisioning state. the resources are being reserved for the instance, but the instance itself isn’t running yet.
 - Staging: where resources have been acquired and the instance is prepared for launch. Compute Engine is adding IP addresses, booting up the system image, and booting up the system.
-- Running: it will go through pre-configured startup scripts and enable SSH or RDP access.
+- Running: it will go through pre-configured startup scripts and enable SSH or RDP access. While your instance is running, you can also move your VM to a different zone, take a snapshot of the VM’s persistent disk, export the system image, or reconfigure metadata.
+- Stopping: When the instance enters this state, it will go through pre-configured shutdown scripts and end in the terminated state. Some actions require you to stop your virtual machine; for example, if you want to upgrade your machine by adding more CPU.
+- Terminated: The result of stopping cycle. From this state, you can choose to either restart the instance, which would bring it back to its provisioning state, or delete it.
+- Reset VM: This action wipes the memory contents of the machine and resets the virtual machine to its initial state. The instance remains in the running state through the reset.
+- Repairing: Repairing occurs when the VM encounters an internal error or the underlying machine is unavailable due to maintenance. During this time, the VM is unusable. You are not billed when a VM is in repair.
+- Suspending: before this state you can then resume the VM or delete it.
 
+
+![changing state](/img/changing_vm_state.png)
 
 ## Features
 - Machine rightsizing: recomendations for optimum machine size, after of 24 hrs of earlier VM create or resize.
