@@ -1,3 +1,4 @@
+
 # Compute Engine
 
 VMs consists of a virtual CPU, some amount of memory, disk storage, and an IP address (networking).
@@ -30,8 +31,7 @@ Windows: the creator can use RDP and can generate a username and password to oth
     ![VM_terminated state](/img/VM_terminated_state.png)
 - Reset VM: This action wipes the memory contents of the machine and resets the virtual machine to its initial state. The instance remains in the running state through the reset.
 - Repairing: Repairing occurs when the VM encounters an internal error or the underlying machine is unavailable due to maintenance. During this time, the VM is unusable. You are not billed when a VM is in repair.
-- Suspending: before this state you can then resume the VM or delete it.
-
+- Suspending: before of this state you can then resume the VM or delete it.
 
 ![changing state](/img/changing_vm_state.png)
 
@@ -47,19 +47,20 @@ Windows: the creator can use RDP and can generate a username and password to oth
     4.  Apply advanced patch configuration settings, pre and post patching scripts.
 - Pricing and usage discounts
 
-
 # Key considerations
 Physical cores have hyperthreading (On-premise). On compute engine, a vCPU is equal to one hardware hyper-thread
 To attach a persistent disk to a virtual machine instance, both resources must be in the same zone. I
 If you want to assign a static IP address to an instance, the instance must be in the same region as the static IP.
 You cannot create a VM instance without a VPC network
 When a VM is terminated, you do not pay for memory and CPU resources. However, you are charged for any attached disks and reserved IP addresses.
+You could keep your boot disk and just reattach that boot disk later on
+A custom machine is generally going to be slightly more expensive than standard.
 
 # Best practice
 It is best practice to run the Cloud Logging agent on all your VM instances.
 Preemptible VMs to reduce cost
-
-
+Managing patches effectively is a great way to keep your infrastructure up-to-date and reduce the risk of security vulnerabilities
+If you building and redundancy for availability, remember to allocate excess capacity to meet performance requirements.
 
 # VPC (Virtual Private CLoud Network)
 Each Google Cloud project has a default network to get you started.
