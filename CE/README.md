@@ -25,6 +25,9 @@ Windows: the creator can use RDP and can generate a username and password to oth
 - Running: it will go through pre-configured startup scripts and enable SSH or RDP access. While your instance is running, you can also move your VM to a different zone, take a snapshot of the VM’s persistent disk, export the system image, or reconfigure metadata.
 - Stopping: When the instance enters this state, it will go through pre-configured shutdown scripts and end in the terminated state. Some actions require you to stop your virtual machine; for example, if you want to upgrade your machine by adding more CPU.
 - Terminated: The result of stopping cycle. From this state, you can choose to either restart the instance, which would bring it back to its provisioning state, or delete it.
+
+        When a VM is terminated, you do not pay for memory and CPU resources. However, you are charged for any attached disks and reserved IP addresses.
+    ![VM_terminated state](/img/VM_terminated_state.png)
 - Reset VM: This action wipes the memory contents of the machine and resets the virtual machine to its initial state. The instance remains in the running state through the reset.
 - Repairing: Repairing occurs when the VM encounters an internal error or the underlying machine is unavailable due to maintenance. During this time, the VM is unusable. You are not billed when a VM is in repair.
 - Suspending: before this state you can then resume the VM or delete it.
@@ -34,10 +37,14 @@ Windows: the creator can use RDP and can generate a username and password to oth
 
 ## Features
 - Machine rightsizing: recomendations for optimum machine size, after of 24 hrs of earlier VM create or resize.
-- Startup and shutdown scripts
+- Startup and shutdown scripts: the shutdown process will take about 90 sec.
 - Metadata
-- Availability policies
-- OS patch management
+- Availability policies: A VM’s availability policy determines how the instance behaves in such an event, such as a crash or other maintenance event. These availability policies can be configured both during the instance creation and while an instance is running by configuring the Automatic restart and On host maintenance options.
+- OS patch management: Managing patches effectively is a great way to keep your infrastructure up-to-date and reduce the risk of security vulnerabilities. The OS patch management service has two main components: Patch compliance reporting (insights on the patch) and Patch deployment (schedules patch jobs).
+    1.  Create patch approvals
+    2.  select patches to apply from set of updates
+    3.  Set up flexible scheduling, when to run patch updates
+    4.  Apply advanced patch configuration settings, pre and post patching scripts.
 - Pricing and usage discounts
 
 
@@ -46,6 +53,7 @@ Physical cores have hyperthreading (On-premise). On compute engine, a vCPU is eq
 To attach a persistent disk to a virtual machine instance, both resources must be in the same zone. I
 If you want to assign a static IP address to an instance, the instance must be in the same region as the static IP.
 You cannot create a VM instance without a VPC network
+When a VM is terminated, you do not pay for memory and CPU resources. However, you are charged for any attached disks and reserved IP addresses.
 
 # Best practice
 It is best practice to run the Cloud Logging agent on all your VM instances.
