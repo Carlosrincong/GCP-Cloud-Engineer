@@ -21,12 +21,13 @@ There are several machine families you can choose from and each machine family i
     * General-purpose: the best price-performance with the most flexible vCPU to memory ratios. Oriented to the most standard and cloud-native workloads.
         1.  E2: The E2 machine series is suited for day-to-day computing at a lower cost, especially where there are no application dependencies on a specific CPU architecture. Good for small applications that don't have strict performance requirements (non-resource intensive). The E2 machine series also contains shared-core machine types that use context-switching to share a physical core between vCPUs for multitasking.
         2.  N2, N2D, N1: provide a balance between price and performance. N2 supports Intel with up to 128 vCPUs, Cascade Lake with up to 8 vCPUs and Ice Lake for larger machine types. N2D are AMD-based general purpose VMs with both processors EPYC Milan and EPYC Rome. 
-        3.  Tau T2D, Tau T2A: optimized for cost-effective performance of demanding scale-out workloads. T2D VMs are built on the latest 3rd Gen AMD EPYCTM processors and offer full x86 compatibility. Tau T2A run on Arm processor, good for containerized workloads. 
+        3.  Tau T2D, Tau T2A: optimized for cost-effective performance of demanding scale-out workloads. T2D VMs are built on the latest 3rd Gen AMD EPYCTM processors and offer full x86 compatibility. Tau T2A run on Arm processor, best for containerized workloads. 
         ![general-purpose-vm](/img/general-purpose-vm.png)
-    * Compute-optimized
-        1.  C2:
-        2.  C2D:
-        3.  H3:
+    * Compute-optimized: The compute-optimized machine family has the highest performance per core on Compute Engine and is optimized for compute-intensive workloads.
+        1.  C2: the best fit VM type for compute-intensive workloads. Powered by high-frequency Intel-scalable processors, Cascade Lake. 
+        2.  C2D: provides the largest VM sizes and are best-suited for high-performance computing, also has the largest available last-level cache per core. C2D VMs are available on the third generation AMD EPYC Milan platform.
+        3.  H3: available on the Intel Sapphire Rapids CPU platform and Google's custom Intel Infrastructure Processing Unit (IPU).
+        ![compute-optimized-vm](/img/compute-optimized-vm.png)
     * Memory-optimized
         1.  M1:
         2.  M2:
