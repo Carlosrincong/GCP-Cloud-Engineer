@@ -6,16 +6,36 @@ Both predefined and custom machine types allow you to choose how much memory (RA
 You can choose the type of storage to use: persistent disk (HDD or SSD), local SSD or Cloud Storage. 
 You can run a combination of Linux and Windows machines.
 
--CPU
+- CPU
 CPU will affect your network throughput. Your network will scale at 2 gigabits per second for each CPU core, except for instances with 2 or 4 CPUs which receive up to 10 gigabits per second of bandwidth.
 Theorical max of 200 gigabits per second for an instance with 176 vCPU (C3)
--Disk
+- Disk
 HDD, standard spinning hard disk drives. HDDs will give you a higher amount of capacity for your dollar. HDD can be sized up to 257 TB for each instance.
 SSD, flash memory solid-state drives. SSDs are designed to give you a higher number of IOPS per dollar. SSD can be sized up to 257 TB for each instance
 Local SSD, have higher throughput and lower latency than SSD persistent disks, because they are attached to the physical hardware. The data that you store on local SSDs persists only until you stop or delete the instance. Local SSD is used as a swap disk
 - OS
 Linux: the creator has SSH capability and can grant SSH capability to other users. Requeries firewall rules to allow tpc:22
 Windows: the creator can use RDP and can generate a username and password to other users. Requeries firewall rules to allow tpc:3389
+- Machine Type
+There are several machine families you can choose from and each machine family is further organized into machine series and predefined machine types within each series. Machine family is a curated set of processor and hardware configurations optimized for specific workloads.
+    * General-purpose: the best price-performance with the most flexible vCPU to memory ratios. Oriented to the most standard and cloud-native workloads.
+        1.  E2: The E2 machine series is suited for day-to-day computing at a lower cost, especially where there are no application dependencies on a specific CPU architecture. Good for small applications that don't have strict performance requirements (non-resource intensive). The E2 machine series also contains shared-core machine types that use context-switching to share a physical core between vCPUs for multitasking.
+        2.  N2, N2D, N1: provide a balance between price and performance. N2 supports Intel with up to 128 vCPUs, Cascade Lake with up to 8 vCPUs and Ice Lake for larger machine types. N2D are AMD-based general purpose VMs with both processors EPYC Milan and EPYC Rome. 
+        3.  Tau T2D, Tau T2A: optimized for cost-effective performance of demanding scale-out workloads. T2D VMs are built on the latest 3rd Gen AMD EPYCTM processors and offer full x86 compatibility. Tau T2A run on Arm processor, good for containerized workloads. 
+        ![general-purpose-vm](/img/general-purpose-vm.png)
+    * Compute-optimized
+        1.  C2:
+        2.  C2D:
+        3.  H3:
+    * Memory-optimized
+        1.  M1:
+        2.  M2:
+        3.  M3:
+    * Accelerator-optimized
+        1.  A2:
+        2.  A100:
+        3.  G2:
+
 
 ## VM Lifecycle
 
@@ -45,7 +65,7 @@ Windows: the creator can use RDP and can generate a username and password to oth
     2.  select patches to apply from set of updates
     3.  Set up flexible scheduling, when to run patch updates
     4.  Apply advanced patch configuration settings, pre and post patching scripts.
-- Pricing and usage discounts
+- Pricing and usage discounts: Committed use and sustained use discounts.
 
 # Key considerations
 Physical cores have hyperthreading (On-premise). On compute engine, a vCPU is equal to one hardware hyper-thread
@@ -61,6 +81,7 @@ It is best practice to run the Cloud Logging agent on all your VM instances.
 Preemptible VMs to reduce cost
 Managing patches effectively is a great way to keep your infrastructure up-to-date and reduce the risk of security vulnerabilities
 If you building and redundancy for availability, remember to allocate excess capacity to meet performance requirements.
+ I recommend that you first configure the instance through the Google Cloud console and then ask Compute Engine for the equivalent REST request or command line
 
 # VPC (Virtual Private CLoud Network)
 Each Google Cloud project has a default network to get you started.
