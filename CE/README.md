@@ -28,15 +28,15 @@ There are several machine families you can choose from and each machine family i
         2.  C2D: provides the largest VM sizes and are best-suited for high-performance computing, also has the largest available last-level cache per core. C2D VMs are available on the third generation AMD EPYC Milan platform.
         3.  H3: available on the Intel Sapphire Rapids CPU platform and Google's custom Intel Infrastructure Processing Unit (IPU).
         ![compute-optimized-vm](/img/compute-optimized-vm.png)
-    * Memory-optimized
-        1.  M1:
-        2.  M2:
-        3.  M3:
-    * Accelerator-optimized
-        1.  A2:
-        2.  A100:
-        3.  G2:
+    * Memory-optimized: The memory-optimized machine family provides the most compute and memory resources. They are ideal for workloads that require higher memory-to-vCPU ratios. 
+        1.  M1, M2: great choice for workloads that utilize higher memory configurations with low compute resource requirements. Both the M1 and M2 machine series offer the lowest cost per GB of memory on Compute
+        ![memmory-optimized-vm](/img/memmory-optimized-vm.png)
+    * Accelerator-optimized: ideal for massively parallelized Compute Unified Device Architecture (CUDA) compute workloads, such as machine learning and high-performance computing. This family is the optimal choice for workloads that require GPUs.
+        1.  A2: A2 has a fixed number (up to 16) of NVIDIA’s Ampere A100 GPUs attached, with 40 GB of GPU memory.
+        2.  G2: G2 are available on the Intel Cascade Lake CPU platform
+        ![acelerator-optimized-vm](/img/acelerator-optimized-vm.png)
 
+Custom machine types are ideal for the following scenarios: When you have workloads that are not a good fit for the predefined machine types that are available to you. Or when you have workloads that require more processing power or more memory, but don't need all of the upgrades that are provided by the next larger predefined machine type. It costs slightly more to use a custom machine type than an equivalent predefined machine type, and there are still some limitations. 
 
 ## VM Lifecycle
 
@@ -82,7 +82,7 @@ It is best practice to run the Cloud Logging agent on all your VM instances.
 Preemptible VMs to reduce cost
 Managing patches effectively is a great way to keep your infrastructure up-to-date and reduce the risk of security vulnerabilities
 If you building and redundancy for availability, remember to allocate excess capacity to meet performance requirements.
- I recommend that you first configure the instance through the Google Cloud console and then ask Compute Engine for the equivalent REST request or command line
+I recommend that you first configure the instance through the Google Cloud console and then ask Compute Engine for the equivalent REST request or command line
 
 # VPC (Virtual Private CLoud Network)
 Each Google Cloud project has a default network to get you started.
