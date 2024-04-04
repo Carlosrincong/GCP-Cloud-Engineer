@@ -67,6 +67,13 @@ Custom machine types are ideal for the following scenarios: When you have worklo
     3.  Set up flexible scheduling, when to run patch updates
     4.  Apply advanced patch configuration settings, pre and post patching scripts.
 - Pricing and usage discounts: Committed use and sustained use discounts.
+    1.  Per-second billing, with  minimum of 1 minute for vCPUs, GPUs and GB of memmory usage.
+    2.  Resource-based princing: vCPUS and GB of memmory ara charged separetly. 
+    3.  Discounts (can´t be combine): 
+        *   Sustained use, automatic discounts wich increase with the use 
+        *   Commited use
+        *   Preemptible VM instances. 
+
 
 # Key considerations
 Physical cores have hyperthreading (On-premise). On compute engine, a vCPU is equal to one hardware hyper-thread
