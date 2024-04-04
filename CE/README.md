@@ -69,7 +69,7 @@ Custom machine types are ideal for the following scenarios: When you have worklo
 - Pricing and usage discounts: Committed use and sustained use discounts.
     1.  Per-second billing, with  minimum of 1 minute for vCPUs, GPUs and GB of memmory usage.
     2.  Resource-based princing: vCPUS and GB of memmory ara charged separetly. 
-    3.  Discounts (can´t be combine): 
+    3.  Discounts: discounts can´t be combine and these can be applied to N1, N2, N2D, C2, M1 y M2 VMs. Id addition, discount can be applied over VM created with Compute engine and Kubernetes engine. App engine (flexible and standard) and dataflow are not inclued. Discounts are monthly and start on the 1st day of each month. Google combines the total usage of VMs in one month by region, desglosing in terms of vCPUs and Memmory to apply higher discounts based on their use. 
         *   Sustained use, automatic discounts wich increase with the use 
         *   Commited use
         *   Preemptible VM instances. 
