@@ -36,7 +36,10 @@ There are several machine families you can choose from and each machine family i
         2.  G2: G2 are available on the Intel Cascade Lake CPU platform
         ![acelerator-optimized-vm](/img/acelerator-optimized-vm.png)
 
-Custom machine types are ideal for the following scenarios: When you have workloads that are not a good fit for the predefined machine types that are available to you. Or when you have workloads that require more processing power or more memory, but don't need all of the upgrades that are provided by the next larger predefined machine type. It costs slightly more to use a custom machine type than an equivalent predefined machine type, and there are still some limitations. 
+    Custom machine types are ideal for the following scenarios: When you have workloads that are not a good fit for the predefined machine types that are available to you. Or when you have workloads that require more processing power or more memory, but don't need all of the upgrades that are provided by the next larger predefined machine type. It costs slightly more to use a custom machine type than an equivalent predefined machine type, and there are still some limitations. 
+- Images (boot disk image):
+Premium images will have per-second charges after a 1-minute minimum, with exceptions.  It price vary with the machine type. Custom images by either pre-configuring and pre-installing software or importing images from your own premises, cloud provider or workstation. Machine image is a resource that stores all the configuration, metadata, permissions, and data required to create a virtual machine. You can use a machine image in many system maintenance scenarios, such as creation, backup and recovery, and instance cloning. Machine images are the most ideal resources for disk backups as well as instance cloning and replication.
+The image includes: Boot loader, operating system, file system structure, software and customizations
 
 ## VM Lifecycle
 
@@ -78,7 +81,7 @@ Custom machine types are ideal for the following scenarios: When you have worklo
 - Shielded VM: Shielded VMs offer verifiable integrity to your VM instances, so you can be confident that your instances haven't been compromised by boot or kernel-level malware or rootkits. These offers features, like vTPM shielding or sealing, that help prevent data exfiltration. you need to select a shielded image to create these instances. 
 - Confidential VMs are a breakthrough technology that allows you to encrypt data in use, while it's been processed.
 
-# Key considerations
+## Key considerations
 Physical cores have hyperthreading (On-premise). On compute engine, a vCPU is equal to one hardware hyper-thread
 To attach a persistent disk to a virtual machine instance, both resources must be in the same zone. I
 If you want to assign a static IP address to an instance, the instance must be in the same region as the static IP.
@@ -87,7 +90,7 @@ When a VM is terminated, you do not pay for memory and CPU resources. However, y
 You could keep your boot disk and just reattach that boot disk later on
 A custom machine is generally going to be slightly more expensive than standard.
 
-# Best practice
+## Best practices
 It is best practice to run the Cloud Logging agent on all your VM instances.
 Preemptible VMs to reduce cost
 Managing patches effectively is a great way to keep your infrastructure up-to-date and reduce the risk of security vulnerabilities
@@ -114,7 +117,7 @@ Firewall rules allow you to control which packets are allowed to travel to which
 - Partner interconnect provides connectivity between an on-premises network and a VPC network through a supported service provide. This is useful if a data center is in a physical location that can't reach a Dedicated Interconnect, or if the data needs don’t warrant an entire 10 GigaBytes per second connection.
 - Cross-Cloud Interconnect helps you establish high-bandwidth dedicated connectivity between Google Cloud and another cloud service provider.
 
-# Load balancing
+## Load balancing
 The job of a load balancer is to distribute user traffic across multiple instances of an application.
 You can put Cloud Load Balancing in front of all of your traffic.
 No “pre-warming” is required.
@@ -122,7 +125,7 @@ For traffic coming into the Google network from the internet: Global HTTP, Globa
 For traffic inside your project: The Regional Internal load balancer. It accepts traffic on a Google Cloud internal IP address and load balances it across Compute Engine VMs.
 Balances traffic Across multiple Compute Engine regions
 
-# CLoud DNS (Domain name service) & Cloud CDN (Content delivery network)
+## CLoud DNS (Domain name service) & Cloud CDN (Content delivery network)
 DNS is what translates internet hostnames to addresses
 The DNS information you publish is served from redundant locations around the world.
 You can publish and manage millions of DNS zones and records 
@@ -130,7 +133,7 @@ Google also has a global system of edge caches. Edge caching refers to the use o
 to accelerate content delivery in your application by using Cloud CDN
 lower network latency, the origins of your content will experience reduced load
 
-# Cloud TPU
+## Cloud TPU
 TPUs are Google’s custom-developed application-specific integrated circuits (ASICs) used to accelerate machine learning workloads. 
 TPUs act as domain-specific hardware, as opposed to general-purpose hardware with CPUs and GPUs. 
 TPUs are generally faster than current GPUs and CPUs for AI applications and machine learning.
