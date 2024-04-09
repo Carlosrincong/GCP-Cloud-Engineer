@@ -103,7 +103,8 @@ The image includes: Boot loader, operating system, file system structure, softwa
         *   Spot VM instances: these are the lates version of preemptible VM instances with the same pricing model. Spot VMs do not have a maximum runtime. Spot VM are finite and not always be avaible. Like preemptible VMs, it's worth noting that Spot VMs can't live-migrate to become standard VMs while they are running or be set to automatically restart when there is a maintenance event. It is often easier to get for smaller machine types
 - Sole-tenant nodes: ideal if you have workloads that require physical isolation from other workloads or virtual machines in order to meet compliance requirements. A sole-tenant node is a physical server that is dedicated to hosting VM instances only for your specific project. Usefull if you want bring yours operating system licenses. 
 - Shielded VM: Shielded VMs offer verifiable integrity to your VM instances, so you can be confident that your instances haven't been compromised by boot or kernel-level malware or rootkits. These offers features, like vTPM shielding or sealing, that help prevent data exfiltration. you need to select a shielded image to create these instances. 
-- Confidential VMs are a breakthrough technology that allows you to encrypt data in use, while it's been processed.
+- Confidential VMs: Confidentials are a breakthrough technology that allows you to encrypt data in use, while it's been processed.
+- Snapshots: Snapshots are available only to persistent disks and not to local SSDs. Snapshots are incremental and automatically compressed. Snapshots can be used to **backup critical data into a durable storage** solution to meet application, availability, and recovery requirements. Snapshots can also be used to **migrate data** between zones and **transferring data to a different disk type**.
 
 ## Key considerations
 Physical cores have hyperthreading (On-premise). On compute engine, a vCPU is equal to one hardware hyper-thread
@@ -113,6 +114,10 @@ You cannot create a VM instance without a VPC network
 When a VM is terminated, you do not pay for memory and CPU resources. However, you are charged for any attached disks and reserved IP addresses.
 You could keep your boot disk and just reattach that boot disk later on
 A custom machine is generally going to be slightly more expensive than standard.
+Every VM instance stores its metadata on a metadata server.
+The metadata server is particularly useful in combination with startup and shutdown scripts, because you can use the metadata server to programmatically get unique information about an instance, without additional authorization.
+To move your VM, you must shut down the VM, move it to the destination zone or region, and then restart it.
+you can grow disks in size, you can never shrink them
 
 ## Best practices
 It is best practice to run the Cloud Logging agent on all your VM instances.
@@ -121,6 +126,8 @@ Managing patches effectively is a great way to keep your infrastructure up-to-da
 If you building and redundancy for availability, remember to allocate excess capacity to meet performance requirements.
 I recommend that you first configure the instance through the Google Cloud console and then ask Compute Engine for the equivalent REST request or command line
 I recommend a high-memory virtual machine if you need to take advantage of RAM Disk, along with a persistent disk to back up the RAM disk data.
+We recommend storing the startup and shutdown scripts in Cloud Storage
+You can create regular snapshots on a persistent disk faster and at a much lower cost than if you regularly created a full image of the disk. full image of the disk = image + snapshot.
 
 # VPC (Virtual Private CLoud Network)
 Each Google Cloud project has a default network to get you started.
