@@ -6,39 +6,63 @@ Both predefined and custom machine types allow you to choose how much memory (RA
 You can choose the type of storage to use: persistent disk (HDD or SSD), local SSD or Cloud Storage. 
 You can run a combination of Linux and Windows machines.
 
-- CPU
+### CPU
 CPU will affect your network throughput. Your network will scale at 2 gigabits per second for each CPU core, except for instances with 2 or 4 CPUs which receive up to 10 gigabits per second of bandwidth.
 Theorical max of 200 gigabits per second for an instance with 176 vCPU (C3)
-- Disk
-HDD, standard spinning hard disk drives. HDDs will give you a higher amount of capacity for your dollar. HDD can be sized up to 257 TB for each instance.
-SSD, flash memory solid-state drives. SSDs are designed to give you a higher number of IOPS per dollar. SSD can be sized up to 257 TB for each instance
-Local SSD, have higher throughput and lower latency than SSD persistent disks, because they are attached to the physical hardware. The data that you store on local SSDs persists only until you stop or delete the instance. Local SSD is used as a swap disk
-- OS
-Linux: the creator has SSH capability and can grant SSH capability to other users. Requeries firewall rules to allow tpc:22
-Windows: the creator can use RDP and can generate a username and password to other users. Requeries firewall rules to allow tpc:3389
-- Machine Type
-There are several machine families you can choose from and each machine family is further organized into machine series and predefined machine types within each series. Machine family is a curated set of processor and hardware configurations optimized for specific workloads.
-    * General-purpose: the best price-performance with the most flexible vCPU to memory ratios. Oriented to the most standard and cloud-native workloads.
-        1.  E2: The E2 machine series is suited for day-to-day computing at a lower cost, especially where there are no application dependencies on a specific CPU architecture. Good for small applications that don't have strict performance requirements (non-resource intensive). The E2 machine series also contains shared-core machine types that use context-switching to share a physical core between vCPUs for multitasking.
-        2.  N2, N2D, N1: provide a balance between price and performance. N2 supports Intel with up to 128 vCPUs, Cascade Lake with up to 8 vCPUs and Ice Lake for larger machine types. N2D are AMD-based general purpose VMs with both processors EPYC Milan and EPYC Rome. 
-        3.  Tau T2D, Tau T2A: optimized for cost-effective performance of demanding scale-out workloads. T2D VMs are built on the latest 3rd Gen AMD EPYCTM processors and offer full x86 compatibility. Tau T2A run on Arm processor, best for containerized workloads. 
-        ![general-purpose-vm](/img/general-purpose-vm.png)
-    * Compute-optimized: The compute-optimized machine family has the highest performance per core on Compute Engine and is optimized for compute-intensive workloads.
-        1.  C2: the best fit VM type for compute-intensive workloads. Powered by high-frequency Intel-scalable processors, Cascade Lake. 
-        2.  C2D: provides the largest VM sizes and are best-suited for high-performance computing, also has the largest available last-level cache per core. C2D VMs are available on the third generation AMD EPYC Milan platform.
-        3.  H3: available on the Intel Sapphire Rapids CPU platform and Google's custom Intel Infrastructure Processing Unit (IPU).
-        ![compute-optimized-vm](/img/compute-optimized-vm.png)
-    * Memory-optimized: The memory-optimized machine family provides the most compute and memory resources. They are ideal for workloads that require higher memory-to-vCPU ratios. 
-        1.  M1, M2: great choice for workloads that utilize higher memory configurations with low compute resource requirements. Both the M1 and M2 machine series offer the lowest cost per GB of memory on Compute
-        ![memmory-optimized-vm](/img/memmory-optimized-vm.png)
-    * Accelerator-optimized: ideal for massively parallelized Compute Unified Device Architecture (CUDA) compute workloads, such as machine learning and high-performance computing. This family is the optimal choice for workloads that require GPUs.
-        1.  A2: A2 has a fixed number (up to 16) of NVIDIA’s Ampere A100 GPUs attached, with 40 GB of GPU memory.
-        2.  G2: G2 are available on the Intel Cascade Lake CPU platform
-        ![acelerator-optimized-vm](/img/acelerator-optimized-vm.png)
 
-    Custom machine types are ideal for the following scenarios: When you have workloads that are not a good fit for the predefined machine types that are available to you. Or when you have workloads that require more processing power or more memory, but don't need all of the upgrades that are provided by the next larger predefined machine type. It costs slightly more to use a custom machine type than an equivalent predefined machine type, and there are still some limitations. 
-- Images (boot disk image):
-Premium images will have per-second charges after a 1-minute minimum, with exceptions.  It price vary with the machine type. Custom images by either pre-configuring and pre-installing software or importing images from your own premises, cloud provider or workstation. Machine image is a resource that stores all the configuration, metadata, permissions, and data required to create a virtual machine. You can use a machine image in many system maintenance scenarios, such as creation, backup and recovery, and instance cloning. Machine images are the most ideal resources for disk backups as well as instance cloning and replication.
+### Disk
+Every single VM comes with a single root persistent disk. 
+It's going to be attached to the VM through the network interface. 
+Even though it's persistent, it's **not physically attached to the machine**. This separation of disk and compute allows the disk to survive if the VM terminates.
+You can **dynamically resize** them, even while they are running and attached to a VM.
+You can also attach a disk in read-only mode to multiple VMs. This allows you to **share static data between multiple instances**, which is cheaper than replicating your data to unique disks for individual instances. 
+Regional persistent disks provide **active-active disk replication** across two zones in the same region. That is **synchronously replicated across zones** and are a great option for high-performance databases and enterprise applications that also require high availability.
+So if you plan on having a large amount of Disk IO throughput, it will also **compete with any network egress or ingress throughput**.
+![disk-options](/img/disk-options.png)
+
+#### Persistent disks
+Persistent disks can be rebooted and snapshotted. The persistent disks offer data redundancy because the data on each persistent disk is distributed across several physical disks.
+- HDD (Zonal or Regional): standard spinning hard disk drives. HDDs will give you a higher amount of capacity for your dollar. HDD can be sized up to 257 TB for each instance. Great choise for workloads that primarily use sequential I/Os of bulk sile storage.
+- SSD (Zonal or Regional): flash memory solid-state drives. SSDs are designed to give you a higher number of IOPS per dollar. SSD can be sized up to 257 TB for each instance. Ideal for high-performance databases that require lower latency and more IOPS than standard persistent disks provide.
+- Balanced SSD (Zonal or Regional): These disks have the same maximum IOPS as SSD persistent disks and lower IOPS per gigabyte. This disk type offers performance levels suitable for most general-purpose applications
+- Extreme SSD (Zonal) This desk is ideal for both random access workloads and bulk throughput. Unlike other disk types, you can provision your desired IOPS.
+#### Attached disks
+local SSDs and RAM disks are ephemeral. Local SSDs provide even higher performance (than persistent disks), but without the data redundancy.
+- Local SSD : have higher throughput and lower latency than SSD persistent disks, because they are attached to the physical hardware. The data that you store on local SSDs persists only until you stop or delete the instance. Local SSD is used as a swap disk. Data on these disks will survive a reset but not a VM stop or terminate, because these disks can’t be reattached to a different VM.
+- RAM Disk: You can simply use **tmpfs** if you want to store data in memory.
+
+### OS
+- Linux: the creator has SSH capability and can grant SSH capability to other users. Requeries firewall rules to allow tpc:22
+- Windows: the creator can use RDP and can generate a username and password to other users. Requeries firewall rules to allow tpc:3389
+
+### Machine Type
+There are several machine families you can choose from and each machine family is further organized into machine series and predefined machine types within each series. Machine family is a curated set of processor and hardware configurations optimized for specific workloads.
+
+- General-purpose: the best price-performance with the most flexible vCPU to memory ratios. Oriented to the most standard and cloud-native workloads.
+    1.  E2: The E2 machine series is suited for day-to-day computing at a lower cost, especially where there are no application dependencies on a specific CPU architecture. Good for small applications that don't have strict performance requirements (non-resource intensive). The E2 machine series also contains shared-core machine types that use context-switching to share a physical core between vCPUs for multitasking.
+    2.  N2, N2D, N1: provide a balance between price and performance. N2 supports Intel with up to 128 vCPUs, Cascade Lake with up to 8 vCPUs and Ice Lake for larger machine types. N2D are AMD-based general purpose VMs with both processors EPYC Milan and EPYC Rome. 
+    3.  Tau T2D, Tau T2A: optimized for cost-effective performance of demanding scale-out workloads. T2D VMs are built on the latest 3rd Gen AMD EPYCTM processors and offer full x86 compatibility. Tau T2A run on Arm processor, best for containerized workloads. 
+    ![general-purpose-vm](/img/general-purpose-vm.png)
+- Compute-optimized: The compute-optimized machine family has the highest performance per core on Compute Engine and is optimized for compute-intensive workloads.
+    1.  C2: the best fit VM type for compute-intensive workloads. Powered by high-frequency Intel-scalable processors, Cascade Lake. 
+    2.  C2D: provides the largest VM sizes and are best-suited for high-performance computing, also has the largest available last-level cache per core. C2D VMs are available on the third generation AMD EPYC Milan platform.
+    3.  H3: available on the Intel Sapphire Rapids CPU platform and Google's custom Intel Infrastructure Processing Unit (IPU).
+    ![compute-optimized-vm](/img/compute-optimized-vm.png)
+- Memory-optimized: The memory-optimized machine family provides the most compute and memory resources. They are ideal for workloads that require higher memory-to-vCPU ratios. 
+    1.  M1, M2: great choice for workloads that utilize higher memory configurations with low compute resource requirements. Both the M1 and M2 machine series offer the lowest cost per GB of memory on Compute
+    ![memmory-optimized-vm](/img/memmory-optimized-vm.png)
+- Accelerator-optimized: ideal for massively parallelized Compute Unified Device Architecture (CUDA) compute workloads, such as machine learning and high-performance computing. This family is the optimal choice for workloads that require GPUs.
+    1.  A2: A2 has a fixed number (up to 16) of NVIDIA’s Ampere A100 GPUs attached, with 40 GB of GPU memory.
+    2.  G2: G2 are available on the Intel Cascade Lake CPU platform
+    ![acelerator-optimized-vm](/img/acelerator-optimized-vm.png)
+
+Custom machine types are ideal for the following scenarios: When you have workloads that are not a good fit for the predefined machine types that are available to you. Or when you have workloads that require more processing power or more memory, but don't need all of the upgrades that are provided by the next larger predefined machine type. It costs slightly more to use a custom machine type than an equivalent predefined machine type, and there are still some limitations. 
+
+### Images (boot disk image):
+Images are bootable in that you can attach it to a VM and boot from it, and it is durable in that it can survive if the VM terminates.
+Premium images will have per-second charges after a 1-minute minimum, with exceptions.  It price vary with the machine type. 
+Custom images by either pre-configuring and pre-installing software or importing images from your own premises, cloud provider or workstation. 
+Machine image is a resource that stores all the configuration, metadata, permissions, and data required to create a virtual machine. You can use a machine image in many system maintenance scenarios, such as creation, backup and recovery, and instance cloning. Machine images are the most ideal resources for disk backups as well as instance cloning and replication.
 The image includes: Boot loader, operating system, file system structure, software and customizations
 
 ## VM Lifecycle
@@ -96,6 +120,7 @@ Preemptible VMs to reduce cost
 Managing patches effectively is a great way to keep your infrastructure up-to-date and reduce the risk of security vulnerabilities
 If you building and redundancy for availability, remember to allocate excess capacity to meet performance requirements.
 I recommend that you first configure the instance through the Google Cloud console and then ask Compute Engine for the equivalent REST request or command line
+I recommend a high-memory virtual machine if you need to take advantage of RAM Disk, along with a persistent disk to back up the RAM disk data.
 
 # VPC (Virtual Private CLoud Network)
 Each Google Cloud project has a default network to get you started.
