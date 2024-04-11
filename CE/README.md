@@ -129,7 +129,8 @@ I recommend a high-memory virtual machine if you need to take advantage of RAM D
 We recommend storing the startup and shutdown scripts in Cloud Storage
 You can create regular snapshots on a persistent disk faster and at a much lower cost than if you regularly created a full image of the disk. full image of the disk = image + snapshot.
 
-# VPC (Virtual Private CLoud Network)
+# Related Services
+## VPC (Virtual Private CLoud Network)
 Each Google Cloud project has a default network to get you started.
 The size of a subnet can be increased by expanding the range of IP addresses allocated to it
 VPCs have routing tables. They’re used to forward traffic from one instance to another within the same network. without requiring an external IP address.
