@@ -1,5 +1,5 @@
 
-export PERSISTENT_DiSK = 'google-minecraft-disk'
+export PERSISTENT_DiSK=google-minecraft-disk
 echo PERSISTENT_DISK
 
 # Create a virtual machine with network tag
@@ -32,7 +32,7 @@ sudo apt-get install wget
 sudo wget https://launcher.mojang.com/v1/objects/d0d0fe2b1dc6ab4c65554cb734270872b72dadd6/server.jar
 
 # Initialize the minecraft server
-sudo java -Xmx1024M -Xms1024M -jar server.jar nogui # Give us an error, because we still don´t agree the EULA
+sudo java -Xmx1024M -Xms1024M -jar server.jar nogui # this give us an error, because we still don´t agree the EULA
 
 # To agree the EULA to run the server
 sudo ls -l # Get the list of files
@@ -57,4 +57,50 @@ sudo screen -S mcs java -Xmx1024M -Xms1024M -jar server.jar nogui # this step gi
 # To reattach the terminal
 sudo screen -r mcs
 
-# Define firewall rules using VM tags, to allow the traffic
+# Define firewall rules using VM tags, to allow the traffic by specifying the tag in firewall rule configuration
+
+# Get the status in the following link https://mcsrvstat.us/ using the external IP address
+
+# Schedule regular backups:
+# Create a cloud storage bucket on Cloud Shell
+export BUCKET_NAME=bucket-name
+echo $BUCKET_NAME
+
+gcloud storage buckets create gs://$BUCKET_NAME-minecraft-backup
+
+# In SSH Terminal of VM, create backup script
+cd /home/minecraft
+sudo nano /home/minecraft/backup.sh
+# ------------------------
+#!/bin/bash
+screen -r mcs -X stuff '/save-all\n/save-off\n'
+/usr/bin/gcloud storage cp -R ${BASH_SOURCE%/*}/world gs://${BUCKET_NAME}-minecraft-backup/$(date "+%Y%m%d-%H%M%S")-world
+screen -r mcs -X stuff '/save-on\n'
+# -------------------------- CTRL + O, ENTER, CTRL + X
+
+# To verify whether the file is an executable
+sudo chmod 755 /home/minecraft/backup.sh
+
+# Run the backup script
+. /home/minecraft/backup.sh
+
+# Schedule the backup 
+# to open nano:
+cd /home/minecraft
+sudo crontab -e # Then select the file: /bin/nano 
+# At the bottom of the file paste:
+#----------------------------------
+0 */4 * * * /home/minecraft/backup.sh # to run backups every 4 hours
+#----------------------------------
+# CTRL + O, ENTER, CTRL + X
+
+# In cloud shell, SSH ans type this to stop screen
+sudo screen -r -X stuff '/stop\n'
+
+# Set startup and shutdown scripts
+# Define key-value in virtual machine metadata 
+# key / value:
+# startup-script-url: https://storage.googleapis.com/cloud-training/archinfra/mcserver/startup.sh
+# shutdown-script-url: https://storage.googleapis.com/cloud-training/archinfra/mcserver/shutdown.sh
+# When the vm startup or shutdown will use these scripts
+
