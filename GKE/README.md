@@ -10,6 +10,11 @@ Microservices: If you build them this way and connect them with network connecti
 
 Docker compose an alternative when is necesary to run several containers. This soluction don´t scale with containers above 20 containers. Kubernetes is better. 
 
+# KUBERNETES 
+Kubernetes is an orchestration framework for software containers. Containers are a way to package and run code that's more efficient than virtual machines. Kubernetes provides the tools you need to run containerized applications in production and at scale.
+
+A software layer that sits between your applications and your hardware infrastructure
+
 # GKE
 
 Google Kubernetes Engine (GKE) provides a managed environment for deploying, managing, and scaling your containerized applications using Google infrastructure. The GKE environment consists of multiple machines (specifically Compute Engine instances) grouped to form a container cluster (or nodes). A node represents a computing instance like a virtual machine. It makes it easy to orchestrate many containers on many hosts
