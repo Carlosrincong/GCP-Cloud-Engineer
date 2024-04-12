@@ -1,7 +1,7 @@
 
 # CLOUD RUN
 
-which is a managed compute platform that runs stateless containers via web requests or Hub sub events
+which is a managed compute platform that runs stateless containers via web requests or Pub sub events
 serveless service
 It's built on Knative, an open API and runtime environment built on Kubernetes.
 It can be fully managed on Google Cloud, on Google Kubernetes engine, or anywhere Knative runs.
