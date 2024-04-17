@@ -26,6 +26,8 @@ gsutil ls -l gs://$bucket_name/file_name.jpg
 
 # Grant public access
 gsutil acl ch -u AllUsers:R gs://$bucket_name/file_name.jpg
+gsutil iam ch allUsers:objectViewer gs://$bucket_name
+
 # Remove public access
 gsutil acl ch -d AllUsers gs://YOUR-$bucket_name/ada.jpg
 
@@ -42,12 +44,12 @@ gcloud storage rm --recursive gs://$bucket_name
 gsutil acl get gs://$bucket_name/setup.html  > acl.txt # create file with ACL for setup.html
 cat acl.txt # view file with ACL
 
-gsutil acl set private gs://$bucket_name/setup.html # Define ACL for setup.html
-gsutil acl get gs://$bucket_name/setup.html  > acl2.txt # Create file
+gsutil acl set private gs://$bucket_name/setup.html # Define private access in ACL for setup.html
+gsutil acl get gs://$bucket_name/setup.html  > acl2.txt # Create file to verify the access
 cat acl2.txt # view file
 
-gsutil acl ch -u AllUsers:R gs://$bucket_name/setup.html # Update ACL for setup.html
-gsutil acl get gs://$bucket_name/setup.html  > acl3.txt # Create file
+gsutil acl ch -u AllUsers:R gs://$bucket_name/setup.html # Update to public access in ACL for setup.html
+gsutil acl get gs://$bucket_name/setup.html  > acl3.txt # Create file to verify the access
 cat acl3.txt # View file
 
 ##########################################

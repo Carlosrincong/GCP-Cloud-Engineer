@@ -1,14 +1,18 @@
 
 # CONTAINER
 
-The idea of a container is to give the independent scalability of workloads in PaaS and an abstraction layer of the OS and hardware in IaaS.
-A configurable system, lets you install your favorite run time, web server, database or middleware.
+For On-Premise applications you would need: physical space, power, cooling, network connectivity. You aldo need a Operating system, software dependencies and the application. In case, more processing power is needed, you have to add more computers. 
+Virtualization: The software layer that breaks the dependencies of an operating system on the underlying hardware and allows several virtual machines to share that hardware is called a  **hypervisor** (such as Kernel-based Virtual Machine or KVM).
+With Virtualization, a virtual machines can be imaged and easily moved.
+The idea of a container is to give the independent scalability of workloads in PaaS and an abstraction layer of the OS and hardware in IaaS. Independent means that you have an user space, which is all the code that resides above the kernel, and it includes applications and their dependencies.
+A configurable system, lets you install your favorite run time, web server, database or middleware. Containersdon’t carry a full operating system
 A container, is an invisible box around your code and its dependencies with limited access to its own partition of the file system and hardware.
 All that's needed on each host is an OS kernel that supports containers and a container runtime.
 This lets each developer deploy their own operating system, OS, access the hardware, and build their applications in a self contained environment with access to RAM, file systems, networking interfaces, etc. The OS is being virtualized This makes code ultra portable, and the OS and hardware can be treated as a black box.
-Microservices: If you build them this way and connect them with network connections, you can make them modular, deploy easily and scale independently across a group of hosts.
+Microservices: If you build them this way and connect them with network connections, you can make them modular, deploy easily and scale independently across a group of hosts. This modular design pattern allows the operating system to scale and upgrade components of an application without affecting the application as a whole.
 
-Docker compose an alternative when is necesary to run several containers. This soluction don´t scale with containers above 20 containers. Kubernetes is better. 
+# DOCKER COMPOSE
+Docker compose is an alternative when It´s necesary to run several containers. This soluction don´t scale with containers above 20 containers. Kubernetes is better. 
 
 # KUBERNETES 
 Kubernetes is an orchestration framework for software containers. Containers are a way to package and run code that's more efficient than virtual machines. Kubernetes provides the tools you need to run containerized applications in production and at scale.
