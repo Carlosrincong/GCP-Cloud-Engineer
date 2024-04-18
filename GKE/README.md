@@ -7,7 +7,19 @@ With Virtualization, a virtual machines can be imaged and easily moved.
 The idea of a container is to give the independent scalability of workloads in PaaS and an abstraction layer of the OS and hardware in IaaS. Independent means that you have an user space, which is all the code that resides above the kernel, and it includes applications and their dependencies.
 A configurable system, lets you install your favorite run time, web server, database or middleware. Containersdon’t carry a full operating system
 A container, is an invisible box around your code and its dependencies with limited access to its own partition of the file system and hardware.
-All that's needed on each host is an OS kernel that supports containers and a container runtime.
+An application and its dependencies are called an **image**, and a **container** is simply a running instance of an image.
+A container **image is structured in layers**, and the tool used to build the image reads instructions from a file called the container **manifest**. Each instruction specifies a layer inside the container image.
+All that's needed on each host is an **OS kernel** that supports containers and a **container runtime**.
+**Docker**: you need software and container runtime, to build and run container images. For Docker-formatted container images, container manifest is called a **Dockerfile**.
+A Dockerfile contains four commands, each of which creates a layer: 
+    - FROM: create a base layet
+    - COPY: copy files
+    - RUN: build the aplication using commands
+    - CMD: specifies what command to run within the container
+The **container deploying procces** consists of one container builds the final executable image, and a separate container receives only what is needed to run the application.
+
+**Linux tecnology allows containers tecnology** due to: Linux process, Linux namespaces, Linux cgroups and union file systems.
+
 This lets each developer deploy their own operating system, OS, access the hardware, and build their applications in a self contained environment with access to RAM, file systems, networking interfaces, etc. The OS is being virtualized This makes code ultra portable, and the OS and hardware can be treated as a black box.
 Microservices: If you build them this way and connect them with network connections, you can make them modular, deploy easily and scale independently across a group of hosts. This modular design pattern allows the operating system to scale and upgrade components of an application without affecting the application as a whole.
 
@@ -73,3 +85,6 @@ kubectl get services to get the external IP of the service
 
 # Disadventage
 Google Kubernetes Engine, which consists of containerized workloads, may not be as easily transferable as what you’re used to from on-premises.
+
+# Best practice
+it’s not a best practice to build your application in the same container where you ship and run it.
