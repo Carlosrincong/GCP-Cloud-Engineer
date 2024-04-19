@@ -44,10 +44,15 @@ A software layer that sits between your applications and your hardware infrastru
  
 # GKE
 
-Google Kubernetes Engine (GKE) provides a managed environment for deploying, managing, and scaling your containerized applications using Google infrastructure. The GKE environment consists of multiple machines (specifically Compute Engine instances) grouped to form a container cluster (or nodes). A node represents a computing instance like a virtual machine. It makes it easy to orchestrate many containers on many hosts
-You use Kubernetes commands and resources to deploy and manage your applications, perform administrative tasks, set policies, and monitor the health of your deployed workloads.
+Google Kubernetes Engine (GKE) provides a managed environment for deploying, managing, and scaling your containerized applications using Google infrastructure. The GKE environment consists of multiple machines (specifically Compute Engine instances or nodes) grouped to form a container cluster. The virtual machines (or compute instance) that host containers in a GKE cluster are called nodes. It makes it easy to orchestrate many containers on many hosts
+You use Kubernetes commands and resources to deploy and manage your applications, perform administrative tasks, set policies, and monitor the health of your deployed workloads (unhealthy nodes are drained and recreated).
 A cluster consists of at least one cluster master machine and multiple worker machines called nodes. Nodes are Compute Engine virtual machine (VM) instances that run the Kubernetes processes necessary to make them part of the cluster.
 GKE use a network load balancer with public ip address, instead a external load balancer with a public IP address.
+
+GKE Autopilot is designed to manage your cluster configuration, like nodes, scaling, security, and other preconfigured settings.
+The GKE auto-upgrade feature ensures that clusters are always upgraded with the latest stable version of Kubernetes.
+GKE has a node auto-repair feature that was designed to repair unhealthy nodes.
+Related services: Cloud build, Artifact Registry, Cloud monitoring, IAM and VPC (load balancers and ingress access)
 
 - Load balancing for Compute Engine instances
 - Node pools to designate subsets of nodes within a cluster for additional flexibility
@@ -55,6 +60,7 @@ GKE use a network load balancer with public ip address, instead a external load 
 - Automatic upgrades for your cluster's node software
 - Node auto-repair to maintain node health and availability
 - Logging and Monitoring with Cloud Monitoring for visibility into your cluster
+
 
 -----------------------
 
