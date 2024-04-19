@@ -12,7 +12,7 @@ A container **image is structured in layers**, and the tool used to build the im
 All that's needed on each host is an **OS kernel** that supports containers and a **container runtime**.
 **Docker**: you need software and container runtime, to build and run container images. For Docker-formatted container images, container manifest is called a **Dockerfile**.
 A Dockerfile contains four commands, each of which creates a layer: 
-    - FROM: create a base layet
+    - FROM: create a base layer. It’s common to use publicly available open-source container images as the base for your own images. Artifact Registry contains public, open source images and you can privately store your own images. Thera are also, other public repositories such as Docker Hub Registry and GitLab.
     - COPY: copy files
     - RUN: build the aplication using commands
     - CMD: specifies what command to run within the container
