@@ -7,6 +7,7 @@ With Virtualization, a virtual machines can be imaged and easily moved.
 The idea of a container is to give the independent scalability of workloads in PaaS and an abstraction layer of the OS and hardware in IaaS. Independent means that you have an user space, which is all the code that resides above the kernel, and it includes applications and their dependencies.
 A configurable system, lets you install your favorite run time, web server, database or middleware. Containersdon’t carry a full operating system
 A container, is an invisible box around your code and its dependencies with limited access to its own partition of the file system and hardware.
+Containers are a way to package and run code that's more efficient than virtual machines
 An application and its dependencies are called an **image**, and a **container** is simply a running instance of an image.
 A container **image is structured in layers**, and the tool used to build the image reads instructions from a file called the container **manifest**. Each instruction specifies a layer inside the container image.
 All that's needed on each host is an **OS kernel** that supports containers and a **container runtime**.
@@ -27,10 +28,20 @@ Microservices: If you build them this way and connect them with network connecti
 Docker compose is an alternative when It´s necesary to run several containers. This soluction don´t scale with containers above 20 containers. Kubernetes is better. 
 
 # KUBERNETES 
-Kubernetes is an orchestration framework for software containers. Containers are a way to package and run code that's more efficient than virtual machines. Kubernetes provides the tools you need to run containerized applications in production and at scale.
-
+Kubernetes is an orchestration framework for software containers. 
+Kubernetes provides the tools you need to run and manage containerized applications in production and at scale as microservices.
+Kubernetes is a set of APIs that you can use to deploy containers on a set of nodes called a cluster.
+CLuster have a control plane and a set of nodes (instances) that run containers.
 A software layer that sits between your applications and your hardware infrastructure
 
+- Kubernetes supports **declarative configurations**. Which means that you describe the **desired state** you want to achieve, instead of issuing a series of commands to achieve that desired state. Kubernetes’s job is to make the deployed system conform to your desired state and to keep it there in spite of failures. It reduces the risk of error.
+- Kubernetes also allows **imperative configuration**, in which you issue commands to **change the system’s state**. Experienced Kubernetes administrators use imperative configuration **only for quick temporary fixes** and as a tool when building a declarative configuration.
+
+- Features:
+    1. Suports Stateless applications: such as Nginx or Apache web servers
+    2. Suports Stateful applications: where user and session data can be stored persistently. Also supports Batch jobs and daemon tasks
+    3. Autoscale contanerized applications
+ 
 # GKE
 
 Google Kubernetes Engine (GKE) provides a managed environment for deploying, managing, and scaling your containerized applications using Google infrastructure. The GKE environment consists of multiple machines (specifically Compute Engine instances) grouped to form a container cluster (or nodes). A node represents a computing instance like a virtual machine. It makes it easy to orchestrate many containers on many hosts
