@@ -31,9 +31,10 @@ Docker compose is an alternative when It´s necesary to run several containers. 
 Kubernetes is an orchestration framework for software containers. 
 Kubernetes provides the tools you need to run and manage containerized applications in production and at scale as microservices.
 Kubernetes is a set of APIs that you can use to deploy containers on a set of nodes called a cluster.
-CLuster have a control plane and a set of nodes (instances) that run containers.
-A software layer that sits between your applications and your hardware infrastructure
+Cluster have a control plane and a set of nodes (instances) that run containers.
+Kubernetes is a software layer that sits between your applications and your hardware infrastructure
 
+## Declarative management and objects
 - Kubernetes supports **declarative configurations**. Which means that you describe the **desired state** you want to achieve, instead of issuing a series of commands to achieve that desired state. Kubernetes’s job is to make the deployed system conform to your desired state and to keep it there in spite of failures. It reduces the risk of error.
 - Kubernetes also allows **imperative configuration**, in which you issue commands to **change the system’s state**. Experienced Kubernetes administrators use imperative configuration **only for quick temporary fixes** and as a tool when building a declarative configuration.
 
@@ -41,7 +42,17 @@ A software layer that sits between your applications and your hardware infrastru
     1. Suports Stateless applications: such as Nginx or Apache web servers
     2. Suports Stateful applications: where user and session data can be stored persistently. Also supports Batch jobs and daemon tasks
     3. Autoscale contanerized applications
- 
+
+Each item Kubernetes manages is represented by an **object**. Kubernetes needs to be told (with **declarative management**) how objects should be managed, and it will work through **watch loop** to achieve and maintain that desired state.
+A **Kubernetes object or kind** is defined as a persistent entity that represents the state of something running in a cluster: its desired state (**object spec**) and its current state (**object state**) provided by the Kubernetes control plane.
+**“Kubernetes control plane”** refers to the various system processes that collaborate to make a Kubernetes cluster work.
+Kubernetes will compare the desired state to the current state. And eventually its control plane, will remedy the state as needed.
+
+## PODS
+**Pods** are the smallest deployable Kubernetes object and every running container is in a Pod. A Pod creates the **environment** (shared networking and storage) where the containers live, and that can accommodate **one or more** containers. 
+Kubernetes assigns each **Pod a unique IP address**, and every container within a Pod shares the network namespace, including IP address and network ports.
+Containers **within the same Pod** can communicate through localhost, **127.0.0.1**.
+
 # GKE
 
 Google Kubernetes Engine (GKE) provides a managed environment for deploying, managing, and scaling your containerized applications using Google infrastructure. The GKE environment consists of multiple machines (specifically Compute Engine instances or nodes) grouped to form a container cluster. The virtual machines (or compute instance) that host containers in a GKE cluster are called nodes. It makes it easy to orchestrate many containers on many hosts
