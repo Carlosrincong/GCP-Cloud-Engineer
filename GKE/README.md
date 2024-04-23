@@ -11,6 +11,8 @@ Containers are a way to package and run code that's more efficient than virtual 
 An application and its dependencies are called an **image**, and a **container** is simply a running instance of an image.
 A container **image is structured in layers**, and the tool used to build the image reads instructions from a file called the container **manifest**. Each instruction specifies a layer inside the container image.
 All that's needed on each host is an **OS kernel** that supports containers and a **container runtime**.
+Container runtime is the software used to **launch a container from a container image**-
+**Containerd**, the runtime component of Docker.
 **Docker**: you need software and container runtime, to build and run container images. For Docker-formatted container images, container manifest is called a **Dockerfile**.
 A Dockerfile contains four commands, each of which creates a layer: 
     - FROM: create a base layer. It’s common to use publicly available open-source container images as the base for your own images. Artifact Registry contains public, open source images and you can privately store your own images. Thera are also, other public repositories such as Docker Hub Registry and GitLab.
@@ -53,6 +55,26 @@ Kubernetes will compare the desired state to the current state. And eventually i
 Kubernetes assigns each **Pod a unique IP address**, and every container within a Pod shares the network namespace, including IP address and network ports.
 Containers **within the same Pod** can communicate through localhost, **127.0.0.1**.
 
+## Components
+A **cluster** is composed of virtual machines.
+One VM is called the **control plane**, and the others are called **nodes**.
+The node’s job is to **run Pods**, and the control plane’s is to **coordinate** the entire cluster.
+
+![kubernetes-components](/img/kubernetes-components.png)
+
+### Control plane
+1.  kube-APIserver component: which is the only single component that **you'll interact with directly**. The job of this component is to **accept commands or requests** (authorized and valid) that view or change the state of the cluster. This includes **launching Pods**.
+2.  kubectl command: his job is **connect to the kube-APIserver** and communicate with it using the Kubernetes API.
+3.  etcd component: which is the cluster’s **database** to store the state of the cluster such as cluster configuration data, what nodes are part of the cluster, what Pods should be running, and where they should be running. You will not interact with it directly.
+4.  kube-scheduler: which is responsible for scheduling Pods onto the nodes. It doesn’t do the work of actually launching Pods on nodes. It **assing unassigned pods to nodes** based on contraints (define by you), affinity parameters, anti-affinity parameters and the state of all nodes. 
+5. kube-controller-manager component: This monitors the state of a cluster through the kube-APIserver. Whenever the current state of the cluster doesn’t match the desired state, kube-controller-manager will attempt to **make changes to achieve the desired state**. **Controllers** handle the process of remediation. Also, manage workloads and have system-level responsibilities.
+6.  kube-cloud-manager component: This manages controllers that interact with underlying cloud providers.
+
+### Nodes
+1.  kubelet: This is a small family of **control-plane** components and Kubernetes’s **agent** on each node. **The kube-APIserver connects to the node’s kubelet** when it wants start a Pod on that node. Kubelet starts Pods and monitors its lifecycle, and **reports back** to the kube-APIserver.
+2.  kube-proxy component: which maintains network connectivity among the Pods in a cluster.
+
+
 # GKE
 
 Google Kubernetes Engine (GKE) provides a managed environment for deploying, managing, and scaling your containerized applications using Google infrastructure. The GKE environment consists of multiple machines (specifically Compute Engine instances or nodes) grouped to form a container cluster. The virtual machines (or compute instance) that host containers in a GKE cluster are called nodes. It makes it easy to orchestrate many containers on many hosts
@@ -72,6 +94,13 @@ Related services: Cloud build, Artifact Registry, Cloud monitoring, IAM and VPC 
 - Node auto-repair to maintain node health and availability
 - Logging and Monitoring with Cloud Monitoring for visibility into your cluster
 
+## Components
+![GKE-components](/img/GKE-components.png)
+GKE manages all the control plane components for us.
+It still exposes an IP address to which we send all of our Kubernetes API requests
+Node configuration and management depends on the type of GKE mode you use.
+1.  The Autopilot mode, which is recommended, GKE manages the underlying infrastructure such as node configuration, autoscaling, auto-upgrades, baseline security configurations, and baseline networking configuration.
+2.  The Standard mode, you manage the underlying infrastructure, including configuring the individual nodes.
 
 -----------------------
 
