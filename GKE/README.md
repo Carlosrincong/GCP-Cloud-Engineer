@@ -99,8 +99,18 @@ Related services: Cloud build, Artifact Registry, Cloud monitoring, IAM and VPC 
 GKE manages all the control plane components for us.
 It still exposes an IP address to which we send all of our Kubernetes API requests
 Node configuration and management depends on the type of GKE mode you use.
-1.  The Autopilot mode, which is recommended, GKE manages the underlying infrastructure such as node configuration, autoscaling, auto-upgrades, baseline security configurations, and baseline networking configuration.
-2.  The Standard mode, you manage the underlying infrastructure, including configuring the individual nodes.
+
+1.  The Autopilot mode (recommended), GKE manages the underlying infrastructure such as node configuration, autoscaling, auto-upgrades, baseline security configurations, and baseline networking configuration. 
+    *   Less management overhead means less configuration options. GKE Autopilot are more restrictive than in GKE Standard.
+    *   You only pay for what you use. You only pay for Pods, not nodes.
+    *   Create clusters according to battle-tested and hardened best practices. 
+    *   Defines the underlying machine type for your cluster based on workloads. 
+    *   Google monitors the entire Autopilot cluster, including control plane, worker nodes and core Kubernetes system components. 
+    *   It ensures that Pods are always scheduled and keep cluster up to date. Autopilot has a pod-scheduling service level agreement.
+    *   Provides a way to configure update windows for clusters to ensure minimal disruption to workloads.
+    *   SSH and privilege escalation were removed on node and there are limitations on node affinity and host access.
+
+2.  The Standard mode, you manage the underlying infrastructure, including configuring the individual nodes. Infrastructure can be configured in many different ways (fine-grained control). You pay for all of the provisioned infrastructure. You’re responsible for the configuration, management, and optimization of the cluster.
 
 -----------------------
 
