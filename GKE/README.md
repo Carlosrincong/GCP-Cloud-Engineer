@@ -35,6 +35,7 @@ Kubernetes provides the tools you need to run and manage containerized applicati
 Kubernetes is a set of APIs that you can use to deploy containers on a set of nodes called a cluster.
 Cluster have a control plane and a set of nodes (instances) that run containers.
 Kubernetes is a software layer that sits between your applications and your hardware infrastructure
+Kubernetes objects are identified by a unique name and a unique identifier.
 
 ## Declarative management and objects
 - Kubernetes supports **declarative configurations**. Which means that you describe the **desired state** you want to achieve, instead of issuing a series of commands to achieve that desired state. Kubernetes’s job is to make the deployed system conform to your desired state and to keep it there in spite of failures. It reduces the risk of error.
@@ -73,6 +74,27 @@ The node’s job is to **run Pods**, and the control plane’s is to **coordinat
 ### Nodes
 1.  kubelet: This is a small family of **control-plane** components and Kubernetes’s **agent** on each node. **The kube-APIserver connects to the node’s kubelet** when it wants start a Pod on that node. Kubelet starts Pods and monitors its lifecycle, and **reports back** to the kube-APIserver.
 2.  kube-proxy component: which maintains network connectivity among the Pods in a cluster.
+
+## Manifest file (pod)
+You define the **objects** you want Kubernetes to **create and maintain** with manifest files. That files can be written in YAML or JSON. This manifest file defines a **desired state** for a Pod: its **name** and a specific container **image** for it to run.
+Required fields:
+    1.  apiVersion: refers to Kubernetes API version used
+    2.  kind: the object
+    3.  metadata: you can specify:
+        *   name: object name
+        *   uid: uinque id
+        *   namespace
+        *   labels: key value pairs (key: value). A way to select Kubernetes resources by label is through the **kubectl command**.
+If several objects are related, it’s a best practice to define them all in the same YAML file.
+Objects must to have an unique name up in the same **Kubernetes namespace**.
+
+## Controller object
+A controller object's job is to **manage the state of the Pods**. Because Pods are designed to be ephemeral and disposable, they **don't heal or repair themselves** and are not meant to run forever. Deployment controller job is to **monitor and maintain up** the desired pods.
+    1.  Deployments: Deployments are a great choice for long-lived software components like web servers, especially when you want to manage them as a group. Instead of using multiple YAML manifests or files for each Pod, you used a single Deployment YAML to launch three replicas of the same container. Within a Deployment object spec, the number of **replica Pods**, which containers should run the Pods, and which volumes should be mounted the following elements are defined. Based on these templates, controllers maintain the Pod’s desired state within a cluster.
+
+    2.  StatefulSets
+    3.  DaemonSets
+    4.  Jobs
 
 
 # GKE
