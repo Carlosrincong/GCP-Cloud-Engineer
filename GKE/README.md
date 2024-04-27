@@ -96,6 +96,17 @@ A controller object's job is to **manage the state of the Pods**. Because Pods a
     3.  DaemonSets
     4.  Jobs
 
+## kubectl command
+kubectl is a command-line tool used by administrators to **control and interact with Kubernetes clusters**. It’s used to **communicate** with the Kube-APIserver on the **control plane**.
+kubectl transforms command-line entries into **API calls** and sends them via HTTP to the Kube-APIserver on Control plane. The Kube-APIserver then returns the results to kubectl through HTTPS. Finally, kubectl display us the response.
+kubectl must be configured with the location and credentials of a Kubernetes cluster.
+Although kubectl is a tool for administering the internal state of an **existing cluster**, it **can’t create new clusters** or **change the shape of existing** clusters. **Control plane** can do it and you can comunicate with this through kubeclt.
+By configurating the **config file (with credentials)**, you automatically can use kubectl command line.
+The kubectl command has many **uses**, from creating Kubernetes objects, to viewing them, deleting them, and viewing or exporting configuration files. 
+
+kubectl’s syntax is composed of four parts: the command, the type, the name, and optional flags.
+![kubectl-syntaxis-1](/img/kubectl-syntaxis-1.png)
+![kubectl-syntaxis-2](/img/kubectl-syntaxis-2.png)
 
 # GKE
 
