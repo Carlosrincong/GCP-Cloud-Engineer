@@ -108,6 +108,27 @@ kubectl’s syntax is composed of four parts: the command, the type, the name, a
 ![kubectl-syntaxis-1](/img/kubectl-syntaxis-1.png)
 ![kubectl-syntaxis-2](/img/kubectl-syntaxis-2.png)
 
+## Introspection
+Debug problems when an application is running.
+t’s the act of gathering information about the objects running in cluster.
+kubectl commands: 
+    1.  get: [kubectl get pods] shows the Pod’s phase status:
+        +   Pending: Kubernetes has accepted a Pod, but it’s still being scheduled (not created).
+        +   Running: When a pod was attached to a node, and all its containers are created.
+        +   Succeeded: When all containers had either finished running or terminated succesfully.
+        +   Failed: when a container terminated with a failure. 
+        +   Unknown: When state can´t be retrivied. (comunication error between kubectl and control plane)
+        +   CrashLoopBackOff: Pod isn’t configured correctly, this is a common error. 
+    2.  describe: [kubectl describe pod_name] To investigate a Pod and its containers in detail
+        +   For pods: the name, namespace, node name, labels, status, and IP address are displayed.
+        +   For containers: the state (waiting, running, or terminated), images, ports, commands, and restart counts–are displayed.
+    3.  exec: lets you run a single command inside a container and view the results in your own command shell
+    4.  logs: when you need to find out more information about containers that are failing to run successfully.
+
+## Best practices
+1.  Don´t install software directly into a container. Instead, consider building container images that have exactly the software you need
+2.  When you resolve a failure, those changes must to go into your container images and redeploy them.
+
 # GKE
 
 Google Kubernetes Engine (GKE) provides a managed environment for deploying, managing, and scaling your containerized applications using Google infrastructure. The GKE environment consists of multiple machines (specifically Compute Engine instances or nodes) grouped to form a container cluster. The virtual machines (or compute instance) that host containers in a GKE cluster are called nodes. It makes it easy to orchestrate many containers on many hosts
