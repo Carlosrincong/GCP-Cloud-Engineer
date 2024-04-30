@@ -166,6 +166,9 @@ Node configuration and management depends on the type of GKE mode you use.
 
 2.  The Standard mode, you manage the underlying infrastructure, including configuring the individual nodes. Infrastructure can be configured in many different ways (fine-grained control). You pay for all of the provisioned infrastructure. You’re responsible for the configuration, management, and optimization of the cluster.
 
+## AUTH
+For GKE, authentication is typically handled with OAuth2 tokens and can be managed through Cloud Identity and Access Management across the project as a whole and, optionally, through role-based access control which can be defined and configured within each cluster. In GKE, cluster containers can use service accounts to authenticate to and access external resources.
+
 -----------------------
 
 etcd: is the database to save operativo information from kubernetes
