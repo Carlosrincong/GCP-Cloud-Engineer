@@ -54,7 +54,7 @@ docker stop $CONTAINER_ID
 ## ARTIFACT REGISTRY ##
 #######################
 
-# configure docker auth
+# configure docker auth (Now you can use docker commands)
 gcloud auth configure-docker
 
 # push image in ArtifactRegistry
