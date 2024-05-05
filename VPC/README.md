@@ -1,5 +1,4 @@
-
-# VIRTUAL PRIVATE CLOUD (VPC)
+# CLOUD VPC (VIRTUAL PRIVATE CLOUD)
 
 VPC is a comprehensive set of Google managed networking objects:
 - Networks: networks do not have IP ranges and come in three different flavors; default, auto mode, and custom mode. 
@@ -33,6 +32,28 @@ Cloud DNS translates requests for domain names like google.com into IP addresses
 - Alias IP ranges: Alias IP Ranges let you assign a range of internal IP addresses as an alias to a virtual machine's network interface. This is useful if you have multiple services running on a VM, and you want to assign a different IP address to each service without having to define a separate network interface. You just draw the alias IP range from the local subnet's primary or secondary CIDR ranges.
 - Gateway: translate data packet from a source protocol to destination protocol on network. 
 - VM instances from a networking perspective
+
+## Cloud VPN gateways
+In order to create a connection between two VPN gateways, you must establish two VPN tunnels. Each tunnel defines the connection from the perspective of its gateway, and traffic can only pass when the pair of tunnels is established.
+
+1.  Classic VPN: Classic VPN securely connects your on-premises network to your Google Cloud VPC network through an **IPsec VPN tunnel**. Traffic is **encrypted** by one VPN gateway, then **decrypted** by the other VPN gateway. Classic VPN is useful **for low-volume data** connections (max 1460 bytes). 
+Supports:
+    *   Site-to-site VPN
+    *   Static and dynamic routes (**with Cloud Router**)
+    *   IKEv1 and IKEv2 ciphers
+Classic VPN doesn't support use cases where client computers need to **“dial in” to a VPN using client VPN software**.
+2.  High availability or HA VPN: That lets you securely connect your on-premises network to your Virtual Private Cloud (VPC) network through an **IPsec VPN connection in a single region**. For high availability, you must properly **configure two or four tunnels** from your HA VPN gateway to your peer VPN gateway or to another HA VPN gateway. Each of the HA VPN gateway interfaces **supports multiple tunnels** and you can also create multiple HA VPN gateways.
+VPN tunnels connected to HA VPN gateways **must use dynamic (BGP) routing**.
+You can create an active/active or active/passive **routing configuration**.
+Site-to-site VPN: 
+    *   HA VPN gateway to peer VPN devices: 
+    *   An HA VPN gateway to an Amazon Web Services (AWS) virtual private gateway
+    *   Two HA VPN gateways connected to each other
+
+### Cloud Router (to use dynamyc routes and BGP)
+
+Cloud Router can manage routes for a Cloud VPN tunnel using Border Gateway Protocol, or BGP. This routing method allows for routes to be updated and exchanged without changing the tunnel configuration.
+To set up BGP, an additional IP address has to be **assigned to each end of the VPN tunnel**. These addresses are not part of IP address space of either network and are used exclusively **for establishing a BGP session**.
 
 ## Features
 
