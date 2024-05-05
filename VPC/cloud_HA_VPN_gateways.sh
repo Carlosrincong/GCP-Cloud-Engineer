@@ -78,7 +78,6 @@ gcloud compute instances create $ONPREM_INSTANCE --machine-type=e2-medium --zone
 # Set up HA VPN gateway in each network both on-premise (simulated) and cloud
 export VPC_HAGW=vpc-demo-vpn-gw1
 gcloud compute vpn-gateways create $VPC_HAGW --network $VPC --region $REGION
-
 export ONPREM_HAGW=on-prem-vpn-gw1
 gcloud compute vpn-gateways create $ONPREM_HAGW --network $ONPREM_VPC --region $REGION
 
@@ -101,24 +100,102 @@ gcloud compute routers create $ONPREM_ROUTER \
 
 # Create two VPN tunnels from each HA VPN Gateway in the networks. 
 # Used to connect the two interfaces with the two interfaces on the remote gateway
+# tunnel0 (external) and tunnel1 (internal)
 export VPC_TUNNEL0=vpc-demo-tunnel0
 gcloud compute vpn-tunnels create $VPC_TUNNEL \
- --peer-gcp-gateway on-prem-vpn-gw1 \
- --region "REGION" \
+ --peer-gcp-gateway $ONPREM_HAGW \
+ --region $REGION \
  --ike-version 2 \
  --shared-secret [SHARED_SECRET] \
- --router vpc-demo-router1 \
- --vpn-gateway vpc-demo-vpn-gw1 \
+ --router $VPC_ROUTER \
+ --vpn-gateway $VPC_HAGW \
  --interface 0
 
 export VPC_TUNNEL1=vpc-demo-tunnel1
 gcloud compute vpn-tunnels create $VPC_TUNNEL1 \
-    --peer-gcp-gateway on-prem-vpn-gw1 \
-    --region "REGION" \
+    --peer-gcp-gateway $ONPREM_HAGW \
+    --region $REGION \
     --ike-version 2 \
     --shared-secret [SHARED_SECRET] \
-    --router vpc-demo-router1 \
-    --vpn-gateway vpc-demo-vpn-gw1 \
+    --router $VPC_ROUTER \
+    --vpn-gateway $VPC_HAGW \
     --interface 1
 
+export ONPREM_TUNNEL0=on-prem-tunnel0
+gcloud compute vpn-tunnels create $ONPREM_TUNNEL0 \
+    --peer-gcp-gateway $VPC_HAGW \
+    --region $REGION \
+    --ike-version 2 \
+    --shared-secret [SHARED_SECRET] \
+    --router $ONPREM_ROUTER \
+    --vpn-gateway $ONPREM_HAGW \
+    --interface 0
 
+export ONPREM_TUNNEL1=on-prem-tunnel1
+gcloud compute vpn-tunnels create $ONPREM_TUNNEL1 \
+    --peer-gcp-gateway $VPC_HAGW \
+    --region $REGION \
+    --ike-version 2 \
+    --shared-secret [SHARED_SECRET] \
+    --router $ONPREM_ROUTER \
+    --vpn-gateway $ONPREM_HAGW \
+    --interface 1
+
+# Create the interfaces in each VPN gateway. 
+# Iterfaces are the tunnel connection point inside the VPN gateway to facilitate the traffic through the tunnel 0 or 1
+gcloud compute routers add-interface vpc-demo-router1 \
+    --interface-name if-tunnel0-to-on-prem \
+    --ip-address 169.254.0.1 \
+    --mask-length 30 \
+    --vpn-tunnel vpc-demo-tunnel0 \
+    --region $REGION
+
+gcloud compute routers add-interface vpc-demo-router1 \
+    --interface-name if-tunnel1-to-on-prem \
+    --ip-address 169.254.1.1 \
+    --mask-length 30 \
+    --vpn-tunnel vpc-demo-tunnel1 \
+    --region $REGION
+
+gcloud compute routers add-interface on-prem-router1 \
+    --interface-name if-tunnel0-to-vpc-demo \
+    --ip-address 169.254.0.2 \
+    --mask-length 30 \
+    --vpn-tunnel on-prem-tunnel0 \
+    --region $REGION
+
+gcloud compute routers add-interface  on-prem-router1 \
+    --interface-name if-tunnel1-to-vpc-demo \
+    --ip-address 169.254.1.2 \
+    --mask-length 30 \
+    --vpn-tunnel on-prem-tunnel1 \
+    --region $REGION
+
+# Create Border Gateway Protocol (BGP) peer for each tunnel (0 and 1) in each networks
+gcloud compute routers add-bgp-peer vpc-demo-router1 \
+    --peer-name bgp-on-prem-tunnel0 \
+    --interface if-tunnel0-to-on-prem \
+    --peer-ip-address 169.254.0.2 \
+    --peer-asn 65002 \
+    --region $REGION
+
+gcloud compute routers add-bgp-peer vpc-demo-router1 \
+    --peer-name bgp-on-prem-tunnel1 \
+    --interface if-tunnel1-to-on-prem \
+    --peer-ip-address 169.254.1.2 \
+    --peer-asn 65002 \
+    --region $REGION
+
+gcloud compute routers add-bgp-peer on-prem-router1 \
+    --peer-name bgp-vpc-demo-tunnel0 \
+    --interface if-tunnel0-to-vpc-demo \
+    --peer-ip-address 169.254.0.1 \
+    --peer-asn 65001 \
+    --region $REGION
+
+gcloud compute routers add-bgp-peer  on-prem-router1 \
+    --peer-name bgp-vpc-demo-tunnel1 \
+    --interface if-tunnel1-to-vpc-demo \
+    --peer-ip-address 169.254.1.1 \
+    --peer-asn 65001 \
+    --region $REGION
