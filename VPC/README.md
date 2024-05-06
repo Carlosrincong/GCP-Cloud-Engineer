@@ -33,7 +33,7 @@ Cloud DNS translates requests for domain names like google.com into IP addresses
 - Gateway: translate data packet from a source protocol to destination protocol on network. 
 - VM instances from a networking perspective
 
-## Cloud VPN gateways
+## Cloud VPN Gateways
 In order to create a connection between two VPN gateways, you must establish two VPN tunnels. Each tunnel defines the connection from the perspective of its gateway, and traffic can only pass when the pair of tunnels is established.
 
 1.  Classic VPN: Classic VPN securely connects your on-premises network to your Google Cloud VPC network through an **IPsec VPN tunnel**. Traffic is **encrypted** by one VPN gateway, then **decrypted** by the other VPN gateway. Classic VPN is useful **for low-volume data** connections (max 1460 bytes). 
@@ -54,6 +54,16 @@ Site-to-site VPN:
 
 Cloud Router can manage routes for a Cloud VPN tunnel using Border Gateway Protocol, or BGP. This routing method allows for routes to be updated and exchanged without changing the tunnel configuration.
 To set up BGP, an additional IP address has to be **assigned to each end of the VPN tunnel**. These addresses are not part of IP address space of either network and are used exclusively **for establishing a BGP session**.
+
+## Cloud Interconnect and Peering
+![cloud-interconnect-and-peering](/img/cloud-interconnect-and-peering.png)
+Useful to connect your infrastructure to Google’s network.
+-   Dedicated connections provide a **direct** connection to Google’s network
+-   Shared connections provide a connection to Google’s network **through a partner**.
+-   Layer 2 connections use a VLAN that pipes **directly into your GCP environment**, providing connectivity to internal IP addresses in the RFC 1918 address space.
+-   Layer 3 connections provide **access to Google Workspace services**, YouTube, and Google Cloud APIs using public IP addresses.
+Cloud VPN is a useful addition to Direct Peering and Carrier Peering.
+
 
 ## Features
 
