@@ -66,6 +66,7 @@ Cloud VPN is a useful addition to Direct Peering and Carrier Peering.
 ![cloud-interconnect-and-peering](/img/cloud-interconnect-and-peering.png)
 
 ### Cloud Interconnect
+Traffic is done by exchanging BGP routes.
 1.  Dedicated Interconnect: provides **direct physical connections** between your on-premises network and Google’s network. Your network must physically meet Google’s network in a supported colocation facility.
 2.  Partner Interconnect: provides connectivity between your on-premises network and your VPC network **through a supported service provider**.  These service providers have existing physical connections to Google's network
 3.  Cross-Cloud Interconnect: helps you to **establish high-bandwidth dedicated connectivity** between Google Cloud and another cloud service provider. Google provisions a **dedicated physical connection between** the Google network and that of another cloud service provider.
@@ -74,7 +75,12 @@ Cloud VPN is a useful addition to Direct Peering and Carrier Peering.
 Google recommends using Cloud Interconnect instead of Direct Peering and Carrier Peering, which you would only use in certain circumstances.
 
 ### Cloud Peering
+These services are useful when you require **access to Google and Google Cloud properties (GCP)**. Traffic is done by exchanging BGP routes- All of these options provide **public IP address** access to all of Google's services. The main differences are **capacity** and the **requirements** for using a service.
 
+1.  Direct peering: you will be able to exchange Internet traffic between **your network and Google's**. Direct peering does **not have an SLA**. In order to use direct peering you need to satisfy the **peering requirements**.
+2.  Carrier peering: In this case you need to satisfy the **partner requeriments**.
+
+![network-peering](/img/network-peering.png)
 
 ## Features
 
