@@ -33,6 +33,9 @@ Cloud DNS translates requests for domain names like google.com into IP addresses
 - Gateway: translate data packet from a source protocol to destination protocol on network. 
 - VM instances from a networking perspective
 
+# Direct connectivity
+Services usefull to connect your GCP VPC network with either local network, other provider cloud network or with other GCP VPC network.
+
 ## Cloud VPN Gateways
 In order to create a connection between two VPN gateways, you must establish two VPN tunnels. Each tunnel defines the connection from the perspective of its gateway, and traffic can only pass when the pair of tunnels is established.
 
@@ -42,6 +45,7 @@ Supports:
     *   Static and dynamic routes (**with Cloud Router**)
     *   IKEv1 and IKEv2 ciphers
 Classic VPN doesn't support use cases where client computers need to **“dial in” to a VPN using client VPN software**.
+
 2.  High availability or HA VPN: That lets you securely connect your on-premises network to your Virtual Private Cloud (VPC) network through an **IPsec VPN connection in a single region**. For high availability, you must properly **configure two or four tunnels** from your HA VPN gateway to your peer VPN gateway or to another HA VPN gateway. Each of the HA VPN gateway interfaces **supports multiple tunnels** and you can also create multiple HA VPN gateways.
 VPN tunnels connected to HA VPN gateways **must use dynamic (BGP) routing**.
 You can create an active/active or active/passive **routing configuration**.
@@ -56,7 +60,8 @@ Cloud Router can manage routes for a Cloud VPN tunnel using Border Gateway Proto
 To set up BGP, an additional IP address has to be **assigned to each end of the VPN tunnel**. These addresses are not part of IP address space of either network and are used exclusively **for establishing a BGP session**.
 
 ## Cloud Interconnect and Peering
-Useful to connect your infrastructure to Google’s network.
+Useful to connect your network infrastructure to Google’s network.
+
 -   Dedicated connections provide a **direct** connection to Google’s network
 -   Shared connections provide a connection to Google’s network **through a partner**.
 -   Layer 2 connections use a VLAN that pipes **directly into your GCP environment**, providing connectivity to internal IP addresses in the RFC 1918 address space.
@@ -86,13 +91,15 @@ These services are useful when you require **access to Google and Google Cloud p
 ![tree_connect_gcp_other_cloud](/img/tree_connect_gcp_other_cloud.png)
 ![tree_connection_gcp_onpremise](/img/tree_connection_gcp_onpremise.png)
 
-## Sharing VPC networks
+# GCP Network Integration
+
+## Shared VPC network and VPC Network Peering
+
 ![sharedVPC-and-VPCPeering](/img/sharedVPC-and-VPCPeering.png)
 1.  Shared VPC: for sharing VPC networks **across GCP projects**. So that they can communicate with each other **securely and efficiently** by using internal IP addresses from that network. You designate a project as a **host project** and attach one or more other service projects to it. The VPC networks in the host project are called **Shared VPC networks**. standalone project is which not participate in shared VPC network. And participants are host project or service project. 
 
 2.  VPC Network Peering
-: which allows you to configure private communication across projects in the same or different organizations. This allows private RFC 1918 connectivity across two VPC networks. When both peering connections are created, the VPC Network Peering session becomes Active and routes are exchanged, now instances can comunicate using their **Internal IP address**. VPC Network Peering does **not incur the network latency, security, and cost drawbacks** that are present when using external IP addresses or VPNs.
-
+Which allows you to configure private communication across projects in the same or different organizations. This allows private RFC 1918 connectivity across two VPC networks. When both peering connections are created, the VPC Network Peering session becomes Active and routes are exchanged, now instances can comunicate using their **Internal IP address**. VPC Network Peering does **not incur the network latency, security, and cost drawbacks** that are present when using external IP addresses or VPNs.
 
 ## Features
 
