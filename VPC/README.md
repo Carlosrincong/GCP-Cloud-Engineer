@@ -86,6 +86,13 @@ These services are useful when you require **access to Google and Google Cloud p
 ![tree_connect_gcp_other_cloud](/img/tree_connect_gcp_other_cloud.png)
 ![tree_connection_gcp_onpremise](/img/tree_connection_gcp_onpremise.png)
 
+## Sharing VPC networks
+![sharedVPC-and-VPCPeering](/img/sharedVPC-and-VPCPeering.png)
+1.  Shared VPC: for sharing VPC networks **across GCP projects**. So that they can communicate with each other **securely and efficiently** by using internal IP addresses from that network. You designate a project as a **host project** and attach one or more other service projects to it. The VPC networks in the host project are called **Shared VPC networks**. standalone project is which not participate in shared VPC network. And participants are host project or service project. 
+
+2.  VPC Network Peering
+: which allows you to configure private communication across projects in the same or different organizations. This allows private RFC 1918 connectivity across two VPC networks. When both peering connections are created, the VPC Network Peering session becomes Active and routes are exchanged, now instances can comunicate using their **Internal IP address**. VPC Network Peering does **not incur the network latency, security, and cost drawbacks** that are present when using external IP addresses or VPNs.
+
 
 ## Features
 
