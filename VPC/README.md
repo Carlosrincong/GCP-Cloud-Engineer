@@ -75,12 +75,17 @@ Traffic is done by exchanging BGP routes.
 Google recommends using Cloud Interconnect instead of Direct Peering and Carrier Peering, which you would only use in certain circumstances.
 
 ### Cloud Peering
-These services are useful when you require **access to Google and Google Cloud properties (GCP)**. Traffic is done by exchanging BGP routes- All of these options provide **public IP address** access to all of Google's services. The main differences are **capacity** and the **requirements** for using a service.
+These services are useful when you require **access to Google and Google Cloud properties (GCP)**. Traffic is done by exchanging BGP routes- All of these options provide **public IP address** access to all of Google's services. The main differences are **capacity** and the **requirements** for using a service. These services offer **access to Google public IP addresses** only, without an SLA.
 
 1.  Direct peering: you will be able to exchange Internet traffic between **your network and Google's**. Direct peering does **not have an SLA**. In order to use direct peering you need to satisfy the **peering requirements**.
 2.  Carrier peering: In this case you need to satisfy the **partner requeriments**.
 
 ![network-peering](/img/network-peering.png)
+
+### Tree decision 
+![tree_connect_gcp_other_cloud](/img/tree_connect_gcp_other_cloud.png)
+![tree_connection_gcp_onpremise](/img/tree_connection_gcp_onpremise.png)
+
 
 ## Features
 
