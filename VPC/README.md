@@ -56,13 +56,24 @@ Cloud Router can manage routes for a Cloud VPN tunnel using Border Gateway Proto
 To set up BGP, an additional IP address has to be **assigned to each end of the VPN tunnel**. These addresses are not part of IP address space of either network and are used exclusively **for establishing a BGP session**.
 
 ## Cloud Interconnect and Peering
-![cloud-interconnect-and-peering](/img/cloud-interconnect-and-peering.png)
 Useful to connect your infrastructure to Google’s network.
 -   Dedicated connections provide a **direct** connection to Google’s network
 -   Shared connections provide a connection to Google’s network **through a partner**.
 -   Layer 2 connections use a VLAN that pipes **directly into your GCP environment**, providing connectivity to internal IP addresses in the RFC 1918 address space.
 -   Layer 3 connections provide **access to Google Workspace services**, YouTube, and Google Cloud APIs using public IP addresses.
 Cloud VPN is a useful addition to Direct Peering and Carrier Peering.
+
+![cloud-interconnect-and-peering](/img/cloud-interconnect-and-peering.png)
+
+### Cloud Interconnect
+1.  Dedicated Interconnect: provides **direct physical connections** between your on-premises network and Google’s network. Your network must physically meet Google’s network in a supported colocation facility.
+2.  Partner Interconnect: provides connectivity between your on-premises network and your VPC network **through a supported service provider**.  These service providers have existing physical connections to Google's network
+3.  Cross-Cloud Interconnect: helps you to **establish high-bandwidth dedicated connectivity** between Google Cloud and another cloud service provider. Google provisions a **dedicated physical connection between** the Google network and that of another cloud service provider.
+
+![network-interconnect](/img/network-interconnect.png)
+Google recommends using Cloud Interconnect instead of Direct Peering and Carrier Peering, which you would only use in certain circumstances.
+
+### Cloud Peering
 
 
 ## Features
@@ -125,3 +136,4 @@ Cloud VPN is a useful addition to Direct Peering and Carrier Peering.
 4. Google strongly recommends using zonal DNS because it offers higher reliability guarantees by isolating failures in the DNS registration to individual zones.
 5. by allocating VMs on a single subnet to separate zones, you get improved availability without additional security complexity.
 6. As a general security best practice, I recommend only assigning internal IP addresses to your VM instances whenever possible.
+7. Google recommends using Cloud Interconnect instead of Direct Peering and Carrier Peering, which you would only use in certain circumstances.
