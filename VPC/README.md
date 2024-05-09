@@ -55,7 +55,6 @@ Site-to-site VPN:
     *   Two HA VPN gateways connected to each other
 
 ### Cloud Router (to use dynamyc routes and BGP)
-
 Cloud Router can manage routes for a Cloud VPN tunnel using Border Gateway Protocol, or BGP. This routing method allows for routes to be updated and exchanged without changing the tunnel configuration.
 To set up BGP, an additional IP address has to be **assigned to each end of the VPN tunnel**. These addresses are not part of IP address space of either network and are used exclusively **for establishing a BGP session**.
 
@@ -100,6 +99,14 @@ These services are useful when you require **access to Google and Google Cloud p
 
 2.  VPC Network Peering
 Which allows you to configure private communication across projects in the same or different organizations. This allows private RFC 1918 connectivity across two VPC networks. When both peering connections are created, the VPC Network Peering session becomes Active and routes are exchanged, now instances can comunicate using their **Internal IP address**. VPC Network Peering does **not incur the network latency, security, and cost drawbacks** that are present when using external IP addresses or VPNs.
+
+# Cloud Load Balancing
+
+Cloud Load Balancing gives you the ability to distribute load-balanced compute resources in single or multiple regions to meet your **high availability requirements**, to put your resources behind a **single anycast IP address**, and to scale your resources up or down with **intelligent autoscaling**. You can **serve content as close as possible** to your users. There are two types:
+
+1.  Global: These load balancers leverage the Google frontends (which are software-defined). Distributed systems that **sit in Google’s points of presence**. You want to use a global load balancer when your users and instances are distributed **globally**, your users need access to the **same applications and content**, and you want to provide access using a **single anycast IP address**. The global load balancers are the HTTP(S), SSL proxy, and TCP proxy load balancers.
+2.  Regional: The Six regional load balancers are external and internal HTTP(S), TCP Proxy, and TCP/UDP network.
+
 
 ## Features
 
