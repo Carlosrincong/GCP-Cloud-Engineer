@@ -107,6 +107,12 @@ The image includes: Boot loader, operating system, file system structure, softwa
 - Confidential VMs: Confidentials are a breakthrough technology that allows you to encrypt data in use, while it's been processed.
 - Snapshots: Snapshots are available only to persistent disks and not to local SSDs. Snapshots are incremental and automatically compressed. Snapshots can be used to **backup critical data into a durable storage** solution to meet application, availability, and recovery requirements. Snapshots can also be used to **migrate data** between zones and **transferring data to a different disk type**.
 
+## Manage Instance group
+A managed instance group is a collection of **identical** VM instances that you control as a single entity using an **instance template**. Managed instance groups can **scale automatically (and under what circumstances)** to the number of instances in the group. Managed instance groups can **work with load balancing services** to distributor network traffic to all of the instances in the group (**resize group**). If you setup a health check, managed instance groups can automatically identify and **recreate unhealthy instances** in a group to ensure that all instances are running optimally. The instance group manager then **automatically populates the instance group** based on the instance template.
+You can use managed instance groups for:
+*   **Stateless** serving or batch workloads. such as website front end or image processing from a queue
+*   **Stateful** applications. such as databases or legacy applications.
+
 ## Key considerations
 Physical cores have hyperthreading (On-premise). On compute engine, a vCPU is equal to one hardware hyper-thread
 To attach a persistent disk to a virtual machine instance, both resources must be in the same zone. I
@@ -129,6 +135,7 @@ I recommend that you first configure the instance through the Google Cloud conso
 I recommend a high-memory virtual machine if you need to take advantage of RAM Disk, along with a persistent disk to back up the RAM disk data.
 We recommend storing the startup and shutdown scripts in Cloud Storage
 You can create regular snapshots on a persistent disk faster and at a much lower cost than if you regularly created a full image of the disk. full image of the disk = image + snapshot.
+Regional managed instance groups are generally recommended **over zonal managed instance groups** because they allow you to spread the application load **across multiple zones** instead of confining your application to a single zone
 
 # Related Services
 ## VPC (Virtual Private CLoud Network)
