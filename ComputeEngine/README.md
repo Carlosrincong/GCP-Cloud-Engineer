@@ -112,6 +112,7 @@ A managed instance group is a collection of **identical** VM instances that you 
 You can use managed instance groups for:
 *   **Stateless** serving or batch workloads. Such as website front end or image processing from a queue
 *   **Stateful** applications. Such as databases or legacy applications.
+
 **Autoscaling** helps your applications gracefully **handle increases in traffic** and reduces cost when the need for resources is lower. You just **define the autoscaling policy**, and the autoscaler performs automatic scaling based on the measured load. Such as **CPU** utilization, **load balancing** capacity, or monitoring metrics, or by a **queue-based workload** like Pub/Sub or **schedule** such as start-time, duration and recurrence.
 The **health criteria** define how often to check whether an instance is healthy (that’s the check interval); how long to wait for a response (that’s the timeout); how many successful attempts are decisive (that’s the healthy threshold); and how many failed attempts are decisive (that’s the unhealthy threshold).
 Configuring **stateful IP addresses** in a managed instance group ensures that applications **continue to function** seamlessly during autohealing, update, and recreation events.

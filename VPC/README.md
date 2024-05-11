@@ -107,8 +107,18 @@ Cloud Load Balancing gives you the ability to distribute load-balanced compute r
 1.  Global: These load balancers leverage the Google frontends (which are software-defined). Distributed systems that **sit in Google’s points of presence**. You want to use a global load balancer when your users and instances are distributed **globally**, your users need access to the **same applications and content**, and you want to provide access using a **single anycast IP address**. The global load balancers are the HTTP(S), SSL proxy, and TCP proxy load balancers.
 2.  Regional: The Six regional load balancers are external and internal HTTP(S), TCP Proxy, and TCP/UDP network.
 
+### HTTP(s) Load Balancing
+allowing for routing decisions based on the URL.
+your applications are available to your customers at a **single anycast IP address**, which simplifies your DNS setup.
+HTTP(S) load balancing balances HTTP and HTTPS traffic across multiple back-end instances and across multiple regions (if you setup **global** load balancing)
+HTTP on port 80 or port 8080. HTTPS on port 443. This load balancer supports both IPv4 and IPv6 clients
+You can configure **URL maps** that route some URLs to one set of instances and route other URLs to other instances.
+Requests are generally routed to the instance group that have **capacity and is closest** to the user.
+![architecture-http-load-balancer](/img/architecture-http-load-balancer.png)
+Instances that pass the **health check** are allowed to receive new requests.
+**Session affinity** (optional) attempts to send all requests from the same client to same virtual machine instance.
 
-## Features
+# VPC Features
 
 - A single VPN can securely connect your on-premises network to your Google Cloud network through a VPN gateway
 - VMs within the same network can communicate using their internal IP addresses, this means that a single firewall rule can be applied to both VMs. In different network must to comunicate with their external IP addresses. 
