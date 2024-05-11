@@ -117,6 +117,10 @@ Requests are generally routed to the instance group that have **capacity and is 
 ![architecture-http-load-balancer](/img/architecture-http-load-balancer.png)
 Instances that pass the **health check** are allowed to receive new requests.
 **Session affinity** (optional) attempts to send all requests from the same client to same virtual machine instance.
+-   An HTTP(S) load balancer requires at least once (with up to 15) signed **SSL certificate installed** on the target HTTPS proxy for the load balancer. The client **SSL sessions** terminate at the load balancer.
+For each SSL certificate, you first create an **SSL certificate resource**, which contains the SSL certificate information. This resource is **only used with** the load balancing proxies (HTTPS proxy or target SSL proxy).
+-   **Backend buckets** allow you to use Google **Cloud Storage** buckets with HTTP(S) Load Balancing. Use case: send requests for *dynamic content*, such as data, to a *backend service*; and send requests for *static content*, such as images, to a *backend bucket*.
+-   Network endpoint group (NEG): This is a configuration object that specifies a **group of backend endpoints** or services. Useful to deploying services in **containers**. Define **how endpoints should be reached**, whether they are reachable, and where they are located. **Serverless NEGs** don't contain endpoints.
 
 # VPC Features
 
