@@ -123,6 +123,21 @@ For each SSL certificate, you first create an **SSL certificate resource**, whic
 -   **Backend buckets** allow you to use Google **Cloud Storage** buckets with HTTP(S) Load Balancing. Use case: send requests for *dynamic content*, such as data, to a *backend service*; and send requests for *static content*, such as images, to a *backend bucket*.
 -   Network endpoint group (NEG): This is a configuration object that specifies a **group of backend endpoints** or services. Useful to deploying services in **containers**. Define **how endpoints should be reached**, whether they are reachable, and where they are located. **Serverless NEGs** don't contain endpoints.
 
+#### Cloud CDN (Content Delivery Network)
+Uses Google's globally distributed edge points of presence (POP) to **cache HTTP(S) load-balanced content** close to your users.
+Content can be cached at **CDN nodes**
+Cloud CDN **caches content** at the edge of Google's network providing **faster delivery** of content to your users while reducing serving costs.
+You can enable Cloud CDN with a simple checkbox when setting up the backend service of your HTTP(S) load balancer.
+Each Cloud CDN request is automatically logged within Google Cloud. These logs will indicate a “Cache Hit (cached data)” or “Cache Miss (uncached data)” status for each HTTP request 
+Cache modes to control the factors that determine whether or not Cloud CDN caches your content, how responses are cached, whether or not Cloud CDN respects cache directives sent by the origin, and how cache TTLs are applied.
+The available cache modes are 
+1.  USE_ORIGIN_HEADERS: **requires origin responses to set valid** cache directives and valid caching headers.
+2.  CACHE_ALL_STATIC: **automatically caches static content** that doesn't have the no-store, private, or no-cache directive. Origin responses that set valid caching directives are also cached.
+3.  FORCE_CACHE_ALL: **unconditionally caches** responses, overriding any cache directives set by the origin. You should make sure **not to cache private, per-user content** (such as dynamic HTML or API responses) if using a shared backend with this mode configured.
+
+### SSL proxy and TCP proxy load balancing.
+
+
 # VPC Features
 
 - A single VPN can securely connect your on-premises network to your Google Cloud network through a VPN gateway
@@ -138,7 +153,7 @@ For each SSL certificate, you first create an **SSL certificate resource**, whic
 
 ## Related network services for private instances
 
-### Cloud NAT
+### Cloud NAT (Network Access Translation)
 - The Cloud NAT gateway only implements outbound net, not inbound net
 - Network address translation service.
 - Provides controlled and efficient internet access to private instances (without public IP addresses). Access the internet for updates, patching, configuration management, and more, which is referred to as outbound NAT. Access the internet using a Shared public IP address.
@@ -152,7 +167,6 @@ For each SSL certificate, you first create an **SSL certificate resource**, whic
 - Private Google Access can be enabled/disabled at the subnet level.
 
 ### Cloud IAP (Identity-Aware Proxy)
-
 - IAP allows you to set a central authorization layer for applications reached by HTTP request. That is, an access control at application level, instead of an access control at network level with firewall rules. 
 - You can access a private VM (without external IP address and therefore with SSH disabled) via IAP using SSH, by other instances on the network or VPN gateway
 - You can use at instance level
