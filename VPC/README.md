@@ -124,9 +124,7 @@ For each SSL certificate, you first create an **SSL certificate resource**, whic
 -   Network endpoint group (NEG): This is a configuration object that specifies a **group of backend endpoints** or services. Useful to deploying services in **containers**. Define **how endpoints should be reached**, whether they are reachable, and where they are located. **Serverless NEGs** don't contain endpoints.
 
 #### Cloud CDN (Content Delivery Network)
-Uses Google's globally distributed edge points of presence (POP) to **cache HTTP(S) load-balanced content** close to your users.
-Content can be cached at **CDN nodes**
-Cloud CDN **caches content** at the edge of Google's network providing **faster delivery** of content to your users while reducing serving costs.
+Cloud CDN **caches content or HTTP(S) load-balanced content** at the edge of Google's network providing **faster delivery** of content close to your users while reducing serving costs. Content can be cached at **CDN nodes**
 You can enable Cloud CDN with a simple checkbox when setting up the backend service of your HTTP(S) load balancer.
 Each Cloud CDN request is automatically logged within Google Cloud. These logs will indicate a “Cache Hit (cached data)” or “Cache Miss (uncached data)” status for each HTTP request 
 Cache modes to control the factors that determine whether or not Cloud CDN caches your content, how responses are cached, whether or not Cloud CDN respects cache directives sent by the origin, and how cache TTLs are applied.
@@ -135,11 +133,25 @@ The available cache modes are
 2.  CACHE_ALL_STATIC: **automatically caches static content** that doesn't have the no-store, private, or no-cache directive. Origin responses that set valid caching directives are also cached.
 3.  FORCE_CACHE_ALL: **unconditionally caches** responses, overriding any cache directives set by the origin. You should make sure **not to cache private, per-user content** (such as dynamic HTML or API responses) if using a shared backend with this mode configured.
 
-### SSL proxy and TCP proxy load balancing.
+### SSL proxy load balancing
+SSL proxy is a global load balancing service for **encrypted non-HTTP traffic or SSL Traffic**.
+This load balancer **terminates user SSL connections** at the load balancing layer, then balances the connections across your instances using the SSL (recommended) or TCP protocols.
+This load balancer supports:
+*   both **IPv4 and IPv6** addresses for client traffic
+*   provides **intelligent routing**: load balancer can route requests to back-end locations where **there is capacity**.
+*   Certificate management: to update your customer-facing certificate. Using self-signed certificates on your instances.
+*   Security patching: in order to keep your instances safe when vulnerabilities are detected
+*   SSL policies
 
+### TCP proxy load balancing
+TCP proxy is a global load balancing service for **unencrypted, non-HTTP traffic or TCP Traffic**.
+This load balancer **terminates your customer's TCP sessions** at the load balancing layer then forwards the traffic to your virtual machine instances using TCP or SSL (recommended).
+This load balancer supports:
+*   both **IPv4 and IPv6** addresses for client traffic
+*   provides **intelligent routing**: load balancer can route requests to back-end locations where **there is capacity**.
+*   Security patching: in order to keep your instances safe when vulnerabilities are detected
 
 # VPC Features
-
 - A single VPN can securely connect your on-premises network to your Google Cloud network through a VPN gateway
 - VMs within the same network can communicate using their internal IP addresses, this means that a single firewall rule can be applied to both VMs. In different network must to comunicate with their external IP addresses. 
 - The subnet is simply an IP address range, and you can use IP addresses within that range. Every subnet has four reserved IP addresses in its primary IP range
