@@ -95,61 +95,10 @@ These services are useful when you require **access to Google and Google Cloud p
 ## Shared VPC network and VPC Network Peering
 
 ![sharedVPC-and-VPCPeering](/img/sharedVPC-and-VPCPeering.png)
-1.  Shared VPC: for sharing VPC networks **across GCP projects**. So that they can communicate with each other **securely and efficiently** by using internal IP addresses from that network. You designate a project as a **host project** and attach one or more other service projects to it. The VPC networks in the host project are called **Shared VPC networks**. standalone project is which not participate in shared VPC network. And participants are host project or service project. 
+1.  Shared VPC: for sharing VPC networks **across GCP projects**. So that they can communicate with each other **securely and efficiently** by using **internal IP addresses** from that network. You designate a project as a **host project** and attach one or more other service projects to it. The VPC networks in the host project are called **Shared VPC networks**. standalone project is which not participate in shared VPC network. And participants are host project or service project. 
 
 2.  VPC Network Peering
-Which allows you to configure private communication across projects in the same or different organizations. This allows private RFC 1918 connectivity across two VPC networks. When both peering connections are created, the VPC Network Peering session becomes Active and routes are exchanged, now instances can comunicate using their **Internal IP address**. VPC Network Peering does **not incur the network latency, security, and cost drawbacks** that are present when using external IP addresses or VPNs.
-
-# Cloud Load Balancing
-
-Cloud Load Balancing gives you the ability to distribute load-balanced compute resources in single or multiple regions to meet your **high availability requirements**, to put your resources behind a **single anycast IP address**, and to scale your resources up or down with **intelligent autoscaling**. You can **serve content as close as possible** to your users. There are two types:
-
-1.  Global: These load balancers leverage the Google frontends (which are software-defined). Distributed systems that **sit in Google’s points of presence**. You want to use a global load balancer when your users and instances are distributed **globally**, your users need access to the **same applications and content**, and you want to provide access using a **single anycast IP address**. The global load balancers are the HTTP(S), SSL proxy, and TCP proxy load balancers.
-2.  Regional: The Six regional load balancers are external and internal HTTP(S), TCP Proxy, and TCP/UDP network.
-
-### HTTP(s) Load Balancing
-User traffic directed to an HTTP(S) load balancer enters the POP (Point of presence) closest to the user and is then load-balanced over Google's global network to the closest backend that has sufficient available capacity.
-allowing for routing decisions based on the URL.
-your applications are available to your customers at a **single anycast IP address**, which simplifies your DNS setup.
-HTTP(S) load balancing balances HTTP and HTTPS traffic across multiple back-end instances and across multiple regions (if you setup **global** load balancing)
-HTTP on port 80 or port 8080. HTTPS on port 443. This load balancer supports both IPv4 and IPv6 clients
-You can configure **URL maps** that route some URLs to one set of instances and route other URLs to other instances.
-Requests are generally routed to the instance group that have **capacity and is closest** to the user.
-![architecture-http-load-balancer](/img/architecture-http-load-balancer.png)
-Instances that pass the **health check** are allowed to receive new requests.
-**Session affinity** (optional) attempts to send all requests from the same client to same virtual machine instance.
--   An HTTP(S) load balancer requires at least once (with up to 15) signed **SSL certificate installed** on the target HTTPS proxy for the load balancer. The client **SSL sessions** terminate at the load balancer.
-For each SSL certificate, you first create an **SSL certificate resource**, which contains the SSL certificate information. This resource is **only used with** the load balancing proxies (HTTPS proxy or target SSL proxy).
--   **Backend buckets** allow you to use Google **Cloud Storage** buckets with HTTP(S) Load Balancing. Use case: send requests for *dynamic content*, such as data, to a *backend service*; and send requests for *static content*, such as images, to a *backend bucket*.
--   Network endpoint group (NEG): This is a configuration object that specifies a **group of backend endpoints** or services. Useful to deploying services in **containers**. Define **how endpoints should be reached**, whether they are reachable, and where they are located. **Serverless NEGs** don't contain endpoints.
-
-#### Cloud CDN (Content Delivery Network)
-Cloud CDN **caches content or HTTP(S) load-balanced content** at the edge of Google's network providing **faster delivery** of content close to your users while reducing serving costs. Content can be cached at **CDN nodes**
-You can enable Cloud CDN with a simple checkbox when setting up the backend service of your HTTP(S) load balancer.
-Each Cloud CDN request is automatically logged within Google Cloud. These logs will indicate a “Cache Hit (cached data)” or “Cache Miss (uncached data)” status for each HTTP request 
-Cache modes to control the factors that determine whether or not Cloud CDN caches your content, how responses are cached, whether or not Cloud CDN respects cache directives sent by the origin, and how cache TTLs are applied.
-The available cache modes are 
-1.  USE_ORIGIN_HEADERS: **requires origin responses to set valid** cache directives and valid caching headers.
-2.  CACHE_ALL_STATIC: **automatically caches static content** that doesn't have the no-store, private, or no-cache directive. Origin responses that set valid caching directives are also cached.
-3.  FORCE_CACHE_ALL: **unconditionally caches** responses, overriding any cache directives set by the origin. You should make sure **not to cache private, per-user content** (such as dynamic HTML or API responses) if using a shared backend with this mode configured.
-
-### SSL proxy load balancing
-SSL proxy is a global load balancing service for **encrypted non-HTTP traffic or SSL Traffic**.
-This load balancer **terminates user SSL connections** at the load balancing layer, then balances the connections across your instances using the SSL (recommended) or TCP protocols.
-This load balancer supports:
-*   both **IPv4 and IPv6** addresses for client traffic
-*   provides **intelligent routing**: load balancer can route requests to back-end locations where **there is capacity**.
-*   Certificate management: to update your customer-facing certificate. Using self-signed certificates on your instances.
-*   Security patching: in order to keep your instances safe when vulnerabilities are detected
-*   SSL policies
-
-### TCP proxy load balancing
-TCP proxy is a global load balancing service for **unencrypted, non-HTTP traffic or TCP Traffic**.
-This load balancer **terminates your customer's TCP sessions** at the load balancing layer then forwards the traffic to your virtual machine instances using TCP or SSL (recommended).
-This load balancer supports:
-*   both **IPv4 and IPv6** addresses for client traffic
-*   provides **intelligent routing**: load balancer can route requests to back-end locations where **there is capacity**.
-*   Security patching: in order to keep your instances safe when vulnerabilities are detected
+Which allows you to configure private communication **across projects in the same or different organizations**. This allows private **RFC 1918 connectivity across two VPC networks**. When both peering connections are created, the VPC Network Peering session becomes Active and routes are exchanged, now instances can comunicate using their **Internal IP address**. VPC Network Peering does **not incur the network latency, security, and cost drawbacks** that are present when using external IP addresses or VPNs.
 
 # VPC Features
 - A single VPN can securely connect your on-premises network to your Google Cloud network through a VPN gateway
