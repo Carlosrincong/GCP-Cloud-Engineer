@@ -5,6 +5,19 @@ Cloud Load Balancing gives you the ability to distribute load-balanced compute r
 1.  Global: These load balancers leverage the Google frontends (which are software-defined). Distributed systems that **sit in Google’s points of presence**. You want to use a global load balancer when your users and instances are distributed **globally**, your users need access to the **same applications and content**, and you want to provide access using a **single anycast IP address**. The global load balancers are the HTTP(S), SSL proxy, and TCP proxy load balancers.
 2.  Regional: The Six regional load balancers are external and internal HTTP(S), TCP Proxy, and TCP/UDP network.
 
+## Choosing load balancer
+Only the HTTP(S), SSL proxy, and TCP proxy load balancing services support IPv6 clients. These services handle IPv6 requests from your users and proxy them over IPv4 to your backends, and vice versa is the same.
+
+![choosing-load-balancer](/img/choosing-load-balancer.png)
+
+You'd choose an Application Load Balancer when you need a flexible feature set for your applications with HTTP(S) traffic.
+You'd choose a proxy Network Load Balancer to implement TLS offload, TCP proxy, or support for external load balancing to backends in multiple regions.
+You'd choose a passthrough Network Load Balancer to preserve client source IP addresses, avoid the overhead of proxies, and to support additional protocols like UDP, ESP, and ICMP. UDP, or if you need to expose client IP addresses to your applications.
+You can further narrow down your choices depending on your application's requirements: whether your application is **external(internet-facing)**, or **internally**, and whether you need backends deployed **globally**, or **regionally**.
+
+![summary-load-balancers.png](/img/summary-load-balancers.png)
+-MANAGED: requests are routed either to the Google Front End or to the Envoy proxy.
+
 ### HTTP(s) Load Balancing
 User traffic directed to an HTTP(S) load balancer enters the POP (Point of presence) closest to the user and is then load-balanced over Google's global network to the closest backend that has sufficient available capacity.
 allowing for routing decisions based on the URL.
