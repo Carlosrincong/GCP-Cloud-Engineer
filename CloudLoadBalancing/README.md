@@ -83,3 +83,6 @@ It uses lightweight load balancing built on top of *Andromeda* that **directly d
 The internal HTTPS load balancing is a **proxy-based regional** layer seven load balancer based **Envoy proxy** that works using an Internal load balancing IP address.
 Support HTTP, HTTPS and HTTP/2 protocols.
 Envoy proxy: This enables rich traffic **control capabilities** based on HTTPS parameters.
+
+# Best practice
+it's useful to combine an internal and an external load balancer to support three-tier web services.
