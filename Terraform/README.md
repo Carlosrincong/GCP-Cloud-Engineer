@@ -6,9 +6,12 @@
 *   Terraform lets you **provision Google Cloud resources**—such as virtual machines, containers, storage, and networking—with **declarative** configuration files, which Deployments are described and documented. Thas configuration tells Terraform how to manage a given collection of infrastructure.
 *   The benefit of a **declarative** approach is that it allows you to specify **what the configuration should be** and let the system figure out the steps to take.
 *   Unlike Cloud Shell, Terraform will **deploy resources in parallel**.
+*   As the configuration **changes**, Terraform can determine what changed and create **incremental execution** plans that can be applied.
+*   Terraform has written some data into the terraform.tfstate file. This state file is extremely important: it keeps track of the IDs of created resources so that Terraform knows what it is managing.
 
 ### How to use
-- create the configuration file with the definition of infrastructure
+- create the configuration file with the definition of infrastructure (Infrastructure as code)
 - Initialize terraform in the same folder as configuration file: terraform init
-- Get plan to achieve the infratructure defined, before the provisioning: terraform plan
+- Get a execution plan to achieve the infratructure defined, before the provisioning: terraform plan
 - Create the infrastructure defined: terraform apply
+- View the current state: terraform show
