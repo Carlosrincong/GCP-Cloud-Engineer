@@ -14,6 +14,15 @@
     2.  **variables.tf** contains the variable definitions for your module.
     3.  **outputs.tf** contains the output definitions for your module. Module outputs are made available to the configuration using the module, so they are often used to pass information about the parts of your infrastructure defined by the module to other parts of your configuration.
 *   modules are like a python library. Use the public **Terraform Registry** to find useful modules. 
+*   The primary purpose of **Terraform state** is to store bindings between objects in a remote system and resource instances declared in your configuration. This state is stored in **terraform.tfstate**
+*   A **backend** in Terraform determines how **state** is loaded and how an operation such as apply is executed. Backends can store their state remotely. Some benefit of backends are: Keeping sensitive information off disk, Working in a team and Remote operations
+*   **Import infrastructure** into terraform:
+        1.  Identify the existing infrastructure to be imported.
+        2.  Import the infrastructure into your Terraform state.
+        3.  Write a Terraform configuration that matches that infrastructure.
+        4.  Review the Terraform plan to ensure that the configuration matches the expected state and infrastructure.
+        5.  Apply the configuration to update your Terraform state.
+        ![import-terraform-configuration](/img/import-terraform-configuration.png)
 
 
 ### How to use
