@@ -37,8 +37,13 @@ The operations suite consists of three broad categories:
 ## Cloud Monitoring
 *   Cloud Monitoring provides visibility into the **performance**, **uptime**, and overall **health** of cloud-powered applications.
 *   It collects metrics, events, and metadata from projects, logs, services, systems, agents, custom code, and various common application components, including Cassandra, Nginx, Apache Web Server, Elasticsearch, and many others.
-*   Monitoring ingests that data and generates insights via dashboards, Metrics Explorer charts, and automated alerts.
+*   Monitoring ingests that data and generates **insights** via dashboards, Metrics Explorer charts, and automated alerts.
+*   It reveals what needs **urgent attention** and shows trends in application **usage patterns**
+*   These metrics are **without cost** and provide information about how the service is **performing**.
+*   GMP is a part of Cloud Monitoring and it makes **GKE** cluster and workload metrics available as Prometheus data.
+*   Cloud Monitoring and **BindPlane** can provide a single pane of glass for a **hybrid cloud**.
 ![cloud-monitoring-features](/img/cloud-monitoring-features.png)
+![cloud-monitoring-arquitecture](/img/cloud-monitoring-arquitecture.png)
 
 ## Cloud Logging
 
