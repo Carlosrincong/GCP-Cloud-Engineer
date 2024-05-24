@@ -35,3 +35,13 @@ The operations suite consists of three broad categories:
 3.  Application Performance Management (APM):  APM provides a unified view of your application's **performance**, so you can quickly identify and fix problems.
 
 ## Cloud Monitoring
+*   Cloud Monitoring provides visibility into the **performance**, **uptime**, and overall **health** of cloud-powered applications.
+*   It collects metrics, events, and metadata from projects, logs, services, systems, agents, custom code, and various common application components, including Cassandra, Nginx, Apache Web Server, Elasticsearch, and many others.
+*   Monitoring ingests that data and generates insights via dashboards, Metrics Explorer charts, and automated alerts.
+![cloud-monitoring-features](/img/cloud-monitoring-features.png)
+
+## Cloud Logging
+
+Google's Cloud Logging allows users to collect, store, search, analyze, monitor, and alert on **log entries** and events. Logs are **ingested inmediatelly and automatically**.
+
+## Error Reporting
