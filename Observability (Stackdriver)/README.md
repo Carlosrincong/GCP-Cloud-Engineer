@@ -45,3 +45,6 @@ The operations suite consists of three broad categories:
 Google's Cloud Logging allows users to collect, store, search, analyze, monitor, and alert on **log entries** and events. Logs are **ingested inmediatelly and automatically**.
 
 ## Error Reporting
+*   Error Reporting counts, analyzes, and aggregates the crashes in your running cloud services.
+*   Errors are processed and displayed in the interface within seconds.
+*   Alerts you when a new application error cannot be grouped with existing ones.
