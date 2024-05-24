@@ -32,7 +32,7 @@ It offers integrated capabilities for **monitoring**, **logging**, and advanced 
 The operations suite consists of three broad categories:
 1.  Logging: Cloud Logging collects and stores all of your application **logs**, so you can see what's happening under the hood.
 2.  Monitoring: Cloud Monitoring collects **metrics and traces**, so you can track the **performance** of your applications and identify bottlenecks
-3.  Application Performance Management (APM):  APM provides a unified view of your application's **performance**, so you can quickly identify and fix problems.
+3.  Application Performance Management (APM):  **APM** provides a unified view of your application's **performance**, so you can quickly identify and fix problems.
 
 ## Cloud Monitoring
 *   Cloud Monitoring provides visibility into the **performance**, **uptime**, and overall **health** of cloud-powered applications.
@@ -48,3 +48,13 @@ Google's Cloud Logging allows users to collect, store, search, analyze, monitor,
 *   Error Reporting counts, analyzes, and aggregates the crashes in your running cloud services.
 *   Errors are processed and displayed in the interface within seconds.
 *   Alerts you when a new application error cannot be grouped with existing ones.
+
+## Cloud Trace and Cloud Profiler for APM
+### Cloud Trace
+*   Cloud Trace is a tracing system that collects **latency data** from your distributed applications and displays it in the Google Cloud console.
+*   to generate in-depth latency reports to surface **performance degradations** in near-real time
+
+### Cloud Profiler
+*   Provide a complete CPU and heap picture of an application without slowing it down.
+*   Helps developers understand which paths consume the most **resources** and the different ways in which their **code** is actually called.
+
