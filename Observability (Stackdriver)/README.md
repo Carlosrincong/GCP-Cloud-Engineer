@@ -41,20 +41,25 @@ The operations suite consists of three broad categories:
 *   Monitoring ingests that data and generates **insights** via dashboards, Metrics Explorer charts, and automated alerts.
 *   It reveals what needs **urgent attention** and shows trends in application **usage patterns**
 *   These metrics are **without cost** and provide information about how the service is **performing**.
+
+#### Arquitecture patterns
 *   GMP is a part of Cloud Monitoring and it makes **GKE** cluster and workload metrics available as Prometheus data.
 *   Cloud Monitoring and **BindPlane** can provide a single pane of glass for a **hybrid cloud**.
+![cloud-monitoring-arquitecture](/img/cloud-monitoring-arquitecture.png)
+#### Monitoring multiple projects
 *   In monitoring settings for a project, you can see that the current **metrics scope** only has a single project in it by default. But a Single metrics scope can be used for monitoring large units of projects (metrics scoope expanded). Metrics scoopes **only affects** Cloud monitoring tools.
 *   Note that the **recommended** approach for production deployments is to create a **dedicated project to host monitoring** configuration data and use its metrics scope to set up monitoring for the projects that have actual resources in them. It also helps **compare** non-prod and prod environments easily
+#### Data model and Dasboards
 *   Google Cloud sees that your project contains resources and **auto-creates dashboards** for you that radiate the information that Google thinks is important for those two resource types.
-
-#### Arquitecture
-![cloud-monitoring-arquitecture](/img/cloud-monitoring-arquitecture.png)
-#### Data model
 ![cloud-monitoring.datamodel](/img/cloud-monitoring.datamodel.png)
 *   metricKind can be:
     1.  Gauge metric: measures a specific instant in time.
     2.  Delta metric:  measures the change in a time interval.
     3.  Cumulative metric: which the value constantly increases over time.
+#### Query metrics
+*   Cloud Monitoring supports two query languages: **MQL and PromQL** (CE & GKE). In MQL, operations are linked together by using the common **“pipe” idiom**, where the output of one operation becomes the input to the next.
+*   You can use **Grafana** to chart metric data ingested into Cloud Monitoring.
+#### Uptime checks
 
 
 ## Cloud Logging
