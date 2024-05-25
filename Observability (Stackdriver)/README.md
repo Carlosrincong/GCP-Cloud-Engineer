@@ -60,7 +60,8 @@ The operations suite consists of three broad categories:
 *   Cloud Monitoring supports two query languages: **MQL and PromQL** (CE & GKE). In MQL, operations are linked together by using the common **“pipe” idiom**, where the output of one operation becomes the input to the next.
 *   You can use **Grafana** to chart metric data ingested into Cloud Monitoring.
 #### Uptime checks
-
+*   Uptime checks can be configured to test the **availability** of your public services using HTTP, HTTPS, or TCP.
+*   For each uptime check, you can create an **alerting policy** and view the **latency** of each global location.
 
 ## Cloud Logging
 
