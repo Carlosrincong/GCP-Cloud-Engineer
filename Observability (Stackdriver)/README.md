@@ -35,6 +35,7 @@ The operations suite consists of three broad categories:
 3.  Application Performance Management (APM):  **APM** provides a unified view of your application's **performance**, so you can quickly identify and fix problems.
 
 ## Cloud Monitoring
+![cloud-monitoring-features](/img/cloud-monitoring-features.png)
 *   Cloud Monitoring provides visibility into the **performance**, **uptime**, and overall **health** of cloud-powered applications.
 *   It collects metrics, events, and metadata from projects, logs, services, systems, agents, custom code, and various common application components, including Cassandra, Nginx, Apache Web Server, Elasticsearch, and many others.
 *   Monitoring ingests that data and generates **insights** via dashboards, Metrics Explorer charts, and automated alerts.
@@ -44,9 +45,17 @@ The operations suite consists of three broad categories:
 *   Cloud Monitoring and **BindPlane** can provide a single pane of glass for a **hybrid cloud**.
 *   In monitoring settings for a project, you can see that the current **metrics scope** only has a single project in it by default. But a Single metrics scope can be used for monitoring large units of projects (metrics scoope expanded). Metrics scoopes **only affects** Cloud monitoring tools.
 *   Note that the **recommended** approach for production deployments is to create a **dedicated project to host monitoring** configuration data and use its metrics scope to set up monitoring for the projects that have actual resources in them. It also helps **compare** non-prod and prod environments easily
+*   Google Cloud sees that your project contains resources and **auto-creates dashboards** for you that radiate the information that Google thinks is important for those two resource types.
 
-![cloud-monitoring-features](/img/cloud-monitoring-features.png)
+#### Arquitecture
 ![cloud-monitoring-arquitecture](/img/cloud-monitoring-arquitecture.png)
+#### Data model
+![cloud-monitoring.datamodel](/img/cloud-monitoring.datamodel.png)
+*   metricKind can be:
+    1.  Gauge metric: measures a specific instant in time.
+    2.  Delta metric:  measures the change in a time interval.
+    3.  Cumulative metric: which the value constantly increases over time.
+
 
 ## Cloud Logging
 
