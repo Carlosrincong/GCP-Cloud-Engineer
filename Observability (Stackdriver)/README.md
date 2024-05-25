@@ -42,6 +42,9 @@ The operations suite consists of three broad categories:
 *   These metrics are **without cost** and provide information about how the service is **performing**.
 *   GMP is a part of Cloud Monitoring and it makes **GKE** cluster and workload metrics available as Prometheus data.
 *   Cloud Monitoring and **BindPlane** can provide a single pane of glass for a **hybrid cloud**.
+*   In monitoring settings for a project, you can see that the current **metrics scope** only has a single project in it by default. But a Single metrics scope can be used for monitoring large units of projects (metrics scoope expanded). Metrics scoopes **only affects** Cloud monitoring tools.
+*   Note that the **recommended** approach for production deployments is to create a **dedicated project to host monitoring** configuration data and use its metrics scope to set up monitoring for the projects that have actual resources in them. It also helps **compare** non-prod and prod environments easily
+
 ![cloud-monitoring-features](/img/cloud-monitoring-features.png)
 ![cloud-monitoring-arquitecture](/img/cloud-monitoring-arquitecture.png)
 
