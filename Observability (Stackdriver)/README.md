@@ -62,6 +62,11 @@ The operations suite consists of three broad categories:
 #### Uptime checks
 *   Uptime checks can be configured to test the **availability** of your public services using HTTP, HTTPS, or TCP.
 *   For each uptime check, you can create an **alerting policy** and view the **latency** of each global location.
+### Alerting
+#### SLI, SLO and SLA
+1.  SLI (service level **indicator**): the number of good events divided by the count of all valid events.
+2.  SLO (service level objetive): combines a service level indicator with a **target reliability**. You should choose SLOs that are S.M.A.R.T: Specific, Measurable, Achievable, Relevant and Time-bound.
+3.  SLA (service level agreement): An SLA describes the **minimum levels** of service that you promise to provide to your customers and what happens when you break that promise. Your **alerting thresholds must be often substantially higher than the minimum levels** of service documented in your SLA.
 
 ## Cloud Logging
 
