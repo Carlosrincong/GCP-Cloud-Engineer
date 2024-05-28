@@ -76,6 +76,40 @@ Define multiple conditions in an alerting policy to get better precision, recall
 One trick might be to use **short windows, but add a successive failure count**. This way, the error is spotted quickly but treated as an anomaly until the **duration** or **error count is reached**.
 **Don't involve humans unless** the alert meets some threshold for criticality.
 You can use these **levels** to focus on the issues deemed most critical for your operations and triage through the noise.
+#### Alerting policy
+An alerting policy has: A name, One or more **alert conditions**, Notifications and Documentation. The alerting policies are of two types:
+1.  **Metric based** alerting: Policies used to track *metric data* collected by Cloud **Monitoring** are called metric-based alerting policies. There are three types of conditions:
+    1.1.    **Metric-threshold conditions** trigger when the values of a metric are more than, or less than, a **threshold** for a specific **duration window**.
+    1.2.    **Metric-absence conditions** trigger when there is an *absence of measurements for a duration window*.
+    1.3.    **Forecast conditions** predict the **future behavior of the measurements** by using previous data. These conditions trigger when there is a *prediction* that a time series **will violate the threshold within a forecast window**.
+2.  **Log based** alerting: Log-based alerting is used to notify anytime a specific **message occurs in a log** in Cloud **Logging** or by using the Cloud Monitoring API.
+
+The **alert condition** is where you decide *what's being monitored* and under what *condition an alert should be generated*.
+*   You start with a **target resource and metric** you want the alert to monitor.
+*   Then the **yes-no decision logic** for triggering the alert notification is configured. It includes the *trigger condition, threshold, and duration*.
+
+There are direct-to-human **notification channels**:
+*   *Email* alerts are **easy and informative**, but they can become notification **spam** if you aren't careful.
+*   *SMS* is a great option for **fast notifications**, but choose the recipient carefully.
+*   *Slack* is very popular in **support circles**.
+*   Mobile Push from *Google Cloud App* is a valid option
+For **third-party integration** use 
+*   *PagerDuty* is a on-call management and incident response service.
+*   *Webhook* to alert users to external systems or code.
+*   *Pub/Sub* to alert users to external systems or code.
+
+If you send notifications to a third-party service then you can **parse the JSON payload and route the notification according to its severity**
+
+Because user-defined *labels are included in notifications*, if you add labels that indicate the *severity of an incident*, then the notification contains information that can help you **prioritize your alerts** for investigation.
+
+When the conditions for an alerting policy are met, Cloud Monitoring opens an **incident** in one of three states: 
+1.  *Incident firing*  when the alerting policy's set of conditions is **being met** or there’s **no data** to indicate that the condition is no longer met. Open incidents indicate a **new or unhandled alert**
+2.  *Acknowledged incidents*  A technician **mark** a new open alert as acknowledged as a signal to others that **someone is dealing with the issue**.
+3.  *Alert policies*
+
+You create a **snooze** to prevent *repeated notifications* from being sent for an **open incident**
+
+**Groups** provide a mechanism for *alerting on the behavior of a set of resources* instead of individual resources.
 
 ## Cloud Logging
 
