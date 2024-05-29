@@ -65,7 +65,7 @@ The operations suite consists of three broad categories:
 ### Alerting
 #### SLI, SLO and SLA
 1.  SLI (service level **indicator**): the number of good events divided by the count of all valid events.
-2.  SLO (service level objetive): combines a service level indicator with a **target reliability**. You should choose SLOs that are S.M.A.R.T: Specific, Measurable, Achievable, Relevant and Time-bound.
+2.  SLO (service level objetive): combines a service level indicator with a **target reliability**. You should choose SLOs that are S.M.A.R.T: Specific, Measurable, Achievable, Relevant and Time-bound. There are two types **Window-based SLOs** use a ratio of the number of good versus bad measurement intervals, or windows. And **Request-based SLOs** use a ratio of good requests to total requests.
 3.  SLA (service level agreement): An SLA describes the **minimum levels** of service that you promise to provide to your customers and what happens when you break that promise. Your **alerting thresholds must be often substantially higher than the minimum levels** of service documented in your SLA.
 #### Alerting strategy
 Send an Alert when a service is down, or an SLO isn't being met.
@@ -110,6 +110,9 @@ When the conditions for an alerting policy are met, Cloud Monitoring opens an **
 You create a **snooze** to prevent *repeated notifications* from being sent for an **open incident**
 
 **Groups** provide a mechanism for *alerting on the behavior of a set of resources* instead of individual resources.
+
+#### Monitoring Console and alerting
+Create SLI then the SLO. For alerting create an alerting policy. After the SLO is created, it’s easy to monitor the SLI status, error budget, compliance, and alert status.
 
 ## Cloud Logging
 
