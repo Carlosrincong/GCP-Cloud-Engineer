@@ -116,7 +116,22 @@ Create SLI then the SLO. For alerting create an alerting policy. After the SLO i
 
 ## Cloud Logging
 
-Google's Cloud Logging allows users to collect, store, search, analyze, monitor, and alert on **log entries** and events. Logs are **ingested inmediatelly and automatically**.
+Google's Cloud Logging allows users to collect, store, search, analyze, monitor, and alert on **log entries** and events. Logs are **ingested inmediatelly and automatically**. Logs are the **pulse** of your workloads and application. 
+Error Reporting, Log Explorer, and Log Analytics let you focus from **large sets of data**.
+
+#### Cloud Logging Arquitecture
+![cloud-logging-arquitecture](/img/cloud-logging-arquitecture.png)
+Cloud Logging supports a variety of **log sinks**, including:
+1.  *Cloud Logging log buckets* are storage buckets that are specifically designed for storing log data
+2.  *Cloud Pub/Sub topics* are topics can be used to route log data to **other services**, such as **third-party logging solutions**.
+3.  *BigQuery* can be used to store and **analyze** log data.
+4.  *Cloud storage bucket* provides **storage** of log data in Cloud Storage.
+
+Log Analysis: 
+1.  *Logs explorer* is optimized for **troubleshooting** use cases with features like log streaming
+2.  *Error reporting* help users react to **critical application errors** through automated error grouping and notifications.
+3.  *Logs-based metrics*, dashboards and alerting provide other ways to understand and make **logs actionable**.
+4.  *Log analytics* expands the toolset to include **ad hoc log analysis** capabilities
 
 ## Error Reporting
 *   Error Reporting counts, analyzes, and aggregates the crashes in your running cloud services.
