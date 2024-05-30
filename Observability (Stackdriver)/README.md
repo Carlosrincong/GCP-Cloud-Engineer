@@ -69,7 +69,7 @@ The operations suite consists of three broad categories:
 3.  SLA (service level agreement): An SLA describes the **minimum levels** of service that you promise to provide to your customers and what happens when you break that promise. Your **alerting thresholds must be often substantially higher than the minimum levels** of service documented in your SLA.
 #### Alerting strategy
 Send an Alert when a service is down, or an SLO isn't being met.
-when a system is heading to spend all of its **error budget** before the allocated time window. Error budget is perfection minus SLO.
+when a system is heading to spend all of its **error budget** before the allocated time window. Error budget is perfection minus SLO. **Error budget** is the proportion of alerts detected that were relevant to the sum of relevant alerts and missed alerts.
 ![evaluating-alerts](/img/evaluating-alerts.png)
 Define multiple conditions in an alerting policy to get better precision, recall, detection time, and rest time.
 ![alert-windoe-lenght](/img/alert-windoe-lenght.png)
