@@ -188,6 +188,13 @@ With **bucket-scoped log-based metrics**, you can create log-based metrics that 
 1.  Logs that are routed from one project to a bucket in another project.
 2.  Logs that are routed into a bucket through an aggregated sink.
 
+#### Log Analytics
+Log Analytics gives you the analytical power of BigQuery within the Cloud Logging console and provides you with a new user interface that's optimized for analyzing your logs.
+The three prominent **use cases** for Cloud Logging in Log Analyics are troubleshooting, log analytics and reporting.
+BigQuery ingestion and storage (analytics-enabled bucket) costs are included in your Logging costs. 
+Data residency and lifecycle are managed by Cloud Logging.
+
+
 ## Error Reporting
 *   Error Reporting counts, analyzes, and aggregates the crashes in your running cloud services.
 *   Errors are processed and displayed in the interface within seconds.
