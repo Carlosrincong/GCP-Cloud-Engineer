@@ -166,6 +166,27 @@ For long-term retention, reduced storage costs, and configurable object lifecycl
 
 To integrate the logging data from Google Cloud, back into an **on-premises Splunk instance**.
 
+#### Log-based metrics
+Logs-based metrics derive metric data from the content of log entries. 
+There are two types of log-based metrics:
+1.  *System-defined log-based metrics* provided by Cloud Logging
+2.  *User-defined log-based metrics* are **calculated** only from logs that have been ingested by Logging
+
+There are three types of log-based metrics:
+1.  Counter metrics: count the **number of log entries matching** an advanced logs query.
+2.  Distrinution metrics: record the **statistical distribution** of the extracted log values in histogram buckets with the count, mean, and sum of squared deviations of the values.
+3.  Boolean metrics record where a log entry **matches** a specified filter.
+
+All predefined system log-based metrics are the counter type.
+
+There are diferent use cases
+1.  Count the ocurrences
+2.  Observe trends in the data
+3.  Visualize extracted data
+
+With **bucket-scoped log-based metrics**, you can create log-based metrics that can evaluate logs in the following cases: 
+1.  Logs that are routed from one project to a bucket in another project.
+2.  Logs that are routed into a bucket through an aggregated sink.
 
 ## Error Reporting
 *   Error Reporting counts, analyzes, and aggregates the crashes in your running cloud services.
