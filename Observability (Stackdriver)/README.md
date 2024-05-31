@@ -151,6 +151,7 @@ Cloud Logging supports a variety of **log sinks**, including:
 5.  *Splunk* is used to integrate logs into existing Splunk-based system.
 
 Logs Explorer to build a **query** that selects the logs you want to exclude. Then use the Log Explorer query to create an **exclusion filter** that filters the unwanted entries out of the sink.
+When you’re trying to find log entries, start with what you know:  log entry, the log filename, resource name, resorces labels, even a bit of the contents of the logged message might work
 
 ##### Use case
 1. Export: Pub/Sub >> Dataflow >> BigQuery
