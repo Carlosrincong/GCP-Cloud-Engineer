@@ -216,7 +216,6 @@ There are four audit logs:
 
 4.  Policy Denied audit logs: When a security policy is violated. The project is charged
 
-
 ## Error Reporting
 *   Error Reporting counts, analyzes, and aggregates the crashes in your running cloud services.
 *   Errors are processed and displayed in the interface within seconds.
@@ -230,4 +229,17 @@ There are four audit logs:
 ### Cloud Profiler
 *   Provide a complete CPU and heap picture of an application without slowing it down.
 *   Helps developers understand which paths consume the most **resources** and the different ways in which their **code** is actually called.
+
+## Ops Agent
+Monitoring information can be **augmented** by installing agents into the VM operating system.
+The Ops Agent is the **primary agent for collecting telemetry data (logging and metrics)** from your Compute Engine instances.
+These agents are required for security reasons
+You can configure the Ops agent to **monitor many third-party** applications
+Agent exposes metrics beyond the 80+ metrics that Cloud Monitoring already supports for Compute Engine.
+Also ingests any user defined **(Custom) metrics in Prometheus** format.
+Ops Agent **logs** can be viewed in the **integration** page of Monitoring Console
+
+How to use:
+-   Install the ops agent by using the agent policy
+-   Install the ops agent by using the Compute engine console > observability > install ops agent > run in the Cloud Shell
 
