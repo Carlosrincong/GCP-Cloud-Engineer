@@ -230,7 +230,9 @@ There are four audit logs:
 *   Provide a complete CPU and heap picture of an application without slowing it down.
 *   Helps developers understand which paths consume the most **resources** and the different ways in which their **code** is actually called.
 
-## Ops Agent
+## Observability for Cloud Services
+
+#### Visrtual Machine with Ops Agent
 Monitoring information can be **augmented** by installing agents into the VM operating system.
 The Ops Agent is the **primary agent for collecting telemetry data (logging and metrics)** from your Compute Engine instances.
 These agents are required for security reasons
@@ -243,3 +245,7 @@ How to use:
 -   Install the ops agent by using the agent policy
 -   Install the ops agent by using the Compute engine console > observability > install ops agent > run in the Cloud Shell
 
+#### Non-Virtual machine
+1.  App Engine flexible environment is built on top of GKE and has the Monitoring agent pre-installed and configured.
+2.  Google Kubernetes Engine nodes (VMs), Cloud Monitoring and Cloud Logging is an option which is enabled by default.
+3.  Cloud Run and Cloud Function provides integrated monitoring support, with no setup or configuration required. Cloud Run has two types of logs which is automatically sent to Cloud Logging, request logs (requests of the service) and container logs (standard logs).
