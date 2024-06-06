@@ -247,5 +247,15 @@ How to use:
 
 #### Non-Virtual machine
 1.  App Engine flexible environment is built on top of GKE and has the Monitoring agent pre-installed and configured.
-2.  Google Kubernetes Engine nodes (VMs), Cloud Monitoring and Cloud Logging is an option which is enabled **by default**. Google Kubernetes Engine (GKE) also includes integration with Google Cloud Managed Service for Prometheus (**optional**).
+2.  Google Kubernetes Engine nodes (VMs), Cloud Monitoring and Cloud Logging is an option which is enabled **by default**. Google Kubernetes Engine (GKE) also includes integration with Google Cloud **Managed Service for Prometheus (optional).**
+With Prometheus in GKE, You must deploy a **PodMonitoring** resource that scrapes a metrics endpoint to see any data in the Query UI. The **ClusterPodMonitoring** resource provides the same interface as the PodMonitoring resource but does not limit discovered pods to a given namespace.
 3.  Cloud Run and Cloud Function provides integrated monitoring support, with no setup or configuration required. Cloud Run has two types of logs which is automatically sent to Cloud Logging, request logs (requests of the service) and container logs (standard logs).
+
+Managed Service for Prometheus lets users collect metrics from both Kubernetes and VM environments 
+![managed-service-for-prometheus](/img/managed-service-for-prometheus.png)
+
+##### Data collection options
+-   Managed: recommended approach for all **Kubernetes** environments and is especially suitable for more hands-off **fully managed** experience.
+-   Self-deployed: suitable for quick integration into more **complex environment**.
+-   Otel (OpenTelemetry):  best to support cross-singal workflows such as exemplars.
+-   Ops Agent: the **easiest** way and is recommended to collect and send Prometheus metric data originating from **Compute Engine** environments
