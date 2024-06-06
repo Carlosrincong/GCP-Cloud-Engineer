@@ -259,3 +259,8 @@ Managed Service for Prometheus lets users collect metrics from both Kubernetes a
 -   Self-deployed: suitable for quick integration into more **complex environment**.
 -   Otel (OpenTelemetry):  best to support cross-singal workflows such as exemplars.
 -   Ops Agent: the **easiest** way and is recommended to collect and send Prometheus metric data originating from **Compute Engine** environments
+
+##### Custom metrics
+To create custom metrics for Cloud Monitoring: You can use the classic **Cloud Monitoring API** Or you can use the** OpenTelemetry protocol and Ops Agent**.
+Then you can send that metrics metrics to Cloud Monitoring. Custom metrics can be used in the same way as built-in metrics.
+To begin with Cloud monitoring *API*, the data you collect for a custom metric must be associated with a **descriptor for a custom metric type**.
