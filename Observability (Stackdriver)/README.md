@@ -247,5 +247,5 @@ How to use:
 
 #### Non-Virtual machine
 1.  App Engine flexible environment is built on top of GKE and has the Monitoring agent pre-installed and configured.
-2.  Google Kubernetes Engine nodes (VMs), Cloud Monitoring and Cloud Logging is an option which is enabled by default.
+2.  Google Kubernetes Engine nodes (VMs), Cloud Monitoring and Cloud Logging is an option which is enabled **by default**. Google Kubernetes Engine (GKE) also includes integration with Google Cloud Managed Service for Prometheus (**optional**).
 3.  Cloud Run and Cloud Function provides integrated monitoring support, with no setup or configuration required. Cloud Run has two types of logs which is automatically sent to Cloud Logging, request logs (requests of the service) and container logs (standard logs).
