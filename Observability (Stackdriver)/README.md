@@ -239,7 +239,7 @@ These agents are required for security reasons
 You can configure the Ops agent to **monitor many third-party** applications
 Agent exposes metrics beyond the 80+ metrics that Cloud Monitoring already supports for Compute Engine.
 Also ingests any user defined **(Custom) metrics in Prometheus** format.
-Ops Agent **logs** can be viewed in the **integration** page of Monitoring Console
+Ops Agent **logs** can be viewed in the **integration** page of **Monitoring Console**
 
 How to use:
 -   Install the ops agent by using the agent policy
@@ -249,7 +249,7 @@ How to use:
 1.  App Engine flexible environment is built on top of GKE and has the Monitoring agent pre-installed and configured.
 2.  Google Kubernetes Engine nodes (VMs), Cloud Monitoring and Cloud Logging is an option which is enabled **by default**. Google Kubernetes Engine (GKE) also includes integration with Google Cloud **Managed Service for Prometheus (optional).**
 With Prometheus in GKE, You must deploy a **PodMonitoring** resource that scrapes a metrics endpoint to see any data in the Query UI. The **ClusterPodMonitoring** resource provides the same interface as the PodMonitoring resource but does not limit discovered pods to a given namespace.
-3.  Cloud Run and Cloud Function provides integrated monitoring support, with no setup or configuration required. Cloud Run has two types of logs which is automatically sent to Cloud Logging, request logs (requests of the service) and container logs (standard logs).
+3.  Cloud Run and Cloud Function provides integrated monitoring support, with no setup or configuration required. Cloud Run has two types of logs which is automatically sent to **Cloud Logging**, request logs (requests of the service) and container logs (standard logs).
 
 Managed Service for Prometheus lets users collect metrics from both Kubernetes and VM environments 
 ![managed-service-for-prometheus](/img/managed-service-for-prometheus.png)
@@ -267,8 +267,16 @@ To begin with Cloud monitoring *API*, the data you collect for a custom metric m
 
 ### Networking
 
-VPC Flow Logs **records a sample** (about one out of ten packets) of network flows sent **from and received by** VM instances, including Google Kubernetes Engine nodes. VPC Flow *Log samples* are from a **VM’s perspective**.
+#### Traffic
+VPC Flow Logs **records a sample** (about one out of ten packets) of **network flows sent from and received by** VM instances, including Google Kubernetes Engine nodes. VPC Flow *Log samples* are from a **VM’s perspective**.
 These logs can be used for **network monitoring**, traffic analysis, forensics, real-time security analysis, and expense optimization.
 VPC Flow Logs is part of **Andromeda**, the software that powers VPC networks.
 You can activate or deactivate **VPC Flow Logs per VPC subnet.**
 **Logs Explorer** can be used to access the VPC Flow Logs.
+
+#### Firewall rules
+To know what the firewall rules are doing, how many **connections match** with the rule and the firewall rule is allowing/stoping the **correct traffic**.
+Firewall Rules Logging lets you audit, verify, and analyze **the effects of your firewall rules**. These logs are **disabled by default**.
+Firewall Rules Logging can **only record TCP and UDP** connections. For other protocols, use **Packet Mirroring**.
+Firewall Rules Logging can generate a **lot of data**, which might have a **cost implication**.
+**Logs Explorer** to view logs in real time or to configure exports.
