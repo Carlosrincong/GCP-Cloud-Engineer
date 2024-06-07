@@ -280,3 +280,7 @@ Firewall Rules Logging lets you audit, verify, and analyze **the effects of your
 Firewall Rules Logging can **only record TCP and UDP** connections. For other protocols, use **Packet Mirroring**.
 Firewall Rules Logging can generate a **lot of data**, which might have a **cost implication**.
 **Logs Explorer** to view logs in real time or to configure exports.
+
+#### Load balancers
+Logs all the load balancing **requests sent to your load balancer**. To know how each connection is routed to serving backends.
+These logs can be used for debugging and analyzing your **user traffic**.
