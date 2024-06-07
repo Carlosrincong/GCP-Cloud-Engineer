@@ -232,7 +232,7 @@ There are four audit logs:
 
 ## Observability for Cloud Services
 
-#### Visrtual Machine with Ops Agent
+#### Virtual Machine with Ops Agent
 Monitoring information can be **augmented** by installing agents into the VM operating system.
 The Ops Agent is the **primary agent for collecting telemetry data (logging and metrics)** from your Compute Engine instances.
 These agents are required for security reasons
@@ -264,3 +264,11 @@ Managed Service for Prometheus lets users collect metrics from both Kubernetes a
 To create custom metrics for Cloud Monitoring: You can use the classic **Cloud Monitoring API** Or you can use the **OpenTelemetry protocol and Ops Agent**.
 Then you can send that metrics metrics to Cloud Monitoring. Custom metrics can be used in the same way as built-in metrics.
 To begin with Cloud monitoring *API*, the data you collect for a custom metric must be associated with a **descriptor for a custom metric type**.
+
+### Networking
+
+VPC Flow Logs **records a sample** (about one out of ten packets) of network flows sent **from and received by** VM instances, including Google Kubernetes Engine nodes. VPC Flow *Log samples* are from a **VM’s perspective**.
+These logs can be used for **network monitoring**, traffic analysis, forensics, real-time security analysis, and expense optimization.
+VPC Flow Logs is part of **Andromeda**, the software that powers VPC networks.
+You can activate or deactivate **VPC Flow Logs per VPC subnet.**
+**Logs Explorer** can be used to access the VPC Flow Logs.
