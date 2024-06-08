@@ -284,3 +284,7 @@ Firewall Rules Logging can generate a **lot of data**, which might have a **cost
 #### Load balancers
 Logs all the load balancing **requests sent to your load balancer**. To know how each connection is routed to serving backends.
 These logs can be used for debugging and analyzing your **user traffic**.
+
+#### Cloud NAT
+Log entry can be generated when a** network connection (TCP or UDP) that uses Cloud NAT** is created, and/or when an **egress packet is dropped** because no port was available for Cloud NAT.
+To view the collected logs in **Logs Explorer**, filter to the Cloud NAT Gateway resource 

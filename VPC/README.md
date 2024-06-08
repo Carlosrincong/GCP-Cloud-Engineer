@@ -117,7 +117,7 @@ Which allows you to configure private communication **across projects in the sam
 ### Cloud NAT (Network Access Translation)
 - The Cloud NAT gateway only implements outbound net, not inbound net
 - Network address translation service.
-- Provides controlled and efficient internet access to private instances (without public IP addresses). Access the internet for updates, patching, configuration management, and more, which is referred to as outbound NAT. Access the internet using a Shared public IP address.
+- Provides controlled and efficient **internet access to private instances** (without public IP addresses). Access the internet for updates, patching, configuration management, and more, which is referred to as outbound NAT. Access the internet using a Shared public IP address.
 - Cloud NAT does not implement inbound NAT
 - Hosts outside your VPC network cannot directly access any of the private instances behind the cloud NAT gateway
 - This helps you keep your VPC networks isolated and secure.
