@@ -289,7 +289,7 @@ These logs can be used for debugging and analyzing your **user traffic**.
 Log entry can be generated when a** network connection (TCP or UDP) that uses Cloud NAT** is created, and/or when an **egress packet is dropped** because no port was available for Cloud NAT.
 To view the collected logs in **Logs Explorer**, filter to the Cloud NAT Gateway resource 
 
-##### Packet Mirroring
+#### Packet Mirroring
 Packet Mirroring **clones the traffic (ingress/egress) and its data of specific instances** in your Virtual Private Cloud (VPC) network and forwards it for examination (threats or anomalies). This is useful in **security and monitoring**.
 -   Security: usage of the following **security tools**: Intrusion detection systems match signatures with multiple packets of a single flow. Deep Packet Inspection engines inspect payloads for anomalies.
 -   Monitoring: to maintain **integrity of deployment**. Troubleshoots like Packet loss issues (analyzing protocols), and reconnection and latency issues (analyzing real time traffic patterns)
@@ -297,3 +297,11 @@ Packet Mirroring **clones the traffic (ingress/egress) and its data of specific 
 
 The mirroring **happens on the virtual machine** (VM) instances, not on the network. Therefore **consumes additional bandwidth** on the hosts, which is one of the major **limitations** of Packet Mirroring is bandwidth consumption. Use **filters to reduce** the traffic collected for mirrored instances.
 Packet Mirroring exports monitoring data about mirrored traffic to **Cloud Monitoring**.
+
+#### Network Intelligence Center
+Currently, it offers five modules: 
+-   Network Topology: visualizes your Google Cloud **network as a graph** to explore your existing configurations and quickly troubleshoot networking issues.
+-   Connectivity Tests: diagnose **connectivity issues** and prevent outages.
+-   Performance Dashboard: gives you visibility into the **performance of your VPC**
+-   Firewall Insights: produces **metrics and insights** that let you make better decisions about your **firewall rules** and to knwo how these are being used.
+-   Network Analyzer: monitors your VPC network configurations and **detects misconfigurations and suboptimal configurations**.
