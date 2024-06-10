@@ -271,7 +271,7 @@ To begin with Cloud monitoring *API*, the data you collect for a custom metric m
 VPC Flow Logs **records a sample** (about one out of ten packets) of **network flows sent from and received by** VM instances, including Google Kubernetes Engine nodes. VPC Flow *Log samples* are from a **VM’s perspective**.
 These logs can be used for **network monitoring**, traffic analysis, forensics, real-time security analysis, and expense optimization.
 VPC Flow Logs is part of **Andromeda**, the software that powers VPC networks.
-You can activate or deactivate **VPC Flow Logs per VPC subnet.**
+You can activate or deactivate **VPC Flow Logs per VPC subnet.** at the network configuration.
 **Logs Explorer** can be used to access the VPC Flow Logs.
 
 #### Firewall rules
