@@ -220,17 +220,23 @@ There are four audit logs:
 Provides insights into how your code and services are functioning.
 
 ## Error Reporting
-*   Error Reporting counts, analyzes, and aggregates the crashes and exceptions in your running cloud services.
+*   Error Reporting counts, analyzes, and aggregates the **crashes and exceptions** in your running cloud services.
 *   Error Reporting can only analyze log entries that are stored in **Cloud Logging buckets** that are in the global region.
-*   Errors are processed and displayed in the interface within seconds, providing instant error notification.
+*   Errors are processed and displayed in the interface within seconds, providing **instant error notification**.
 *   Alerts you when a new application error cannot be grouped with existing ones.
-*   Helps you to understand errors to fix the root causes
+*   Helps you to understand errors to **fix the root causes**.
 *   Error Reporting can aggregate and display errors for: App Engine, Cloud Functions, App script, Cloud Run, Compute Engine, Amazon EC2 And GKE.
 *   Enable the Error **Reporting API**, and install the client library by using npm. Use error message builder to customize all fields.
 
 ## Cloud Trace
-*   Cloud Trace is a tracing system that collects **latency data** from your distributed applications and displays it in the Google Cloud console.
-*   to generate in-depth latency reports to surface **performance degradations** in near-real time
+*   A trace describes the **time** that it takes an application to **complete a single operation**. A trace is a collection of spans. A span describes how long it takes to **perform a complete suboperation**.
+*   Cloud Trace is a tracing system that collects **latency data** from your distributed applications and displays it in the Google Cloud console, with detailed information for a single request or view aggregate latency for your entire application.
+*   Track how requests propagate through your application 
+*   Useful to generate in-depth latency reports to surface **performance degradations** in near-real time
+*   The **Trace SDK** is available for Java, Node.js, Ruby, and Go. The **Trace API** can be used to submit and retrieve trace data from any source. The Cloud Trace API **collects trace data and sends it to your Google Cloud project**.
+*   There are two ways to send trace data to Cloud Trace: 
+    -   Automatic tracing
+    -   Instrumenting the application: You can do this by using Google client libraries or **OpenTelemetry (recommended)**.
 
 ## Cloud Profiler
 *   Provide a complete CPU and heap picture of an application without slowing it down.
