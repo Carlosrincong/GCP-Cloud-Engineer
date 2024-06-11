@@ -216,21 +216,27 @@ There are four audit logs:
 
 4.  Policy Denied audit logs: When a security policy is violated. The project is charged
 
-## Error Reporting
-*   Error Reporting counts, analyzes, and aggregates the crashes in your running cloud services.
-*   Errors are processed and displayed in the interface within seconds.
-*   Alerts you when a new application error cannot be grouped with existing ones.
+# Application Performance Management
+Provides insights into how your code and services are functioning.
 
-## Cloud Trace and Cloud Profiler for APM
-### Cloud Trace
+## Error Reporting
+*   Error Reporting counts, analyzes, and aggregates the crashes and exceptions in your running cloud services.
+*   Error Reporting can only analyze log entries that are stored in **Cloud Logging buckets** that are in the global region.
+*   Errors are processed and displayed in the interface within seconds, providing instant error notification.
+*   Alerts you when a new application error cannot be grouped with existing ones.
+*   Helps you to understand errors to fix the root causes
+*   Error Reporting can aggregate and display errors for: App Engine, Cloud Functions, App script, Cloud Run, Compute Engine, Amazon EC2 And GKE.
+*   Enable the Error **Reporting API**, and install the client library by using npm. Use error message builder to customize all fields.
+
+## Cloud Trace
 *   Cloud Trace is a tracing system that collects **latency data** from your distributed applications and displays it in the Google Cloud console.
 *   to generate in-depth latency reports to surface **performance degradations** in near-real time
 
-### Cloud Profiler
+## Cloud Profiler
 *   Provide a complete CPU and heap picture of an application without slowing it down.
 *   Helps developers understand which paths consume the most **resources** and the different ways in which their **code** is actually called.
 
-## Observability for Cloud Services
+# Observability for Cloud Services
 
 #### Virtual Machine with Ops Agent
 Monitoring information can be **augmented** by installing agents into the VM operating system.
