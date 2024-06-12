@@ -229,8 +229,8 @@ Provides insights into how your code and services are functioning.
 *   Enable the Error **Reporting API**, and install the client library by using npm. Use error message builder to customize all fields.
 
 ## Cloud Trace
-*   A trace describes the **time** that it takes an application to **complete a single operation**. A trace is a collection of spans. A span describes how long it takes to **perform a complete suboperation**.
 *   Cloud Trace is a tracing system that collects **latency data** from your distributed applications and displays it in the Google Cloud console, with detailed information for a single request or view aggregate latency for your entire application.
+*   A trace describes the **time** that it takes an application to **complete a single operation**. A trace is a collection of spans. A span describes how long it takes to **perform a complete suboperation**.
 *   Track how requests propagate through your application 
 *   Useful to generate in-depth latency reports to surface **performance degradations** in near-real time
 *   The **Trace SDK** is available for Java, Node.js, Ruby, and Go. The **Trace API** can be used to submit and retrieve trace data from any source. The Cloud Trace API **collects trace data and sends it to your Google Cloud project**.
@@ -239,8 +239,10 @@ Provides insights into how your code and services are functioning.
     -   Instrumenting the application: You can do this by using Google client libraries or **OpenTelemetry (recommended)**.
 
 ## Cloud Profiler
-*   Provide a complete CPU and heap picture of an application without slowing it down.
-*   Helps developers understand which paths consume the most **resources** and the different ways in which their **code** is actually called.
+*   Provide a complete **CPU, memmory** or heap picture of an application without slowing it down.
+*   Helps developers understand which paths consume the most **resources** and the different ways in which their **code** is called.
+*   The profiling types available vary by language. The profiling types can be: CPU time, heap, allocated heap, contention, wall time and threads. Check the **API** documentation for your programing lenguage.
+*   Profiler instruments applications that run in most Google and non-Google compute technologies.
 
 # Observability for Cloud Services
 
