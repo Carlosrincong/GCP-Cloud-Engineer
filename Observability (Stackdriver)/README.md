@@ -319,3 +319,17 @@ Currently, it offers five modules:
 -   Performance Dashboard: gives you visibility into the **performance of your VPC**
 -   Firewall Insights: produces **metrics and insights** that let you make better decisions about your **firewall rules** and to knwo how these are being used.
 -   Network Analyzer: monitors your VPC network configurations and **detects misconfigurations and suboptimal configurations**.
+
+# Pricing
+Cost is usage-based and not infrastructure-based.
+Cloud Profiler is offered at **no cost**
+Cloud Logging (incluiding Error reporting), Cloud Monitoring, and Cloud Trace has an **associated costs**.
+
+-   Logging pricing is based on the volume of chargeable **logs ingested**.
+-   Cloud Monitoring prices are based on the: Volume of chargeable metrics ingested, Number of chargeable API calls, Execution of Cloud Monitoring uptime checks, Metrics ingested by using Google Cloud Managed Service for Prometheus.
+-   Trace prices are based on the number of **spans ingested** and eventually scanned
+
+Many functions of the Google Cloud operations suite are free, including: Using Cloud Profiler. Collecting and using the Cloud Audit Logs, Access Transparency logs, BigQuery Data Access logs and anything excluded from logs. Creating and using dashboards. Visualizing Google Cloud and Anthos metrics and log streams. App Engine standard trace spans. Uptime checks. Logs analytics when queries are running in Cloud Logging.
+
+
+The networking logs, including VPC Flow logs, Firewall Rules Logging, and Cloud NAT, will cost you the standard log storage fees. However, if you store them in Cloud Logging, they won't cost you anything extra to generate.
