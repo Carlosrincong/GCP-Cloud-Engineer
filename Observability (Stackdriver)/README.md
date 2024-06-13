@@ -333,3 +333,14 @@ Many functions of the Google Cloud operations suite are free, including: Using C
 
 
 The networking logs, including VPC Flow logs, Firewall Rules Logging, and Cloud NAT, will cost you the standard log storage fees. However, if you store them in Cloud Logging, they won't cost you anything extra to generate.
+
+## Best practice
+-   If you exclude log entries, you don't pay for them. Common exclusions: Load Balancing, VPC flow logs (completly deactive) and web applications with their http 200 OK response. 
+-   Log exports are free, but not the target resource. 
+-   You can export logs yet exclude them from being ingested into Cloud Logging.
+-   2 TiBs of data access log data stored in Logging would cost about $1,000. The same 2 TiBs stored in a regional, standard class bucket would cost about $40.
+-   Reduce Ops Agent usage.
+-   How you use labels on Monitoring custom metrics can affect the volume of time series that are generated
+-   Custom metrics can increase spend.
+-   Trace charges are based on the number of trace spans ingested and scanned.
+-   Sampling is not only a best practice for using Cloud Trace: you might reduce your span volume for cost-reduction reasons too.
