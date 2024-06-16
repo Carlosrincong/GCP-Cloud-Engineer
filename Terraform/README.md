@@ -4,6 +4,7 @@
 *   Infrastructure as code refers to frameworks that **manipulate Google Cloud APIs to deploy the infrastructure required** to run application code.
 *   Infrastructure as code (**IaC**) to provisioning and removing infrastructure. When the deployment complexity is managed in code.This is useful for **continuous deployment**. 
 *   Terraform lets you **provision Google Cloud resources**—such as virtual machines, containers, storage, and networking— with **declarative configuration files**, which Deployments are described and documented. Thas configuration tells Terraform how to manage a given collection of infrastructure.
+*   You can use terraform using these authentication methods: Cloud SDK (Cloud shell or CLI), through a service account, or through a service account key. 
 
 ### Benefits
 *   Declarative configuration files can be managed in the same way as application **source code**: version control, collaborate, commit, trace, comments, auditable history, etc.
