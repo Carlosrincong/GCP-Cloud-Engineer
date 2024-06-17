@@ -35,7 +35,7 @@
 
 ### Terraform WorkFlow
 - Determine which resources are required for the project
-- create the configuration file with the definition of infrastructure (Infrastructure as code)
+- Create the configuration file with the definition of infrastructure (Infrastructure as code) with Terraform code in .tf files.
 - Initialize terraform in the same folder as configuration file: terraform init
 - Get and review the execution plan to achieve the infratructure defined, before the provisioning: terraform plan
 - Create the infrastructure defined: terraform apply
