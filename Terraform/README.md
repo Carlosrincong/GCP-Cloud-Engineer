@@ -34,9 +34,15 @@
 
 
 ### Terraform WorkFlow
-- Determine which resources are required for the project
-- Create the configuration file with the definition of infrastructure (Infrastructure as code) with Terraform code in .tf files.
-- Initialize terraform in the same folder as configuration file: terraform init
-- Get and review the execution plan to achieve the infratructure defined, before the provisioning: terraform plan
-- Create the infrastructure defined: terraform apply
-- View the current state: terraform show
+-   Determine which resources are required for the project
+-   Create the configuration file with the definition of infrastructure (Infrastructure as code) with Terraform code in .tf files.
+    
+    A Terraform configuration consists of: 
+    -   A root module or root configuration file is the working directory in which Terraform commands are run.
+    -   Optional tree for child modules. Child modules are optional, and can be variables, outputs, providers, and so forth.
+-   Initialize terraform in the same folder as configuration file: terraform init
+-   Get and review the execution plan to achieve the infratructure defined, before the provisioning: terraform plan
+-   Create the infrastructure defined: terraform apply
+-   View the current state: terraform show
+
+### HCL Syntax
