@@ -16,11 +16,13 @@
 *   Using **modules** has the following benefits: organize configuration, encapsulate configuration, re-use configuration, provide consistency, standardize how a given resource is created and ensure best practices. 
     ![terraform-structure](/img/terraform-structure.png)
     1.  **main.tf** contains the main set of configurations for your module. You can also create other configuration files and organize them in a way that makes sense for your project.
-    2.  **variables.tf** contains the variable definitions for your module.
-    3.  **outputs.tf** contains the output definitions for your module. Module outputs are made available to the configuration using the module, so they are often used to pass information about the parts of your infrastructure defined by the module to other parts of your configuration.
+    2.  **variables.tf** contains the variable definitions for your module. Variables are used to parameterize your configuration.
+    3.  **outputs.tf** contains the output definitions for your module. Module outputs are made available to the configuration using the module, so they are often used to pass information about the parts of your infrastructure defined by the module to other parts of your configuration. Resource instances managed by Terraform each export attributes whose values can be used elsewhere in configuration.
+    4.  **providers.tf** specify the Terraform block that includes the provider definition you will use. Terraform downloads the provider plugin in the root configuration when the provider is declared.
+    5.  **terraform.tfstate** Terraform saves the state of resources that it manages in a state file. it’s created and updated automatically.
 
 
-### 
+### Terraform state
 *   Terraform has written some data into the terraform.tfstate file. This **state file** is extremely important: reflect the **current state** of your infrastructure and it keeps track of the IDs of created resources so that Terraform knows **what it is managing**. 
 *   The primary purpose of **Terraform state** is to store bindings between objects in a remote system and resource instances declared in your configuration. This state is stored in **terraform.tfstate**
 *   A **backend** in Terraform determines how **state** is loaded and how an operation such as apply is executed. Backends can store their state remotely. Some benefit of backends are: Keeping sensitive information off disk, Working in a team and Remote operations
@@ -46,6 +48,9 @@
 -   View the current state: terraform show
 
 ### HCL Syntax
+
+*   The keyword resource identifies the block as a cloud infrastructure component.
+*   Terraform uses the resource type and the resource name together as an identifier for the resource.
 
 ![terraform-hcl-syntax](/img/terraform-hcl-syntax.png)
 
