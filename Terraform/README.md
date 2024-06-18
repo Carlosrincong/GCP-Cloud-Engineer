@@ -46,3 +46,11 @@
 -   View the current state: terraform show
 
 ### HCL Syntax
+
+![terraform-hcl-syntax](/img/terraform-hcl-syntax.png)
+
+-   Blocks are lines of code that belong to a certain type. The order of the blocks or files does not matter.
+-   Arguments are part of a block and used to allocate a value (Expressions) to a name (Identifiers). Arguments can be mandatory or optional.
+-   Identifiers are names of an argument, block type, or any Terraform-specific constructs.
+-   Expressions can be used to assign a value to an identifier within a code block.
+-   Comment syntax start with a # for a single-line comment.
