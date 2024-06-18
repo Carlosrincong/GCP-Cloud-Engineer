@@ -21,7 +21,6 @@
     4.  **providers.tf** specify the Terraform block that includes the provider definition you will use. Terraform downloads the provider plugin in the root configuration when the provider is declared.
     5.  **terraform.tfstate** Terraform saves the state of resources that it manages in a state file. it’s created and updated automatically.
 
-
 ### Terraform state
 *   Terraform has written some data into the terraform.tfstate file. This **state file** is extremely important: reflect the **current state** of your infrastructure and it keeps track of the IDs of created resources so that Terraform knows **what it is managing**. 
 *   The primary purpose of **Terraform state** is to store bindings between objects in a remote system and resource instances declared in your configuration. This state is stored in **terraform.tfstate**
@@ -33,7 +32,6 @@
         4.  Review the Terraform plan to ensure that the configuration matches the expected state and infrastructure.
         5.  Apply the configuration to update your Terraform state.
         ![import-terraform-configuration](/img/import-terraform-configuration.png)
-
 
 ### Terraform WorkFlow
 -   Determine which resources are required for the project
@@ -48,7 +46,6 @@
 -   View the current state: terraform show
 
 ### HCL Syntax
-
 *   The keyword resource identifies the block as a cloud infrastructure component.
 *   Terraform uses the resource type and the resource name together as an identifier for the resource.
 
