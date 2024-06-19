@@ -39,9 +39,10 @@
     
     A Terraform configuration consists of: 
     -   A root module or root configuration file is the working directory in which Terraform commands are run.
-    -   Optional tree for child modules. Child modules are optional, and can be variables, outputs, providers, and so forth.
+    -   Optional tree for child modules. Child *modules* are optional, and can be variables, outputs, providers, and so forth.
 -   Initialize terraform in the same folder as configuration file: **terraform init**. Terraform init is used to initialize the provider with a plugin or install the plugin needed.
 -   Get and review the execution plan to achieve the infratructure defined, before the provisioning: **terraform plan**
+-   (optional) The **Terraform validator** is a tool for enforcing policy compliance (and governance policies) as part of an infrastructure CI/CD pipeline. To address this policy, the security and governance teams can set up *guardrails*. These guardrails are in the form of *constraints*. These constraints automate the enforcement of the organization policies. Security teams can create a centralized policy library that is used by all teams across the organization to identify and prevent policy violations.
 -   Create the infrastructure defined: **terraform apply**
 -   View the current state: **terraform show**
 -   Destroys infrastructure resources: **terraform destroy**
