@@ -40,10 +40,13 @@
     A Terraform configuration consists of: 
     -   A root module or root configuration file is the working directory in which Terraform commands are run.
     -   Optional tree for child modules. Child modules are optional, and can be variables, outputs, providers, and so forth.
--   Initialize terraform in the same folder as configuration file: terraform init
--   Get and review the execution plan to achieve the infratructure defined, before the provisioning: terraform plan
--   Create the infrastructure defined: terraform apply
--   View the current state: terraform show
+-   Initialize terraform in the same folder as configuration file: **terraform init**. Terraform init is used to initialize the provider with a plugin or install the plugin needed.
+-   Get and review the execution plan to achieve the infratructure defined, before the provisioning: **terraform plan**
+-   Create the infrastructure defined: **terraform apply**
+-   View the current state: **terraform show**
+-   Destroys infrastructure resources: **terraform destroy**
+
+Running **terraform fmt** on your modules and code automatically applies all formatting rules and recommended styles to assist with readability and consistency.
 
 ### HCL Syntax
 *   The keyword resource identifies the block as a cloud infrastructure component.
