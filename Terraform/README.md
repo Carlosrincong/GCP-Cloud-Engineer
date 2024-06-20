@@ -35,6 +35,7 @@
 
 ### Terraform WorkFlow
 -   Determine which resources are required for the project
+-   Define the provider in the providers.tf text file and put into it the code that you can find in Terraform Registry.
 -   Create the configuration file with the definition of infrastructure (Infrastructure as code) with Terraform code in .tf files.
     
     A Terraform configuration consists of: 
