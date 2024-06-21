@@ -53,6 +53,11 @@ Running **terraform fmt** on your modules and code automatically applies all for
 ### HCL Syntax
 *   The keyword resource identifies the block as a cloud infrastructure component. The resource block is used to declare a single infrastructure object.
 *   Terraform uses the resource type and the resource name together as an identifier for the resource.
+*   Meta-arguments can be used with any resource type to change the behavior of resources:
+        1.  count: create multiple resourses of the same type. Ideal for identical resourses. 
+        2.  for_each: create multiple resourses of the same type according to a map or set of strings. Useful for resourses which some of their arguments need distinct values that can't be directly derived from an integer
+        3.  Depends_on: useful to specify explicit dependencies.
+        4.  Lifecycle: defines the lifecycle of a resource for high availability
 
 ![terraform-hcl-syntax](/img/terraform-hcl-syntax.png)
 
@@ -64,4 +69,3 @@ Running **terraform fmt** on your modules and code automatically applies all for
 
 # Best practice
 -   It’s recommended that you place similar types of resources in a directory and define resources in the main.tf file.
--   A declared resource is identified by its type and name.
