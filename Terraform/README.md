@@ -56,7 +56,7 @@ Running **terraform fmt** on your modules and code automatically applies all for
 *   Meta-arguments can be used with any resource type to change the behavior of resources:
         1.  count: create multiple resourses of the same type. Ideal for identical resourses. 
         2.  for_each: create multiple resourses of the same type according to a map or set of strings. Useful for resourses which some of their arguments need distinct values that can't be directly derived from an integer
-        3.  Depends_on: useful to specify explicit dependencies.
+        3.  Depends_on: useful to specify *explicit* dependencies. Dependencies which are unknown to terraform. The depends_on argument gives you the flexibility to control the order in which Terraform processes the resources in a configuration.
         4.  Lifecycle: defines the lifecycle of a resource for high availability
 
 ![terraform-hcl-syntax](/img/terraform-hcl-syntax.png)
