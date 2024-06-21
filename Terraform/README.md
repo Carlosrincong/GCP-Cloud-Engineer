@@ -51,7 +51,7 @@
 Running **terraform fmt** on your modules and code automatically applies all formatting rules and recommended styles to assist with readability and consistency.
 
 ### HCL Syntax
-*   The keyword resource identifies the block as a cloud infrastructure component.
+*   The keyword resource identifies the block as a cloud infrastructure component. The resource block is used to declare a single infrastructure object.
 *   Terraform uses the resource type and the resource name together as an identifier for the resource.
 
 ![terraform-hcl-syntax](/img/terraform-hcl-syntax.png)
@@ -61,3 +61,7 @@ Running **terraform fmt** on your modules and code automatically applies all for
 -   Identifiers are names of an argument, block type, or any Terraform-specific constructs.
 -   Expressions can be used to assign a value to an identifier within a code block.
 -   Comment syntax start with a # for a single-line comment.
+
+# Best practice
+-   It’s recommended that you place similar types of resources in a directory and define resources in the main.tf file.
+-   A declared resource is identified by its type and name.
