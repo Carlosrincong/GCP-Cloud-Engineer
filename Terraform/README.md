@@ -13,6 +13,7 @@
 *   As the configuration **changes**, Terraform can determine what changed and create **incremental execution** plans that can be applied.
 *   Configurations can be modularized using **templates** which allow the abstraction of resources into reusable components across deployments.
 *   Modules are like a python library. Use the public **Terraform Registry or the Cloud Foundation Toolkit** to find useful modules.
+*   The **Registry** provides plugins to manage any infrastructure API, pre-made modules to quickly configure common infrastructure components, and examples of how to write quality Terraform code.
 *   Using **modules** has the following benefits: organize configuration, encapsulate configuration, re-use configuration, provide consistency, standardize how a given resource is created and ensure best practices. 
     ![terraform-structure](/img/terraform-structure.png)
     1.  **main.tf** contains the main set of configurations for your module. You can also create other configuration files and organize them in a way that makes sense for your project.
