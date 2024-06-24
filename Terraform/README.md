@@ -14,13 +14,15 @@
 *   Configurations can be modularized using **templates** which allow the abstraction of resources into reusable components across deployments.
 *   Modules are like a python library. Use the public **Terraform Registry or the Cloud Foundation Toolkit** to find useful modules.
 *   The **Registry** provides plugins to manage any infrastructure API, pre-made modules to quickly configure common infrastructure components, and examples of how to write quality Terraform code.
-*   Using **modules** has the following benefits: organize configuration, encapsulate configuration, re-use configuration, provide consistency, standardize how a given resource is created and ensure best practices. Terraform implements the DRY principle using modules.
+*   Using **modules** has the following benefits: organize configuration, encapsulate configuration, re-use configuration, provide consistency, standardize how a given resource is created and ensure best practices. Terraform implements the DRY principle using modules. The definition of a module ia a group of one or more Terraform configuration files in a directory. The configuration files can be:
     ![terraform-structure](/img/terraform-structure.png)
     1.  **main.tf** contains the main set of configurations for your module. You can also create other configuration files and organize them in a way that makes sense for your project.
     2.  **variables.tf** contains the variable definitions for your module. Variables are used to parameterize your configuration. You can parameterize values shared between resources. Variables must be declared in the variable block. To access the value of a variable declared within the module, you can use the expressions var.variable_name. The values of these variables are difined at run time. to define the values at run time you can use: **variables_file.tfvars** text file (recommended), CLI apply options or enviroment variables. Values of the variables can be validate using the validation block includes a condition argument for which the validation rule is assigned.
     3.  **outputs.tf** contains the output definitions for your module. Module outputs are made available to the configuration using the module, so they are often used to pass information about the parts of your infrastructure defined by the module to other parts of your configuration. Resource instances managed by Terraform each export attributes whose values can be used elsewhere in configuration.
     4.  **providers.tf** specify the Terraform block that includes the provider definition you will use. Terraform downloads the provider plugin in the root configuration when the provider is declared.
     5.  **terraform.tfstate** Terraform saves the state of resources that it manages in a state file. it’s created and updated automatically.
+*   The root module is where terraform plan and terraform apply are run. Normally, this module contains a main.tf file and sets of other modules.
+*   Each module has its own main.tf file.
 
 ### Terraform state
 *   Terraform has written some data into the terraform.tfstate file. This **state file** is extremely important: reflect the **current state** of your infrastructure and it keeps track of the IDs of created resources so that Terraform knows **what it is managing**. 
