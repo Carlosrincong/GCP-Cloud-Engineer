@@ -21,7 +21,7 @@
     3.  **outputs.tf** contains the output definitions for your module. Module outputs are made available to the configuration using the module, so they are often used to pass information about the parts of your infrastructure defined by the module to other parts of your configuration. Resource instances managed by Terraform each export attributes whose values can be used elsewhere in configuration.
     4.  **providers.tf** specify the Terraform block that includes the provider definition you will use. Terraform downloads the provider plugin in the root configuration when the provider is declared.
     5.  **terraform.tfstate** Terraform saves the state of resources that it manages in a state file. it’s created and updated automatically.
-*   The root module is where terraform plan and terraform apply are run. Normally, this module contains a main.tf file and sets of other modules.
+*   The root module is where terraform plan and terraform apply are run. Normally, this module contains a main.tf file and sets of other modules. In this file you can call the module to reference the code in the module block. In the module block, you must define the module source, which is where the configuration files of this module are located.
 *   Each module has its own main.tf file.
 
 ### Terraform state
