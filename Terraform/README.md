@@ -29,8 +29,11 @@
 ### Terraform state
 *   Terraform has written some data into the terraform.tfstate file. This **state file** is extremely important: reflect the **current state** of your infrastructure and it keeps track of the IDs of created resources so that Terraform knows **what it is managing**. 
 *   Terraform uses the resource type and the resource name together as an identifier for the resource.
-*   The primary purpose of **Terraform state** is to store bindings between objects in a remote system and resource instances declared in your configuration. This state is stored in **terraform.tfstate**
-*   A **backend** in Terraform determines how **state** is loaded and how an operation such as apply is executed. Backends can store their state remotely. Some benefit of backends are: Keeping sensitive information off disk, Working in a team and Remote operations
+*   The primary purpose of **Terraform state** is to store bindings between objects in a **remote** system and resource instances declared in your configuration. This state is stored in **terraform.tfstate**
+*   A **backend** in Terraform determines how **state** is loaded and how an operation such as apply is executed. Backends can store their state **remotely**. Some benefit of backends are: Keeping sensitive information off disk, Working in a team and Remote operations
+*   when stored remotely, the state file is **automatically updated**. It will also automatically store the state file in that backend after each apply.
+*   Remote Cloud Storage buckets natively support **state locking**. The file can be locked so that if multiple developers run terraform apply simultaneously, it won’t be corrupted by simultaneous updates.
+*   To set up a **Remote Cloud Storage**, create a bucket in the configuration file of your terraform directory. Next, to change the backend configuration, add the code to a new Terraform configuration file called backend.tf.
 *   **Import infrastructure** into terraform:
         1.  Identify the existing infrastructure to be imported.
         2.  Import the infrastructure into your Terraform state.
