@@ -34,6 +34,7 @@
 *   when stored remotely, the state file is **automatically updated**. It will also automatically store the state file in that backend after each apply.
 *   Remote Cloud Storage buckets natively support **state locking**. The file can be locked so that if multiple developers run terraform apply simultaneously, it won’t be corrupted by simultaneous updates.
 *   To set up a **Remote Cloud Storage**, create a bucket in the configuration file of your terraform directory. Next, to change the backend configuration, add the code to a new Terraform configuration file called backend.tf.
+*   Don't store secrets in a state.
 *   **Import infrastructure** into terraform:
         1.  Identify the existing infrastructure to be imported.
         2.  Import the infrastructure into your Terraform state.
