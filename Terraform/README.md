@@ -12,6 +12,8 @@
 *   Unlike Cloud Shell, Terraform will **deploy resources in parallel**. You can create explicit dependencies between resources, so that a given resource can only be created after the creation of another resource.
 *   As the configuration **changes**, Terraform can determine what changed and create **incremental execution** plans that can be applied.
 *   Configurations can be modularized using **templates** which allow the abstraction of resources into reusable components across deployments.
+
+#### Modules
 *   Modules are like a python library. Use the public **Terraform Registry or the Cloud Foundation Toolkit** to find useful modules.
 *   The **Registry** provides plugins to manage any infrastructure API, pre-made modules to quickly configure common infrastructure components, and examples of how to write quality Terraform code.
 *   Using **modules** has the following benefits: organize configuration, encapsulate configuration, re-use configuration, provide consistency, standardize how a given resource is created and ensure best practices. Terraform implements the DRY principle using modules. Try not to fixate on eliminating all the duplications in your configurations. The definition of a module ia a group of one or more Terraform configuration files in a directory. The configuration files can be:
@@ -26,6 +28,7 @@
 
 ### Terraform state
 *   Terraform has written some data into the terraform.tfstate file. This **state file** is extremely important: reflect the **current state** of your infrastructure and it keeps track of the IDs of created resources so that Terraform knows **what it is managing**. 
+*   Terraform uses the resource type and the resource name together as an identifier for the resource.
 *   The primary purpose of **Terraform state** is to store bindings between objects in a remote system and resource instances declared in your configuration. This state is stored in **terraform.tfstate**
 *   A **backend** in Terraform determines how **state** is loaded and how an operation such as apply is executed. Backends can store their state remotely. Some benefit of backends are: Keeping sensitive information off disk, Working in a team and Remote operations
 *   **Import infrastructure** into terraform:
