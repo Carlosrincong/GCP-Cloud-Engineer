@@ -2,7 +2,7 @@
 
 Al asignar una politica se debe asociar una identidad/principal a un grupo. Y a dicho grupo asignarle un rol. Donde un rol, es un conjunto logico de permisos. Un permiso contiene operaciones que se pueden realizar sobre un recurso (service.resource.verb). La politica mapea quien tiene acceso aque, y cuando un principal intenta usar un recursos AIM verifica la politica antes de garantizar el acceso. 
 
-El principal puede ser: Google workspace o Dominio Cloud identity (domain), Grupo de google (group), Cuenta de Google (user) y Cuenta de servicio (serviceAccount). Donde dominio Cloud identity es similar a un dominio workspace, pero sin acceso a las aplicaciones empresariales. Identidad federada: Federación con Cloud Identity/ Google Workspace o Federación de de Workforce Identity, para que identidades externas puedan acceder a Google Cloud con credenciales externas.
+El **principal** puede ser: Google workspace o Dominio Cloud identity (domain), Grupo de google (group), Cuenta de Google (user) y Cuenta de servicio (serviceAccount). Donde dominio Cloud identity es similar a un dominio workspace, pero sin acceso a las aplicaciones empresariales. Identidad federada: Federación con Cloud Identity/ Google Workspace o Federación de de Workforce Identity, para que identidades externas puedan acceder a Google Cloud con credenciales externas.
 
 ## Federación de Workforce Identity
 Es la preferida para usar proveedor de identidad externo (IdP). No requiere la sincronizacion de Identidades con el servicio Google Cloud Directory Sync (GCDS). 
@@ -49,9 +49,10 @@ https://cloud.google.com/iam/docs/migrate-from-service-account-keys?hl=es-419
 - With deny policies, you can define deny rules that prevent certain principals from using certain permissions, regardless of the roles they're granted.  When a principal is denied a permission, they can't do anything that requires that permission, regardless of the IAM roles they've been granted.
 - Using Google Cloud Directory Sync, your administrators can log in and manage Google Cloud resources using the same usernames and passwords they already use.  This tool synchronizes users and groups from your existing Active Directory or LDAP system with the users and groups in your Cloud Identity domain.
 - SSO (single sing-on authentication)
-- Workspace or Cloud Identity super admin is responsible of:
+
+- Workspace or Cloud Identity (domain) super admin is responsible of:
     1. assign organization admin role
-    2. Recovery issues
+    2. Recovery issues and recover users at the domain level. 
     3. Life cicle of Organization resource and its users
 
 - Organization admin is responsible of:

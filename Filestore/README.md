@@ -1,6 +1,6 @@
 # FILESTORE
 
-Filestore is a managed file storage service for applications that require a file system interface and a shared file system for data. offers full NFSV3 support. 
+Filestore is a managed file storage service for applications that require a **file system interface and a shared file system** for data. offers full **NFSV3** support. 
 
 Uses cases:
 

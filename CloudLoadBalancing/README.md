@@ -34,7 +34,7 @@ For each SSL certificate, you first create an **SSL certificate resource**, whic
 -   **Backend buckets** allow you to use Google **Cloud Storage** buckets with HTTP(S) Load Balancing. Use case: send requests for *dynamic content*, such as data, to a *backend service*; and send requests for *static content*, such as images, to a *backend bucket*.
 -   Network endpoint group (NEG): This is a configuration object that specifies a **group of backend endpoints** or services. Useful to deploying services in **containers**. Define **how endpoints should be reached**, whether they are reachable, and where they are located. **Serverless NEGs** don't contain endpoints.
 
-#### Cloud CDN (Content Delivery Network)
+##### Cloud CDN (Content Delivery Network)
 Cloud CDN **caches content or HTTP(S) load-balanced content** at the edge of Google's network providing **faster delivery** of content close to your users while reducing serving costs. Content can be cached at **CDN nodes**
 You can enable Cloud CDN with a simple checkbox when setting up the backend service of your HTTP(S) load balancer.
 Each Cloud CDN request is automatically logged within Google Cloud. These logs will indicate a “Cache Hit (cached data)” or “Cache Miss (uncached data)” status for each HTTP request 
