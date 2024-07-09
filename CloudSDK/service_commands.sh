@@ -33,3 +33,7 @@ gcloud logging read "resource.type=instance_name AND labels.instance_name='gcela
 gcloud auth list # Get the list of all accounts and the active account in the SDK
 gcloud config set account $ACCOUNT_USER # Change the active account
 gcloud auth revoke $ACCOUNT_USER # to delete a specific account 
+
+export file_name=.customize_enviroment  # File usefull to install other dependencies at boot time
+edit $file_name # To open the editor and update an existing file
+# when the file will be updated, you can restart the cloud shell
