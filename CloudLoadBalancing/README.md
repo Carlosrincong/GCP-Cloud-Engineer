@@ -49,10 +49,12 @@ SSL proxy is a *global* load balancing service for **encrypted non-HTTP traffic 
 This load balancer **terminates user SSL connections** at the load balancing layer, then balances the connections across your instances using the SSL (recommended) or TCP protocols.
 This load balancer supports:
 *   both **IPv4 and IPv6** addresses for client traffic
-*   provides **intelligent routing**: load balancer can route requests to back-end locations where **there is capacity**.
+*   provides **intelligent routing**: load balancer can route requests to back-end **locations** where **there is capacity**.
 *   Certificate management: to update your customer-facing certificate. Using self-signed certificates on your instances.
 *   Security patching: in order to keep your instances safe when vulnerabilities are detected
 *   SSL policies
+*   Distribute traffic by location only
+*   Layer 4 load balancer
 
 ### TCP proxy load balancing
 TCP proxy is a *global* load balancing service for **unencrypted, non-HTTP traffic or TCP Traffic**.
@@ -61,6 +63,8 @@ This load balancer supports:
 *   both **IPv4 and IPv6** addresses for client traffic
 *   provides **intelligent routing**: load balancer can route requests to back-end locations where **there is capacity**.
 *   Security patching: in order to keep your instances safe when vulnerabilities are detected
+*   Distribute traffic by location only
+*   Layer 4 load balancer
 
 ### Network load balanncing
 Network load balancing is a *regional*, **non-proxied** load balancing service. That means all traffic is passed through the load balancer instead of being proxied, and the traffic can only be balanced between VM instances that are in the same region.
