@@ -20,7 +20,7 @@ You can further narrow down your choices depending on your application's require
 
 ### HTTP(s) Load Balancing
 User traffic directed to an HTTP(S) load balancer enters the POP (Point of presence) closest to the user and is then load-balanced over Google's global network to the closest backend that has sufficient available capacity.
-allowing for routing decisions based on the URL.
+allowing you for routing decisions based on the URL.
 your applications are available to your customers at a **single anycast IP address**, which simplifies your DNS setup.
 HTTP(S) load balancing balances HTTP and HTTPS traffic across multiple back-end instances and across multiple regions (if you setup **global** load balancing)
 HTTP on port 80 or port 8080. HTTPS on port 443. This load balancer supports both IPv4 and IPv6 clients
