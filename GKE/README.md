@@ -75,7 +75,7 @@ The node’s job is to **run Pods**, and the control plane’s is to **coordinat
 1.  kubelet: This is a small family of **control-plane** components and Kubernetes’s **agent** on each node. **The kube-APIserver connects to the node’s kubelet** when it wants start a Pod on that node. Kubelet starts Pods and monitors its lifecycle, and **reports back** to the kube-APIserver.
 2.  kube-proxy component: which maintains network connectivity among the Pods in a cluster.
 
-## Manifest file (pod)
+# Manifest file
 You define the **objects** you want Kubernetes to **create and maintain** with manifest files. That files can be written in YAML or JSON. This manifest file defines a **desired state** for a Pod: its **name** and a specific container **image** for it to run.
 Required fields:
     1.  apiVersion: refers to Kubernetes API version used
@@ -88,14 +88,48 @@ Required fields:
 If several objects are related, it’s a best practice to define them all in the same YAML file.
 Objects must to have an unique name up in the same **Kubernetes namespace**.
 
-## Controller object
+## kind: the object
+
+#### POD 
+Pod is a conatiner or a set of. It represents a running process on your cluster as either a component of your application or an entire app. 
+Generally, you only have one container per pod. When you have more than one, it is because them have a high dependence on each other. 
+The pod provides a unique network IP and set of ports for your containers. Kubernetes creates a service with a fixed IP address for your pods.
+kubectl command to run a container in a pod, which starts a deployment with a container running inside a pod
+kubectl get pods to see of the running pods
+
+#### Controller objects
 A controller object's job is to **manage the state of the Pods**. Because Pods are designed to be ephemeral and disposable, they **don't heal or repair themselves** and are not meant to run forever. Deployment controller job is to **monitor and maintain up** the desired pods.
     1.  Deployments: Deployments are a great choice for long-lived software components like web servers, especially when you want to manage them as a group. Instead of using multiple YAML manifests or files for each Pod, you used a single Deployment YAML to launch three replicas of the same container. Within a Deployment object spec, the number of **replica Pods**, which containers should run the Pods, and which volumes should be mounted the following elements are defined. Based on these templates, controllers maintain the Pod’s desired state within a cluster.
+    -    kubectl get deployments
+    -    kubectl describe deployments
 
-    2.  StatefulSets
-    3.  DaemonSets
-    4.  Jobs
+    2.  StatefulSets: apps which requires persistent storage. Useful to Database.
+    3.  DaemonSets: ensures that every node in the cluster runs a copy of a pod. usually used to monitoring and logging. Create a pods for each node. 
+    4.  Jobs: run finite task until completion
+    5.  CronJobs: schedule jobs
+    6.  ConfigMaps
 
+#### Services, Load Balancing, and Networking objects
+
+Service:
+A service is an abstraction which defines a logical set of pods and a policy by which to access them
+A service group is a set of pods and provides a stable endpoint or fixed IP address for them. 
+Provides a single persistent IP address for ephemeral pods
+service send traffic to pods with the established label in the both selector and pod definition
+kubectl get services to get the external IP of the service 
+- Multi-port services: expose more than one port. Useful to distribute traffic based on ports and names of the ports
+- Headless services: None type in the manifest. When is not necessary any load balancer. Often used with stateful sets
+
+Service Type:
+- ClusterIp: fix a static ip to a cluster. And the cluster send traffic to pods with dinamic ip. Labels connect the cluster with pods.
+- NodePort: expose the port of and the external ip of a node. And node send the traffic to pods. You have to know the ip of each node and its exposed port
+- loadBalancer: create an internal load balancer service which is conected to the cloud load balancer
+- ExternalName: provides an internal alias for an external dns name. Useful for outside resources
+
+Ingress
+Ingress is like a map of address to distributate workloads
+
+  
 ## kubectl command
 kubectl is a command-line tool used by administrators to **control and interact with Kubernetes clusters**. It’s used to **communicate** with the Kube-APIserver on the **control plane**.
 kubectl transforms command-line entries into **API calls** and sends them via HTTP to the Kube-APIserver on Control plane. The Kube-APIserver then returns the results to kubectl through HTTPS. Finally, kubectl display us the response.
@@ -179,33 +213,6 @@ livenessprove: check if a port is avaible. this way we can check if an container
 kube-proxy: receive the traffic and redirect all to pods
 readinessprobe: check if it is avaible to get traffic through sending a request and hoping a response. 
 pod networking: each pod have its own ip. And each container inside of pod have the same ip. 
-
-Load balancers:
-- cluster ip: fix a static ip to a cluster. And the cluster send traffic to pods with dinamic ip. Labels connect the cluster with pods.
-- node port: expone the port of an external ip of and node. And node send the traffic to pods. You have to know the ip of each node
-- load balancer
-- ingress: is like a map of address to distributate workloads
-
-Ways to create pod:
-- Deployment: is a template to create pods. And replicas is the amount of pods to this deployment. 
-- daemonset: usually used to monitoring and logging. Create a pods for each node. 
-- statefulset: create a pod with persistent disk. Useful to Database.
-
-# POD 
-Pod is a conatiner or a set of. It represents a running process on your cluster as either a component of your application or an entire app. 
-Generally, you only have one container per pod. When you have more than one, it is because them have a high dependence on each other. 
-The pod provides a unique network IP and set of ports for your containers. Kubernetes creates a service with a fixed IP address for your pods.
-kubectl command to run a container in a pod, which starts a deployment with a container running inside a pod
-kubectl get pods to see of the running pods
-
-## Deployment 
-A deployment represents a group of replicas of the same pod and keeps your pods running even when the nodes they run on fail
-kubectl get deployments
-kubectl describe deployments.
-## Service
-A service is an abstraction which defines a logical set of pods and a policy by which to access them
-A service group is a set of pods and provides a stable endpoint or fixed IP address for them.
-kubectl get services to get the external IP of the service 
 
 # Disadventage
 Google Kubernetes Engine, which consists of containerized workloads, may not be as easily transferable as what you’re used to from on-premises.
