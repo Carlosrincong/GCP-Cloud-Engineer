@@ -127,7 +127,20 @@ Service Type:
 - ExternalName: provides an internal alias for an external dns name. Useful for outside resources
 
 Ingress
-Ingress is like a map of address to distributate workloads
+Ingress is like a map of address to distributate workloads. Useful to expose multiple services under the same IP address of the load balancer
+
+##### Storage
+
+Volume
+Useful when containers are running in a Pod and need to share files. Or to save files during the lifetime of the pods
+Ephemeral volume types have a lifetime of a pod, but persistent volumes exist beyond the lifetime of a pod. That means persistent volumes can be used for durable storage.
+
+Volume Type:
+- EmptyDir: empty directory that containers in pod can read and write
+- ConfigMap: provides a way too inject configuration into pods
+- Secret: use to make sensitive data available to pods
+- Downward API: introduce in pods Downward API data
+- PersistentVolumeClaim: provisions durable storage to be used by application (pods). Persistent volume claim provisions persistent volume
 
   
 ## kubectl command
