@@ -110,7 +110,6 @@ A controller object's job is to **manage the state of the Pods**. Because Pods a
     6.  ConfigMaps
 
 #### Services, Load Balancing, and Networking objects
-
 Service:
 A service is an abstraction which defines a logical set of pods and a policy by which to access them
 A service group is a set of pods and provides a stable endpoint or fixed IP address for them. 
@@ -130,7 +129,6 @@ Ingress
 Ingress is like a map of address to distributate workloads. Useful to expose multiple services under the same IP address of the load balancer
 
 ##### Storage
-
 Volume
 Useful when containers are running in a Pod and need to share files. Or to save files during the lifetime of the pods
 Ephemeral volume types have a lifetime of a pod, but persistent volumes exist beyond the lifetime of a pod. That means persistent volumes can be used for durable storage.
@@ -141,7 +139,6 @@ Volume Type:
 - Secret: use to make sensitive data available to pods
 - Downward API: introduce in pods Downward API data
 - PersistentVolumeClaim: provisions durable storage to be used by application (pods). Persistent volume claim provisions persistent volume
-
   
 ## kubectl command
 kubectl is a command-line tool used by administrators to **control and interact with Kubernetes clusters**. It’s used to **communicate** with the Kube-APIserver on the **control plane**.
