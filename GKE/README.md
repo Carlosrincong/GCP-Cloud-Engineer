@@ -120,10 +120,10 @@ kubectl get services to get the external IP of the service
 - Headless services: None type in the manifest. When is not necessary any load balancer. Often used with stateful sets
 
 Service Type:
-- ClusterIp: fix a static ip to a cluster. And the cluster send traffic to pods with dinamic ip. Labels connect the cluster with pods.
-- NodePort: expose the port of and the external ip of a node. And node send the traffic to pods. You have to know the ip of each node and its exposed port
-- loadBalancer: create an internal load balancer service which is conected to the cloud load balancer
-- ExternalName: provides an internal alias for an external dns name. Useful for outside resources
+- ClusterIp: fix a static internal ip to a cluster. And the cluster send traffic to pods with dinamic ip. Labels connect the cluster with pods. the internal ip is only reachable within the cluster
+- NodePort: expose the port of and the internal ip of a node. And node send the traffic to pods. You have to know the ip of each node and its exposed port
+- loadBalancer: create an internal load balancer service which is conected to an external cloud load balancer
+- ExternalName: provides an internal alias for an external dns name. Useful for accesing to outside resources
 
 Ingress
 Ingress is like a map of address to distributate workloads. Useful to expose multiple services under the same IP address of the load balancer

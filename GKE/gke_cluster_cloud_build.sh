@@ -40,3 +40,17 @@ kubectl describe pod $PODNAME
 
 # Expose the deployment in the console to activate a service (load balancer)
 
+# Scale the cluster
+kubectl get pods
+kubectl scale deployment boxofbowties --replicas=1
+kubectl get pods # Check out
+kubectl scale deployment boxofbowties --replicas=3
+
+# Rolling update
+cd google-cloud-associate-cloud-engineer
+cd 09-Kubernetes-Engine-and-Containers/box_of_bowties/container
+edit index.html
+## Rebuild the image
+gcloud builds submit --tag gcr.io/admin-project-a/boxofbowties:1.0.1 .
+
+# In GKE Console, update the deployment using the updated image by using the rolling update action
