@@ -37,13 +37,14 @@ Cloud DNS translates requests for domain names like google.com into IP addresses
 Services usefull to connect your GCP VPC network with either local network, other provider cloud network or with other GCP VPC network.
 
 ## Cloud VPN Gateways
-In order to create a connection between two VPN gateways, you must establish two VPN tunnels. Each tunnel defines the connection from the perspective of its gateway, and traffic can only pass when the pair of tunnels is established.
+In order to create a connection between two VPN gateways, you must establish two VPN tunnels. Each tunnel defines the connection from the perspective of its gateway, and traffic can only pass when the pair of tunnels is established. This is a **regional service**. Allows **Private Google Access for on-premises** hosts. The traffic is ecrypted. 
 
 1.  Classic VPN: Classic VPN securely connects your on-premises network to your Google Cloud VPC network through an **IPsec VPN tunnel**. Traffic is **encrypted** by one VPN gateway, then **decrypted** by the other VPN gateway. Classic VPN is useful **for low-volume data** connections (max 1460 bytes). 
 Supports:
     *   Site-to-site VPN
     *   Static and dynamic routes (**with Cloud Router**)
     *   IKEv1 and IKEv2 ciphers
+    *   Single external IP address for a single interface
 Classic VPN doesn't support use cases where client computers need to **“dial in” to a VPN using client VPN software**.
 
 2.  High availability or HA VPN: That lets you securely connect your on-premises network to your Virtual Private Cloud (VPC) network through an **IPsec VPN connection in a single region**. For high availability, you must properly **configure two or four tunnels** from your HA VPN gateway to your peer VPN gateway or to another HA VPN gateway. Each of the HA VPN gateway interfaces **supports multiple tunnels** and you can also create multiple HA VPN gateways.
@@ -53,14 +54,18 @@ Site-to-site VPN:
     *   HA VPN gateway to peer VPN devices: 
     *   An HA VPN gateway to an Amazon Web Services (AWS) virtual private gateway
     *   Two HA VPN gateways connected to each other
+    *   dynamic routing only (bgp through Cloud Router)
+    *   Two external IPs for two interfaces
+
 
 ### Cloud Router (to use dynamyc routes and BGP)
 Cloud Router can manage routes for a Cloud VPN tunnel using Border Gateway Protocol, or BGP. This routing method allows for routes to be updated and exchanged without changing the tunnel configuration.
 To set up BGP, an additional IP address has to be **assigned to each end of the VPN tunnel**. These addresses are not part of IP address space of either network and are used exclusively **for establishing a BGP session**.
 
 ## Cloud Interconnect and Peering
-Useful to connect your network infrastructure to Google’s network.
+Useful to connect your network infrastructure to Google’s network physically.
 
+-   The traffic is not encrypted
 -   Dedicated connections provide a **direct** connection to Google’s network
 -   Shared connections provide a connection to Google’s network **through a partner**.
 -   Layer 2 connections use a VLAN that pipes **directly into your GCP environment**, providing connectivity to internal IP addresses in the RFC 1918 address space.
