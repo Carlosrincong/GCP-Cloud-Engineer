@@ -1,15 +1,15 @@
 
 # Certifications
-https://cloud.google.com/learn/certification?hl=es-419
-https://cloud.google.com/learn/certification/cloud-engineer?hl=es-419
+https://cloud.google.com/learn/certification?hl=es-419  (done)
+https://cloud.google.com/learn/certification/cloud-engineer?hl=es-419  (done)
 
 # google course road map
-https://partner.cloudskillsboost.google/paths
-https://www.cloudskillsboost.google/paths/11
+https://partner.cloudskillsboost.google/paths  (done)
+https://www.cloudskillsboost.google/paths/11  (done)
 
 # Course
-https://www.youtube.com/watch?v=jpno8FSqpc8&ab_channel=freeCodeCamp.org
-https://github.com/antonitz/google-cloud-associate-cloud-engineer/tree/master
+https://www.youtube.com/watch?v=jpno8FSqpc8&ab_channel=freeCodeCamp.org  (done)
+https://github.com/antonitz/google-cloud-associate-cloud-engineer/tree/master  (done)
 https://www.youtube.com/playlist?list=PLQMsfKRZZviRwqJwNmh1eAWnRMvlrk40x
 
 # Slides
@@ -30,11 +30,10 @@ https://medium.com/gowthamlabs/google-cloud-associate-engineer-notes-gcp-ace-8d2
 https://medium.com/@joaovitor/associate-cloud-engineer-study-guide-cf7e74da1bb6
 
 # Recomendations
-https://www.reddit.com/r/googlecloud/search/?q=certification&type=link&cId=9cac3c0c-d40a-41a3-bd39-f8d1b11eec30&iId=2587aee6-47b9-4bd9-9c49-74b9cd4f5fc2&sort=top
+https://www.reddit.com/r/googlecloud/search/?q=certification&type=link&cId=9cac3c0c-d40a-41a3-bd39-f8d1b11eec30&iId=2587aee6-47b9-4bd9-9c49-74b9cd4f5fc2&sort=top   (done)
 
 # Pay
 https://www.in28minutes.com/google-cloud-roadmap
-
 
 # OTHER CERTIFICATION
 How to pass the Cloud Architect and Data Engineer GCP certifications: https://medium.com/ci-t/how-to-pass-both-the-cloud-architect-and-data-engineer-gcp-certifications-bb6a0812a1b1
