@@ -9,3 +9,4 @@ Combine the benefits of relational database structure with non relational horizo
 Transaccional consistency
 Automatic synchronous replication for high availability
 Cloud Spanner provides ACID (Atomicity, Consistency, Isolation, Durability) properties that enable transactional reads and writes on the database. It can also scale globally.
+Auto-Scale Nodes or Processing units (granular) based on both CPU and Storage utilization percentage. 
