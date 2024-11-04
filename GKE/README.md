@@ -1,11 +1,11 @@
 
 # CONTAINER
 
-For On-Premise applications you would need: physical space, power, cooling, network connectivity. You aldo need a Operating system, software dependencies and the application. In case, more processing power is needed, you have to add more computers. 
+For On-Premise applications you would need: physical space, power, cooling, network connectivity. You also need a Operating system, software dependencies and the application. In case, more processing power is needed, you have to add more computers. 
 Virtualization: The software layer that breaks the dependencies of an operating system on the underlying hardware and allows several virtual machines to share that hardware is called a  **hypervisor** (such as Kernel-based Virtual Machine or KVM).
 With Virtualization, a virtual machines can be imaged and easily moved.
 The idea of a container is to give the independent scalability of workloads in PaaS and an abstraction layer of the OS and hardware in IaaS. Independent means that you have an user space, which is all the code that resides above the kernel, and it includes applications and their dependencies.
-A configurable system, lets you install your favorite run time, web server, database or middleware. Containersdon’t carry a full operating system
+A configurable system, lets you install your favorite run time, web server, database or middleware. Containers don’t carry a full operating system
 A container, is an invisible box around your code and its dependencies with limited access to its own partition of the file system and hardware.
 Containers are a way to package and run code that's more efficient than virtual machines
 An application and its dependencies are called an **image**, and a **container** is simply a running instance of an image.
@@ -31,7 +31,7 @@ Docker compose is an alternative when It´s necesary to run several containers. 
 
 # KUBERNETES 
 Kubernetes is an orchestration framework for software containers. 
-Kubernetes provides the tools you need to run and manage containerized applications in production and at scale as microservices.
+Kubernetes provides the tools you need to run and manage containerized app lications in production and at scale as microservices.
 Kubernetes is a set of APIs that you can use to deploy containers on a set of nodes called a cluster.
 Cluster have a control plane and a set of nodes (instances) that run containers.
 Kubernetes is a software layer that sits between your applications and your hardware infrastructure
@@ -99,6 +99,7 @@ kubectl get pods to see of the running pods
 
 #### Controller objects
 A controller object's job is to **manage the state of the Pods**. Because Pods are designed to be ephemeral and disposable, they **don't heal or repair themselves** and are not meant to run forever. Deployment controller job is to **monitor and maintain up** the desired pods.
+
     1.  Deployments: Deployments are a great choice for long-lived software components like web servers, especially when you want to manage them as a group. Instead of using multiple YAML manifests or files for each Pod, you used a single Deployment YAML to launch three replicas of the same container. Within a Deployment object spec, the number of **replica Pods**, which containers should run the Pods, and which volumes should be mounted the following elements are defined. Based on these templates, controllers maintain the Pod’s desired state within a cluster.
     -    kubectl get deployments
     -    kubectl describe deployments
@@ -128,7 +129,7 @@ Service Type:
 Ingress
 Ingress is like a map of address to distributate workloads. Useful to expose multiple services under the same IP address of the load balancer
 
-##### Storage
+####  Storage
 Volume
 Useful when containers are running in a Pod and need to share files. Or to save files during the lifetime of the pods
 Ephemeral volume types have a lifetime of a pod, but persistent volumes exist beyond the lifetime of a pod. That means persistent volumes can be used for durable storage.
@@ -154,10 +155,10 @@ kubectl’s syntax is composed of four parts: the command, the type, the name, a
 
 ## Introspection
 Debug problems when an application is running.
-t’s the act of gathering information about the objects running in cluster.
+t’s the act of gathering information about the objects running in a cluster.
 kubectl commands: 
     1.  get: [kubectl get pods] shows the Pod’s phase status:
-        +   Pending: Kubernetes has accepted a Pod, but it’s still being scheduled (not created).
+        +   Pending: Kubernetes has accepted a Pod, but it’s still being scheduled (not created yet).
         +   Running: When a pod was attached to a node, and all its containers are created.
         +   Succeeded: When all containers had either finished running or terminated succesfully.
         +   Failed: when a container terminated with a failure. 
@@ -215,7 +216,7 @@ For GKE, authentication is typically handled with OAuth2 tokens and can be manag
 
 -----------------------
 
-etcd: is the database to save operativo information from kubernetes
+etcd: is the database to save operative information from kubernetes
 cloud controller manager: Allows to kubernetes comunicate with Cloud provider to deploy services. 
 kubelet: is the way how a worker get workloads from master.
 namespace: to distribute the traffic or the workload
@@ -229,3 +230,5 @@ Google Kubernetes Engine, which consists of containerized workloads, may not be 
 
 # Best practice
 it’s not a best practice to build your application in the same container where you ship and run it.
+
+Fleet is a group of clusters 

@@ -6,13 +6,13 @@ cd python-docs-samples/functions/helloworld/
 
 # Deploy the function
 gcloud functions deploy function-name \
---gen2 \
---runtime=python312 \
---region=REGION \
---source=. \
---entry-point=hello_get \
---trigger-http \
---allow-unauthenticated
+ --gen2 \
+ --runtime=python312 \
+ --region=REGION \
+ --source=. \
+ --entry-point=hello_get \
+ --trigger-http \
+ --allow-unauthenticated
 
 # Get the uri to call the function
 gcloud functions describe function-name --gen2 --region REGION --format="value(serviceConfig.uri)"
@@ -40,7 +40,7 @@ nano index.js # Edit the text file with code to function
 # Create a storge as stage to the function
 gsutil mb -p project-id gs://bucket-name
 
-# Deplor the function
+# Deploy the function
 gcloud functions deploy function-name \
   --stage-bucket gs://bucket-name \
   --trigger-topic hello_world \

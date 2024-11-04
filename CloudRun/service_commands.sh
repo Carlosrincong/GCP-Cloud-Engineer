@@ -85,10 +85,21 @@ gcloud container images list
 docker run -d -p 8080:8080 gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld
 
 # Deploy containerizied app to cloud run using the created image:
+export LOCATION=us-west1
 gcloud run deploy --image gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld --allow-unauthenticated --region=$LOCATION
 
 # Delete a image
 gcloud container images delete gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld
 
 # Delete a cloud run deploy:
-gcloud run services delete helloworld --region="REGION"
+gcloud run services delete helloworld --region=$LOCATION
+
+## New image version
+
+# Generate a change in the index.js file
+
+# Build the new version of the image
+gcloud builds submit --tag gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld:1.1
+
+# Deploy the container using the new version 
+gcloud run deploy --image gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld:1.1 --allow-unauthenticated --region=$LOCATION

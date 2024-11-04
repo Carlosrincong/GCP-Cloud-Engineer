@@ -119,8 +119,7 @@ Configuring **stateful IP addresses** in a managed instance group ensures that a
 
 ## Key considerations
 Physical cores have hyperthreading (On-premise). On compute engine, a vCPU is equal to one hardware hyper-thread
-To attach a persistent disk to a virtual machine instance, both resources must be in the same zone. I
-If you want to assign a static IP address to an instance, the instance must be in the same region as the static IP.
+To attach a persistent disk to a virtual machine instance, both resources must be in the same zone. Similarly, if you want to assign a static IP address to an instance, the instance must be in the same region as the static IP.
 You cannot create a VM instance without a VPC network
 When a VM is terminated, you do not pay for memory and CPU resources. However, you are charged for any attached disks and reserved IP addresses.
 You could keep your boot disk and just reattach that boot disk later on
@@ -172,7 +171,7 @@ Balances traffic Across multiple Compute Engine regions
 
 ## CLoud DNS (Domain name service) & Cloud CDN (Content delivery network)
 DNS is what translates internet hostnames to addresses
-The DNS information you publish is served from redundant locations around the world.
+The DNS information your publish is served from redundant locations around the world.
 You can publish and manage millions of DNS zones and records 
 Google also has a global system of edge caches. Edge caching refers to the use of caching servers to store content closer to end users.
 to accelerate content delivery in your application by using Cloud CDN
