@@ -1,7 +1,7 @@
 # OBSERVABILITY
 
 The four distinct recurring user needs for observability:
-1.  The first one is visibility into system health: verall health of systems, how their application is working on GCP.
+1.  Visibility into system health: overall health of systems, how their application is working on GCP.
 2.  Error reporting and alerting: proactive alerting, anomaly detection, or guidance on issues.
 3.  Efficient troubleshooting: the potential cause of the issue and recommend a meaningful direction for the customer to start their investigation.
 4.  Performance improvement: perform retrospective analysis, understand how changes in the system affect its performance.
@@ -71,7 +71,7 @@ Send an Alert when a service is down, or an SLO isn't being met.
 when a system is heading to spend all of its **error budget** before the allocated time window. Error budget is perfection minus SLO. **Error budget** is the proportion of alerts detected that were relevant to the sum of relevant alerts and missed alerts.
 ![evaluating-alerts](/img/evaluating-alerts.png)
 Define multiple conditions in an alerting policy to get better precision, recall, detection time, and rest time.
-![alert-windoe-lenght](/img/alert-windoe-lenght.png)
+![alert-windoe-lenght](/img/alert-window-lenght.png)
 One trick might be to use **short windows, but add a successive failure count**. This way, the error is spotted quickly but treated as an anomaly until the **duration** or **error count is reached**.
 **Don't involve humans unless** the alert meets some threshold for criticality.
 You can use these **levels** to focus on the issues deemed most critical for your operations and triage through the noise.
