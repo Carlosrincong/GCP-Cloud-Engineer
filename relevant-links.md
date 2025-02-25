@@ -24,6 +24,9 @@ https://docs.google.com/forms/d/e/1FAIpQLSewdU5twM8Y9zY4Z7Syo1M7oikGuKACB_UN5XBR
 https://docs.google.com/forms/d/e/1FAIpQLSfexWKtXT2OSFJ-obA4iT3GmzgiOCGvjrT9OfxilWC1yPtmfQ/viewform
 https://www.youtube.com/watch?v=9CEJ1YYgsJk&ab_channel=SkillCurb
 
+# study notes
+https://docs.google.com/document/d/1u6pXBiGMYj7ZLBN21x6jap11rG6gWk7n210hNnUzrkI/edit?tab=t.0 (done)
+
 # Blogs
 https://cloud.google.com/blog/topics/inside-google-cloud/meet-people-google-cloud-priyanka-vergadia
 https://medium.com/gowthamlabs/google-cloud-associate-engineer-notes-gcp-ace-8d2260cb3882
